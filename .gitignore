@@ -5,6 +5,16 @@
 tmp/
 original-output_副本.txt
 
+# Generated build and verification artifacts
+build/
+__pycache__/
+*.py[cod]
+**/verification/last-run.txt
+**/output/pdf/*-draft.pdf
+
+# Internal audit notes
+abelian-stability/AUDIT_*.md
+
 # LaTeX and Tectonic intermediate files
 *.aux
 *.bbl

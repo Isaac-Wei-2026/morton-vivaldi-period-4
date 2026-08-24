@@ -1,0 +1,314 @@
+\section{Newton polygons and a denominator lemma}
+\label{sec:newton-denominator}
+
+We first record precisely the local consequence of Newton polygons that
+will be used below.  If $L$ is a complete discretely valued field, its
+valuation is normalized by $v(L^\times)=\mathbf Z$, and the same letter
+$v$ denotes a fixed extension to $\overline{L}$.  We use the standard
+Newton polygon theorem over complete discretely valued fields
+\cite[Chapter II]{Serre1979}.
+
+\begin{lemma}[Newton-polygon denominator lemma]
+\label{lem:newton-denominator}
+Let $P\in L[T]$ be monic with $P(0)\ne0$.  Suppose that the Newton
+polygon of $P$ has an edge of horizontal length $\ell$ and slope
+\[
+ -\frac{h}{d},
+ \qquad h\in\mathbf Z,
+ \quad d\geq1,
+ \quad \gcd(h,d)=1.
+\]
+Then the slope factor belonging to that edge has degree $\ell$, and
+every irreducible factor of the slope factor has degree divisible by
+$d$.  In particular, if $\ell=d$, the slope factor is irreducible of
+degree $d$ over $L$.
+\end{lemma}
+
+\begin{proof}
+By the Newton polygon theorem over the complete, hence henselian, field
+$L$, the polynomial $P$ has a factor $P_{h/d}\in L[T]$ whose roots,
+counted with multiplicity, are exactly the $\ell$ roots $\beta$ of $P$
+for which
+\[
+ v(\beta)=\frac{h}{d}.
+\]
+Thus $\deg P_{h/d}=\ell$.
+
+Let $G\in L[T]$ be an irreducible factor of $P_{h/d}$ and let $\beta$
+be a root of $G$.  Put $M=L(\beta)$ and let $e(M/L)$ be the ramification
+index.  With the normalization $v(L^\times)=\mathbf Z$, the value group
+of $M$ is
+\[
+ v(M^\times)=\frac1{e(M/L)}\mathbf Z.
+\]
+Since $v(\beta)=h/d$ is in lowest terms, it follows that
+$d\mid e(M/L)$.  The ramification index divides $[M:L]=\deg G$, so
+$d\mid\deg G$.  If $\ell=d$, the degrees of the irreducible factors of
+$P_{h/d}$ are positive multiples of $d$ whose sum is $d$; hence there
+is exactly one such factor.
+\end{proof}
+
+\section{A local quartic factor of the period-4 fiber}
+\label{sec:local-quartic-fiber}
+
+Let $\zeta\ne1$ be a root of unity, put $K=\Q(\zeta)$, and write
+\[
+ \operatorname{ord}(\zeta)=2^a m,
+ \qquad m\ \text{odd},
+ \qquad \zeta=\xi\eta,
+\]
+where $\xi$ has $2$-power order and $\eta$ has odd order.  Recall that
+\[
+ F_\zeta(T)
+ =T^6+2T^5+4T^4+6T^3+(\zeta-5)T^2-8T-16.
+\]
+Fix a prime $\mathfrak p$ of $K$ above $2$, write
+$K_{\mathfrak p}$ for the completion, normalize
+$v=v_{\mathfrak p}$ by $v(K_{\mathfrak p}^\times)=\mathbf Z$, and put
+$e=v(2)$.
+
+When $m>1$, choose the odd-order root of unity $\theta\in K$ used in
+Section~\ref{sec:odd-part-base}, so that $\theta^4=\eta$, and put
+$t_0=\theta-1$.  The base irreducibility argument already proved that
+$t_0$ is a $\mathfrak p$-adic unit and that
+\[
+ \overline{F_\zeta(T)}=T^2(T-\overline{t_0})^4,
+ \qquad
+ v\bigl(F_\zeta(t_0)\bigr)=1;
+\]
+see \eqref{eq:odd-reduction} and Lemma~\ref{lem:t0-valuation}.
+
+\begin{proposition}[Local quartic factor]
+\label{prop:local-quartic-factor}
+For every root of unity $\zeta\ne1$, the polynomial $F_\zeta$ has an
+irreducible factor of degree $4$ over $K_{\mathfrak p}$.
+\end{proposition}
+
+\begin{proof}
+Suppose first that $m>1$.  Write
+\[
+ F_\zeta(t_0+Y)=\sum_{j=0}^6 b_jY^j.
+\]
+Lemma~\ref{lem:t0-valuation} gives $v(b_0)=1$.  Reducing the shifted
+polynomial and using \eqref{eq:odd-reduction}, we obtain, in residue
+characteristic $2$,
+\begin{align*}
+ \overline{F_\zeta(t_0+Y)}
+ &=(Y+\overline{t_0})^2Y^4 \\
+ &=Y^6+\overline{t_0}^{\,2}Y^4.
+\end{align*}
+Consequently
+\[
+ v(b_j)\geq1\quad(1\leq j\leq3),
+ \qquad v(b_4)=0,
+ \qquad v(b_5)\geq1,
+ \qquad v(b_6)=0.
+\]
+Every point $(j,v(b_j))$ lies on or above the line
+$y=1-j/4$, and equality holds at $j=0$ and $j=4$.  Hence the Newton
+polygon contains the edge
+\[
+ (0,1)\longrightarrow(4,0),
+\]
+of length $4$ and slope $-1/4$.  Lemma
+\ref{lem:newton-denominator} shows that the corresponding degree-four
+slope factor of $F_\zeta(t_0+Y)$ is irreducible over
+$K_{\mathfrak p}$.  Translating $Y=T-t_0$ preserves degrees and
+irreducibility, and therefore gives the required factor of $F_\zeta$.
+
+Now suppose that $m=1$.  Since $\zeta\ne1$, its order is $2^a$ with
+$a\geq1$.  The recalled local cyclotomic facts give
+\[
+ e=v(2)=2^{a-1}.
+\]
+For $a=1$ one has $\zeta=-1$ and
+$v(\zeta-5)=v(-6)=1$.  For $a\geq2$, the element $\zeta-1$ is a
+uniformizer, and
+\[
+ \zeta-5=(\zeta-1)-4
+\]
+is a sum of terms of respective valuations $1$ and $2e>1$; hence again
+$v(\zeta-5)=1$.  It follows directly from the seven coefficients of
+$F_\zeta$, listed from the constant coefficient to the leading
+coefficient, that their valuations are
+\begin{equation}
+ (4e,\,3e,\,1,\,e,\,2e,\,e,\,0).
+ \label{eq:F-pure-two-valuations}
+\end{equation}
+
+The lower convex hull of these seven points is
+\begin{equation}
+ (0,4e)\longrightarrow(2,1)\longrightarrow(6,0).
+ \label{eq:F-pure-two-newton}
+\end{equation}
+Indeed, the point $(1,3e)$ lies strictly above the first segment because
+\[
+ 3e>\frac{4e+1}{2},
+\]
+while the extension of that segment has negative ordinate at every
+integer abscissa $j\geq3$, since at $j=3$ its ordinate is
+$-2e+3/2<0$.  All the remaining coefficient valuations are
+nonnegative.  On the other hand, the points with abscissas $0$ and $1$
+lie strictly above the line through $(2,1)$ and $(6,0)$, whose
+ordinates there are $3/2$ and $5/4$, respectively, because
+$4e>3/2$ and $3e>5/4$.  Finally, the points with abscissas $3,4,5$ lie
+strictly above the second segment, whose ordinates there are
+$3/4,1/2,1/4$, respectively.  The
+two displayed slopes are
+\[
+ -\frac{4e-1}{2}
+ \qquad\text{and}\qquad
+ -\frac14,
+\]
+and are strictly increasing.  These observations also show directly
+that no omitted point lies below either segment.  The second edge in
+\eqref{eq:F-pure-two-newton} has length $4$ and reduced slope $-1/4$.
+Lemma \ref{lem:newton-denominator} therefore makes its slope factor an
+irreducible quartic over $K_{\mathfrak p}$.
+\end{proof}
+
+\section{A sextic criterion for abelian disjointness}
+\label{sec:sextic-abelian-criterion}
+
+Let $k$ be a number field and let
+\[
+ f(T)=\prod_{i=1}^6(T-r_i)\in k[T]
+\]
+be an irreducible separable sextic.  For each unordered partition
+$\{A,A^c\}$ of $\{1,\ldots,6\}$ into two triples, put
+\[
+ s_A=\prod_{i\in A}r_i+\prod_{j\in A^c}r_j.
+\]
+There are $\binom63/2=10$ such partitions.  Define the $3+3$ resolvent
+by
+\begin{equation}
+ \mathcal R_f(S)=
+ \prod_{\{A,A^c\}}(S-s_A).
+ \label{eq:abstract-three-three-resolvent}
+\end{equation}
+The absolute Galois group of $k$ permutes the ten unordered partitions;
+thus $\mathcal R_f(S)\in k[S]$.
+
+Write $k^{\mathrm{ab}}$ for the maximal abelian extension of $k$ in a
+fixed algebraic closure.
+
+\begin{theorem}[Abelian-disjointness criterion for sextics]
+\label{thm:sextic-abelian-disjointness}
+Let $\alpha$ be a root of $f$ and put $E=k(\alpha)$.  Suppose that
+\begin{enumerate}[label=\textup{(\roman*)}]
+ \item for some finite place $v$ of $k$, the polynomial $f$ has an
+       irreducible quartic factor over $k_v$;
+ \item the resolvent $\mathcal R_f$ has no root in $k$.
+\end{enumerate}
+Then
+\[
+ E\cap k^{\mathrm{ab}}=k.
+\]
+Consequently $f$ remains irreducible over $k^{\mathrm{ab}}$.
+\end{theorem}
+
+\begin{proof}
+Set
+\[
+ D=E\cap k^{\mathrm{ab}}.
+\]
+Because $D\subseteq E$, the extension $D/k$ is finite.  Moreover,
+$k^{\mathrm{ab}}/k$ is Galois with abelian Galois group.  Every finite
+intermediate extension is therefore Galois and abelian over $k$; in
+particular, so is $D/k$.  Since $f$ is irreducible of degree six,
+$[E:k]=6$, and the tower $k\subseteq D\subseteq E$ gives
+\[
+ [D:k]\mid6.
+\]
+It remains to exclude the three possibilities $[D:k]=2,3,6$.
+
+Suppose first that $[D:k]=2$, and let $\tau$ be the nontrivial element
+of $\Gal(D/k)$.  The minimal polynomial $H$ of $\alpha$ over $D$ is
+monic of degree $[E:D]=3$ and divides $f$ in $D[T]$.  The polynomials
+$H$ and $\tau(H)$ are distinct: otherwise $H$ would have coefficients
+fixed by $\tau$, hence would lie in $k[T]$, contradicting the
+irreducibility of the degree-six polynomial $f$ over $k$.  Both are
+irreducible over $D$, so they are coprime.  Their product is monic of
+degree six, divides $f$, and is fixed by $\tau$; therefore
+\[
+ f=H\,\tau(H).
+\]
+The roots of $H$ form a triple $\{r_i:i\in A\}$ and those of
+$\tau(H)$ form the complementary triple.  Thus
+\[
+ H(0)=-\prod_{i\in A}r_i,
+ \qquad
+ \tau(H)(0)=-\prod_{j\in A^c}r_j,
+\]
+and consequently
+\[
+ -\operatorname{Tr}_{D/k}\bigl(H(0)\bigr)
+ =\prod_{i\in A}r_i+\prod_{j\in A^c}r_j
+ =s_A.
+\]
+This is a root of $\mathcal R_f$ lying in $k$, contrary to hypothesis
+\textup{(ii)}.  Hence $[D:k]\ne2$.
+
+Suppose next that $[D:k]=3$.  Let $q\in k_v[T]$ be an irreducible
+quartic factor of $f$, let $\beta$ be a root of $q$, and choose a
+$k$-embedding
+\[
+ \sigma:E\hookrightarrow\overline{k_v}
+ \qquad\text{with}\qquad
+ \sigma(\alpha)=\beta.
+\]
+Such an embedding exists because $\beta$ is a root of the minimal
+polynomial $f$ of $\alpha$.  Put $L=k_v(\beta)$, so $[L:k_v]=4$.
+The compositum $k_v\sigma(D)\subset\overline{k_v}$ is canonically
+isomorphic to the completion $D_w$ at the place $w$ induced by
+$\sigma$, and it is contained in $L$ because $D\subseteq E=k(\alpha)$.
+
+Since $D/k$ is Galois of prime degree three, the local degree
+$[D_w:k_v]$ is either $1$ or $3$.  If it is $3$, then the tower
+\[
+ k_v\subseteq k_v\sigma(D)\subseteq L
+\]
+would force $3$ to divide $[L:k_v]=4$, which is impossible.  If it is
+$1$, then $v$ splits completely in $D$ and $\sigma(D)\subseteq k_v$.
+The minimal polynomial of $\alpha$ over $D$ has degree
+$[E:D]=2$; applying $\sigma$ to its coefficients gives a quadratic in
+$k_v[T]$ having $\beta$ as a root.  This implies
+$[k_v(\beta):k_v]\leq2$, again contradicting $[L:k_v]=4$.  Thus
+$[D:k]\ne3$.
+
+Finally, suppose that $[D:k]=6$.  The inclusions $D\subseteq E$ and
+the equality of degrees give $D=E$.  In particular, $E/k$ is abelian
+Galois.  With $q$, $\beta$, and $\sigma$ as in the preceding paragraph,
+we have
+\[
+ k_v(\beta)=k_v\sigma(E),
+\]
+because $E=k(\alpha)$.  The field on the right is a completion of the
+Galois extension $E/k$, so its degree over $k_v$ is the order of a
+decomposition group and therefore divides $[E:k]=6$.  Its degree is
+also $4$, by the irreducibility of $q$.  This contradiction excludes
+$[D:k]=6$.
+
+We have proved $D=k$.  It remains to justify the assertion over the
+infinite extension $k^{\mathrm{ab}}$.  If $f$ were reducible over
+$k^{\mathrm{ab}}$, a nontrivial factorization would involve only
+finitely many coefficients.  They would all lie in some finite
+intermediate extension
+\[
+ k\subseteq M\subseteq k^{\mathrm{ab}}.
+\]
+The extension $M/k$ is finite abelian Galois, and
+\[
+ E\cap M\subseteq E\cap k^{\mathrm{ab}}=k.
+\]
+Thus $E\cap M=k$.  Since $M/k$ is Galois, the fields $E$ and $M$ are
+linearly disjoint over $k$.  More explicitly, restriction identifies
+$\Gal(EM/E)$ with $\Gal(M/E\cap M)=\Gal(M/k)$; hence
+$[EM:E]=[M:k]$, and the tower formula gives
+\[
+ [M(\alpha):M]=[E:k]=6.
+\]
+The minimal polynomial of $\alpha$ over $M$ therefore still has degree
+six and equals $f$, contradicting the assumed factorization over $M$.
+Hence $f$ is irreducible over $k^{\mathrm{ab}}$.
+\end{proof}

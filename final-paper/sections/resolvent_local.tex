@@ -1,0 +1,276 @@
+\section{The 3+3 resolvent}
+
+Put
+\[
+ P_X(T)=T^6+2T^5+4T^4+6T^3+(X-5)T^2-8T-16
+\]
+so that $P_\zeta(T)=F_\zeta(T)$.  Let $r_1,\ldots,r_6$ be the roots of
+$P_X$ in a splitting field over $\mathbf Q(X)$.  If
+$A\subset\{1,\ldots,6\}$ has cardinality three,
+write $y_A=\prod_{i\in A}r_i$.  For an unordered complementary pair
+$\{A,A^c\}$, put $s_A=y_A+y_{A^c}$.  There are ten such pairs, and we
+define
+\[
+ \mathcal R_X(S)=\prod_{\{A,A^c\}}(S-s_A).
+\]
+The coefficients are symmetric polynomials in the $r_i$ with integer
+coefficients.
+The fundamental theorem on symmetric polynomials therefore gives
+$\mathcal R_X\in\mathbf Z[X,S]$.
+
+Let $C_X$ be the companion matrix of $P_X$, in a convention for which
+its characteristic polynomial is $P_X$, and put
+\[
+ Q_X(Y)=\det\!\left(YI-\bigwedge\nolimits^3C_X\right).
+\]
+The eigenvalues of $\bigwedge^3C_X$ are the twenty numbers $y_A$.
+Moreover,
+\[
+ y_Ay_{A^c}=r_1\cdots r_6=-16,
+ \qquad
+ y_{A^c}=-\frac{16}{y_A}.
+\]
+Consequently, for each complementary pair,
+\[
+ (Y-y_A)(Y-y_{A^c})=Y^2-s_AY-16,
+\]
+and hence
+\begin{equation}\label{eq:exterior-resolvent}
+ Q_X(Y)=Y^{10}\mathcal R_X\!\left(Y-\frac{16}{Y}\right).
+\end{equation}
+
+Exact expansion gives
+\begin{align}
+\mathcal R_X(S)={}&S^{10}+6S^9+4(X+35)S^8
+ +2(X^2-6X+389)S^7\notag\\
+& +(X^3-15X^2+667X+5683)S^6
+ +96(X^2-2X+337)S^5\notag\\
+& +64(X^3-14X^2+477X+800)S^4
+ -1536(X^2-21X-368)S^3\notag\\
+& +8192(X^2+35X-48)S^2
+ -65536(X-16)(X+4)S\notag\\
+& -65536(X-16)^2.
+\label{eq:explicit-resolvent}
+\end{align}
+Identity \eqref{eq:explicit-resolvent} is certified independently by
+the exact-arithmetic exterior-power computation described in Appendix
+\ref{sec:exact-certificates}; no numerical specialization is used.
+
+\section{Absence of K-rational roots of the resolvent}
+
+Let $\zeta\ne1$ be a root of unity, put $K=\mathbf Q(\zeta)$, and set
+$\mathcal R_\zeta=\mathcal R_X|_{X=\zeta}$.  Fix a prime
+$\mathfrak p\mid2$, normalize $v=v_{\mathfrak p}$ by
+$v(K_{\mathfrak p}^\times)=\mathbf Z$, and put $e=v(2)$.
+Write $\bar x$ for the reduction of an integral element $x$ modulo
+$\mathfrak p$.
+
+\subsection{Orders with a nontrivial odd part}
+
+Write $\operatorname{ord}(\zeta)=2^am$ with $m>1$ odd, and decompose
+$\zeta=\xi\eta$, where $\xi$ has $2$-power order and $\eta$ has odd
+order.  Since $\bar\xi=1$ and reduction is injective on odd-order roots
+of unity, $\bar\zeta=\bar\eta\ne1$.
+
+Write $\mathcal R_\zeta(S)=\sum_{j=0}^{10}c_jS^j$.  Reducing the unit
+part of each coefficient in \eqref{eq:explicit-resolvent} gives the
+following exact valuations:
+\[
+ \bigl(v(c_0),\ldots,v(c_{10})\bigr)
+ =e(16,16,13,9,6,5,0,1,2,1,0).
+\]
+For completeness, the reductions that prove exactness are
+\begin{align*}
+\left(c_j/2^{v(c_j)/e}\bmod\mathfrak p\right)_{j=0}^{10}
+={}&\bigl(\bar\zeta^2,\bar\zeta^2,
+ \bar\zeta(\bar\zeta+1),\bar\zeta(\bar\zeta+1),\\
+&\quad \bar\zeta(\bar\zeta+1)^2,(\bar\zeta+1)^2,
+ (\bar\zeta+1)^3,(\bar\zeta+1)^2,\\
+&\quad \bar\zeta+1,1,1\bigr).
+\end{align*}
+Odd rational-integer factors reduce to $1$ and have therefore been
+suppressed; every displayed residue is nonzero.
+
+The lower convex hull is
+\begin{equation}\label{eq:odd-res-np}
+ (0,16e)\longrightarrow(6,0)\longrightarrow(10,0).
+\end{equation}
+Indeed, after division by $e$, the differences between the valuations at
+abscissas $1,\ldots,5$ and the line from $(0,16e)$ to $(6,0)$ are
+\[
+ \frac83,\quad\frac73,\quad1,\quad\frac23,\quad\frac73,
+\]
+all positive.  From abscissa $6$ onward the lower boundary is horizontal
+at height $0$.  The first six roots thus have
+valuation $8e/3$.  The ramification index $e$ is a power of two, so
+$8e/3\notin\mathbf Z$; none of these six roots belongs to $K_{\mathfrak p}$.
+
+It remains to exclude the four unit roots.  Since $\gcd(4,m)=1$, the map
+$x\mapsto x^4$ is an automorphism of the cyclic group $\langle\eta\rangle$.
+Let $\theta\in\langle\eta\rangle$ be the unique element satisfying
+$\theta^4=\eta$, and put
+\[
+ s_0=(\theta+1)^3.
+\]
+Since $\theta\ne1$ and reduction is injective on odd-order roots of unity,
+$\bar\theta\ne1$; hence $s_0$ is a $\mathfrak p$-adic unit.  Only the coefficients
+of $S^{10}$ and $S^6$ survive modulo $\mathfrak p$, and
+\[
+ \overline{c_6}=(\bar\zeta+1)^3
+ = (\bar\theta+1)^{12}=\bar s_0^4.
+\]
+Thus
+\begin{equation}\label{eq:odd-res-reduction}
+ \overline{\mathcal R_\zeta(S)}
+ =S^6(S-\bar s_0)^4.
+\end{equation}
+
+We shall use the following three coefficientwise congruences in
+$\mathbf Z[u]$:
+\begin{align}
+ \mathcal R_{u^4}\bigl((u+1)^3\bigr)
+ &\equiv2u^3(u+1)^{27}\pmod4,
+ \label{eq:cong-I}\\
+ \left.
+ \frac{\partial\mathcal R_X}{\partial X}\bigl((u+1)^3\bigr)
+ \right|_{X=u^4}
+ &\equiv(u+1)^{26}\pmod2,
+ \label{eq:cong-II}\\
+ \mathcal R_{-u^4}\bigl((u+1)^3\bigr)
+ &\equiv2u^3(u+1)^{26}\pmod4.
+ \label{eq:cong-III}
+\end{align}
+They are verified by the exact-arithmetic certificate described in
+Appendix \ref{sec:exact-certificates}, which checks every coefficient of
+the three differences.
+
+We now prove
+\begin{equation}\label{eq:res-s0-value}
+ v\bigl(\mathcal R_\zeta(s_0)\bigr)=1.
+\end{equation}
+If $a=0$, then $\zeta=\eta=\theta^4$ and $e=1$; congruence
+\eqref{eq:cong-I} writes $\mathcal R_\zeta(s_0)$ as twice a unit plus an
+element of $4\mathcal O_{K_{\mathfrak p}}$, and proves
+\eqref{eq:res-s0-value}.  If $a=1$, then $\zeta=-\eta=-\theta^4$ and
+$e=1$, so \eqref{eq:cong-III} gives the same conclusion in the same way.
+
+Suppose $a\ge2$.  Set $\delta=\eta(\xi-1)$, so that
+$\zeta=\eta+\delta$ and $v(\delta)=1$.  Taylor expansion in the
+polynomial variable $X$ gives
+\[
+ \mathcal R_{\eta+\delta}(s_0)
+ =\mathcal R_\eta(s_0)
+  +\delta\,\partial_X\mathcal R_X(s_0)|_{X=\eta}
+  +\delta^2A
+\]
+for some $A\in\mathcal O_{K_{\mathfrak p}}$; its integrality follows
+because $\mathcal R_X(s_0)$ has coefficients in
+$\mathcal O_{K_{\mathfrak p}}$.  Congruence
+\eqref{eq:cong-I} gives
+$v(\mathcal R_\eta(s_0))=e\ge2$, while
+\eqref{eq:cong-II} says that the displayed derivative is a unit.  The
+linear term therefore has valuation one and every other term has
+valuation at least two, proving \eqref{eq:res-s0-value} without
+cancellation.
+
+After the translation $S=s_0+Y$, all coefficients remain integral, and equation
+\eqref{eq:odd-res-reduction} shows that the coefficients of
+$Y,Y^2,Y^3$ have positive valuation and that the coefficient of $Y^4$
+is a unit.  Together with \eqref{eq:res-s0-value}, this puts the edge
+\[
+ (0,1)\longrightarrow(4,0)
+\]
+in the Newton polygon.  Its slope is $-1/4$ and its horizontal length is
+four.  Lemma \ref{lem:newton-denominator} therefore makes the
+corresponding degree-four factor irreducible.  In particular, none of
+these four roots lies in $K_{\mathfrak p}$.  Together with
+\eqref{eq:odd-res-np}, this proves that $\mathcal R_\zeta$ has no root in
+$K$ whenever $m>1$.
+
+\subsection{Pure powers of two}
+
+First let $\zeta=-1$.  Substitution in
+\eqref{eq:explicit-resolvent} gives
+$c_j=2^{v(c_j)}u_j$, with the following odd unit parts $u_j$:
+\[
+\begin{array}{c|rrrrrrrrrrr}
+j&0&1&2&3&4&5&6&7&8&9&10\\ \hline
+u_j
+&-289&51&-41&519&77&255&625&99&17&3&1,
+\end{array}
+\]
+and therefore
+\[
+ \bigl(v(c_0),\ldots,v(c_{10})\bigr)
+ =(16,16,14,10,8,7,3,3,3,1,0).
+\]
+The differences above the line from $(0,16)$ to $(6,3)$ at abscissas
+$1,\ldots,5$ are
+\[
+ \frac{13}{6},\quad\frac73,\quad\frac12,\quad\frac23,
+ \quad\frac{11}{6}.
+\]
+The points at abscissas $7,8,9$ also lie strictly above the line from
+$(6,3)$ to $(10,0)$.  Hence the lower convex hull is
+\[
+ (0,16)\longrightarrow(6,3)\longrightarrow(10,0),
+\]
+with slopes $-13/6$ and $-3/4$.  The six roots belonging to the first
+edge have valuation $13/6$, and the four belonging to the second have
+valuation $3/4$.  Neither valuation is integral.  In particular,
+$\mathcal R_{-1}$ has no root in $\mathbf Q_2$.
+
+Now suppose that $\zeta$ has order $2^a$ with $a\ge2$.  Put
+$\pi=\zeta-1$ and $e=v(2)=2^{a-1}$, so $v(\pi)=1$.  Substituting
+$X=1+\pi$ into the parenthesized coefficient polynomials in
+\eqref{eq:explicit-resolvent} gives
+\begin{align*}
+ X^2+35X-48&=\pi^2+37\pi-12,\\
+ X^2-21X-368&=\pi^2-19\pi-388,\\
+ X^3-14X^2+477X+800&=\pi^3-11\pi^2+452\pi+1264,\\
+ X^2-2X+337&=\pi^2+336,\\
+ X^3-15X^2+667X+5683&=\pi^3-12\pi^2+640\pi+6336,\\
+ X^2-6X+389&=\pi^2-4\pi+384,\\
+ X+35&=\pi+36.
+\end{align*}
+In addition, $X-16=\pi-15$ and $X+4=\pi+5$ are units.  Since $e\ge2$,
+each displayed expression has a unique term of least valuation.  It
+follows that
+\begin{align}
+ \bigl(v(c_0),\ldots,v(c_{10})\bigr)
+={}&(16e,16e,13e+1,9e+1,6e+2,5e+2,\notag\\
+&\hspace{34mm}3,e+2,2e+1,e,0).
+\label{eq:pure-res-valuations}
+\end{align}
+For the first segment, the differences at abscissas $1,\ldots,5$ are
+\[
+ \frac{16e-3}{6},\quad\frac{7e}{3},\quad
+ \frac{2e-1}{2},\quad\frac{2e}{3},\quad
+ \frac{14e-3}{6},
+\]
+all positive.  At abscissas $7,8,9$, the valuations $e+2,2e+1,e$ are
+strictly greater than the respective heights $9/4,3/2,3/4$ of the
+second segment.  Thus the lower convex hull is
+\[
+ (0,16e)\longrightarrow(6,3)\longrightarrow(10,0),
+\]
+with slopes
+\[
+ -\frac{16e-3}{6},\qquad -\frac34.
+\]
+The integer $16e-3$ is odd, and modulo three it is congruent to $e$.
+Since $e$ is a power of two, $3\nmid e$; hence
+\[
+ \gcd(16e-3,6)=1.
+\]
+The two slopes have reduced denominators six and four, respectively,
+and the corresponding horizontal lengths are six and four.  Lemma
+\ref{lem:newton-denominator} therefore shows that the two slope factors
+are irreducible of degrees six and four.  In particular,
+$\mathcal R_\zeta$ has no root in $K_{\mathfrak p}$.
+
+Combining the odd-part and pure-power cases proves that
+\begin{equation}\label{eq:res-no-K-root}
+ \mathcal R_\zeta(S)\text{ has no root in }K
+ \qquad(\zeta\ne1).
+\end{equation}
