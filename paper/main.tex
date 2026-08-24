@@ -1,0 +1,673 @@
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=30mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,citecolor=blue!55!black,urlcolor=blue!55!black]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Q}{\mathbf Q}
+\newcommand{\Z}{\mathbf Z}
+\newcommand{\C}{\mathbf C}
+\newcommand{\F}{\mathbf F}
+\newcommand{\OK}{\mathcal O_K}
+\newcommand{\Gal}{\operatorname{Gal}}
+\newcommand{\ord}{\operatorname{ord}}
+\newcommand{\Norm}{\operatorname{N}}
+\newcommand{\Res}{\operatorname{Res}}
+
+\title{The Period-$4$ Case of the Morton--Vivaldi
+Irreducibility Conjecture}
+\author{Dongsheng Wei}
+\date{August 24, 2026}
+
+\begin{document}
+
+\maketitle
+
+\paragraph{Declaration on AI assistance.}
+The core irreducibility proof in this paper was obtained using OpenAI
+Sol Pro.
+
+\begin{abstract}
+Let $\Phi_k$ be the $k$-th cyclotomic polynomial, let $\varphi$ denote
+Euler's totient function, and define
+\[
+ g(T)=-T^4-2T^3-4T^2-6T+5+\frac8T+\frac{16}{T^2}.
+\]
+For every $k\geq2$, we prove that
+\[
+ \Gamma_k(T)=(-1)^{\varphi(k)}T^{2\varphi(k)}\Phi_k(g(T))
+\]
+is irreducible over $\Q$.  The proof combines reduction at primes above
+$2$ with an archimedean bound for the roots.  The normalization of the
+period-$4$ multiplier curve then yields the irreducibility of every
+period-$4$ delta factor $\Delta_{4k,4}$ for the quadratic family
+$z\mapsto z^2+c$.
+\end{abstract}
+
+\section{Introduction}
+
+For the quadratic family $f_c(z)=z^2+c$, Morton and Vivaldi introduced
+delta factors whose roots are the parabolic parameters of prescribed
+formal and exact periods, and conjectured that all of these factors are
+irreducible over $\Q$ \cite{MortonVivaldi1995}.  The cases of periods $1$
+and $2$ reduce to cyclotomic irreducibility.  The complete period-$3$ case
+was proved by Koizumi, Murakami, Sano, and Takehira
+\cite{KoizumiMurakamiSanoTakehira2025}.  The first remaining complete
+period is therefore period $4$.
+
+Put $C=4c$.  The normalization of the period-$4$ multiplier curve is
+parametrized by
+\begin{equation}\label{eq:parametrization}
+ T\longmapsto \bigl(g(T),h(T)\bigr),
+ \qquad
+ h(T)=-T^2-3-\frac4T,
+\end{equation}
+on $\mathbb G_m$; see
+\cite[Remark 2.10]{KoizumiMurakamiSanoTakehira2025}, where the
+parametrization is attributed to Giarrusso and Fisher
+\cite{GiarrussoFisher1995}.  The degree-six map
+$g$ suggests pulling a cyclotomic polynomial back to the normalization.
+Although the displayed definition of $\Gamma_k$ is initially Laurent,
+it is a monic polynomial in $\Z[T]$ of degree $6\varphi(k)$.
+
+Our main result is the following.
+
+\begin{theorem}\label{thm:main}
+For every integer $k\geq2$, the polynomial $\Gamma_k(T)$ is irreducible
+over $\Q$.
+\end{theorem}
+
+Together with the normalization of the multiplier curve, this settles
+the period-$4$ family of delta factors.
+
+\begin{corollary}\label{cor:delta-main}
+For every integer $k\geq1$, the period-$4$ delta factor
+$\Delta_{4k,4}$ is irreducible over $\Q$.
+\end{corollary}
+
+The argument has two complementary parts.  At every prime above $2$, a
+factorization modulo the prime ideal severely restricts the possible
+degrees of a global factor.  Uniform complex root bounds then turn the
+remaining possibilities into contradictions involving algebraic norms.
+
+\section{The fixed-degree reformulation}
+
+Let $\zeta$ be a root of unity different from $1$, and define
+\begin{equation}\label{eq:Fzeta}
+ F_\zeta(T)=T^6+2T^5+4T^4+6T^3+(\zeta-5)T^2-8T-16.
+\end{equation}
+A direct calculation gives
+\begin{equation}\label{eq:g-F}
+ g(T)-\zeta=-\frac{F_\zeta(T)}{T^2}.
+\end{equation}
+
+\begin{proposition}\label{prop:equivalence}
+Let $k\geq2$, let $\zeta$ be a primitive $k$-th root of unity, and put
+$K=\Q(\zeta)$.  The following conditions are equivalent:
+\begin{enumerate}[label=\textup{(\Alph*)}]
+ \item $\Gamma_k$ is irreducible over $\Q$;
+ \item $F_\zeta$ is irreducible over $K$ for one primitive $k$-th root
+       $\zeta$;
+ \item $F_\zeta$ is irreducible over $K$ for every primitive $k$-th root
+       $\zeta$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+The cyclotomic factorization and \eqref{eq:g-F} give
+\begin{align*}
+ \Gamma_k(T)
+ &=(-1)^{\varphi(k)}T^{2\varphi(k)}
+   \prod_{\substack{\zeta^k=1\\\zeta\ \mathrm{primitive}}}
+   (g(T)-\zeta)  \\
+ &=\prod_{\substack{\zeta^k=1\\\zeta\ \mathrm{primitive}}}
+   F_\zeta(T).
+\end{align*}
+Thus $\Gamma_k$ is monic of degree $6\varphi(k)$.  Its coefficients are
+algebraic integers fixed by the Galois group of $\Q(\zeta)/\Q$, so they
+belong to $\Z$.
+
+Let $\alpha$ be a root of $F_\zeta$.  Since $F_\zeta(0)=-16$, we have
+$\alpha\neq0$, and \eqref{eq:g-F} yields
+\[
+ \zeta=g(\alpha)\in\Q(\alpha).
+\]
+Consequently $K\subseteq\Q(\alpha)$.  If $F_\zeta$ is irreducible over
+$K$, then
+\[
+ [\Q(\alpha):\Q]=[K(\alpha):K][K:\Q]=6\varphi(k).
+\]
+The minimal polynomial of $\alpha$ over $\Q$ therefore has the same
+degree as $\Gamma_k$ and divides it, so it equals $\Gamma_k$.
+
+Conversely, suppose that $\Gamma_k$ is irreducible.  Then every root
+$\alpha$ of $F_\zeta$ has degree $6\varphi(k)$ over $\Q$.  Since
+$K\subseteq\Q(\alpha)$, it follows that $[K(\alpha):K]=6$.  The minimal
+polynomial of $\alpha$ over $K$ has degree $6$ and divides $F_\zeta$, so
+$F_\zeta$ is irreducible.  Finally, the automorphisms of $K/\Q$ act
+transitively on the primitive $k$-th roots and send $F_\zeta$ to the
+corresponding conjugate polynomial.  This proves all three equivalences.
+\end{proof}
+
+At $\zeta=1$ one has the exceptional factorization
+\begin{equation}\label{eq:P-factor}
+ F_1(T)=(T+2)(T^2+4)(T^3-2).
+\end{equation}
+Set
+\[
+ P(T)=F_1(T).
+\]
+Then
+\begin{equation}\label{eq:perturbation}
+ F_\zeta(T)=P(T)+(\zeta-1)T^2.
+\end{equation}
+
+\section{A uniform archimedean bound}
+
+\begin{lemma}\label{lem:annulus}
+Let $|\zeta|=1$.  Every complex root $\alpha$ of $F_\zeta$ satisfies
+\[
+ 1<|\alpha|<\frac52.
+\]
+\end{lemma}
+
+\begin{proof}
+Put $r=|\alpha|$.  By \eqref{eq:perturbation},
+\begin{equation}\label{eq:root-equality}
+ |P(\alpha)|=|\zeta-1|r^2\leq2r^2.
+\end{equation}
+If $r\leq1$, then the reverse triangle inequality and
+\eqref{eq:P-factor} give
+\[
+ |P(\alpha)|
+ \geq(2-r)(4-r^2)(2-r^3)
+ \geq3,
+\]
+whereas $2r^2\leq2$, contradicting \eqref{eq:root-equality}.
+
+Now suppose that $r\geq5/2$.  Again by the reverse triangle inequality,
+\[
+ \frac{|P(\alpha)|}{r^2}
+ \geq(r-2)(r^2-4)\left(r-\frac{2}{r^2}\right).
+\]
+Each of the three factors on the right is positive and increasing for
+$r\geq5/2$.  Hence
+\[
+ \frac{|P(\alpha)|}{r^2}
+ \geq\frac12\cdot\frac94\cdot\frac{109}{50}
+ =\frac{981}{400}>2,
+\]
+which also contradicts \eqref{eq:root-equality}.  The claimed strict
+bounds follow.
+\end{proof}
+
+We shall use both sides of the annular bound.  The constant term of any
+positive-degree monic factor of $F_\zeta$ has absolute value greater than
+$1$ under every complex embedding, while each individual root has
+absolute value less than $5/2$.
+
+\section{Two factorization lemmas}
+
+Let $K$ be a number field, let $\OK$ be its ring of integers, and let
+$\mathfrak p$ be a nonzero prime ideal of $\OK$.  Write
+$v_{\mathfrak p}$ for the additive valuation normalized by
+$v_{\mathfrak p}(K^\times)=\Z$.  A bar denotes reduction modulo
+$\mathfrak p$.
+
+\begin{lemma}\label{lem:integral-factors}
+If a monic polynomial $f\in\OK[T]$ factors as $f=HJ$ with $H,J$ monic
+in $K[T]$, then $H,J\in\OK[T]$.
+\end{lemma}
+
+\begin{proof}
+Every root of $f$ is integral over $\OK$.  The coefficients of $H$ and
+$J$ are elementary symmetric functions in subsets of these roots, hence
+are integral over $\OK$.  They also lie in $K$.  Since $\OK$ is
+integrally closed in $K$, they belong to $\OK$.
+\end{proof}
+
+\begin{lemma}[the unsplit-block lemma]\label{lem:block}
+Let $f\in\OK[T]$ be monic and suppose that, for some integers $a,b\geq0$
+and some $t\in\OK$ with $\bar t\neq0$,
+\[
+ \bar f(T)=T^a(T-\bar t)^b,
+ \qquad
+ f(t)\in\mathfrak p\setminus\mathfrak p^2.
+\]
+If $f=HJ$ with $H,J\in\OK[T]$ monic and $\deg H<b$, then
+\[
+ \bar H(T)=T^{\deg H}
+ \qquad\text{and}\qquad
+ \deg H\leq a.
+\]
+\end{lemma}
+
+\begin{proof}
+Unique factorization over the residue field gives integers $r,s$ such
+that
+\[
+ \bar H=T^r(T-\bar t)^s,
+ \qquad
+ \bar J=T^{a-r}(T-\bar t)^{b-s}.
+\]
+Because $H$ and $J$ are monic, reduction preserves their degrees.  If
+$s>0$, then $s\leq\deg H<b$, so both $s$ and $b-s$ are positive.
+Consequently $H(t),J(t)\in\mathfrak p$, which would imply
+$f(t)=H(t)J(t)\in\mathfrak p^2$.  This is impossible.  Thus $s=0$,
+so $\bar H=T^r$.  Degree preservation gives $r=\deg H\leq a$.
+\end{proof}
+
+We also use the standard elementary fact that if a sum in a discretely
+valued field is zero, then its terms cannot have a unique least
+valuation.
+
+\section{Cyclotomic facts at the prime 2}
+
+Let $\zeta$ have order
+\[
+ k=2^a m,
+ \qquad m\ \text{odd},
+\]
+and put $K=\Q(\zeta)$.  There is a unique decomposition
+\begin{equation}\label{eq:decomposition}
+ \zeta=\xi\eta,
+\end{equation}
+where $\xi$ has order $2^a$ and $\eta$ has order $m$.
+
+We recall the local cyclotomic facts used below.  If
+$\mathfrak p\mid2$, then reduction is injective on roots of unity of odd
+order, while every root of unity of $2$-power order reduces to $1$.
+The odd-order cyclotomic extension is unramified at $2$.  If $a\geq2$,
+then $\xi-1$ is a uniformizer and
+\begin{equation}\label{eq:e-value}
+ v_{\mathfrak p}(2)=2^{a-1}.
+\end{equation}
+Indeed, with $n=2^{a-1}$, the element $\xi-1$ is a root of
+\[
+ (1+X)^n+1,
+\]
+which is Eisenstein at $2$.  Passing to the compositum with the
+unramified odd-order part preserves the uniformizer and the ramification
+index.  When $a=0$, the extension is unramified at $2$; when $a=1$ and
+$m$ is odd, $\Q(\zeta_{2m})=\Q(\zeta_m)$, so it is again unramified at
+$2$.  These statements are also immediate from the usual decomposition
+law for primes in cyclotomic fields; see, for example,
+\cite[Chapter 2]{Washington1997}.
+
+\section{Orders with a nontrivial odd part}
+
+Assume throughout this section that $m>1$.  Fix a prime
+$\mathfrak p\mid2$ and write
+\[
+ e=v_{\mathfrak p}(2).
+\]
+Since $4$ is invertible modulo $m$, there is an odd-order root of unity
+$\theta\in K$ such that $\theta^4=\eta$.  Put
+\[
+ t_0=\theta-1.
+\]
+The reduction of $\theta$ is not $1$, so $t_0$ is a
+$\mathfrak p$-adic unit.
+
+Since $\bar\xi=1$ and $\bar\eta\neq1$, reduction of
+\eqref{eq:Fzeta} in characteristic $2$ gives
+\begin{align}
+ \overline{F_\zeta(T)}
+ &=T^6+(\bar\eta+1)T^2 \notag\\
+ &=T^2\bigl((T+1)^4+\bar\eta\bigr) \notag\\
+ &=T^2(T-\bar t_0)^4.
+ \label{eq:odd-reduction}
+\end{align}
+
+\begin{lemma}\label{lem:t0-valuation}
+For every prime $\mathfrak p\mid2$,
+\[
+ v_{\mathfrak p}\bigl(F_\zeta(t_0)\bigr)=1.
+\]
+\end{lemma}
+
+\begin{proof}
+Define the Laurent polynomial
+\[
+ B(T)=T^4+3T^3+5T^2+5T-2-\frac4T-\frac8{T^2}.
+\]
+The identity
+\[
+ g(T)-(T+1)^4=-2B(T)
+\]
+and $(t_0+1)^4=\eta$ imply
+\begin{equation}\label{eq:Feta}
+ F_\eta(t_0)=2t_0^2B(t_0).
+\end{equation}
+Modulo $\mathfrak p$,
+\[
+ \bar B(T)=T^4+T^3+T^2+T=T(T+1)^3.
+\]
+This reduction is legitimate because $t_0$ is a $\mathfrak p$-adic
+unit.  Therefore
+\[
+ \bar B(t_0)=\bar t_0\bar\theta^3\neq0,
+\]
+and \eqref{eq:Feta} gives
+$v_{\mathfrak p}(F_\eta(t_0))=e$.
+
+Moreover,
+\begin{equation}\label{eq:Fzeta-Feta}
+ F_\zeta(T)=F_\eta(T)+\eta(\xi-1)T^2.
+\end{equation}
+If $a=0$, then $\xi=1$ and $e=1$, so the assertion follows from
+\eqref{eq:Feta}.  If $a\geq2$, the two terms on the right side of
+\eqref{eq:Fzeta-Feta}, evaluated at $t_0$, have valuations $e\geq2$ and
+$1$, respectively, so their sum has valuation $1$.
+
+It remains to consider $a=1$.  Here $\xi=-1$ and $e=1$, whence
+\[
+ F_\zeta(t_0)=2t_0^2\bigl(B(t_0)-\eta\bigr).
+\]
+After division by $2$ and reduction modulo $\mathfrak p$,
+\begin{align*}
+ \overline{\frac{F_\zeta(t_0)}2}
+ &=\bar t_0^2
+   \bigl(\bar t_0\bar\theta^3+\bar\theta^4\bigr)\\
+ &=\bar t_0^2\bar\theta^3\neq0.
+\end{align*}
+Thus the valuation is $1$ in every case.
+\end{proof}
+
+\begin{proposition}\label{prop:odd-part}
+If the order of $\zeta$ has a nontrivial odd part, then $F_\zeta$ is
+irreducible over $K$.
+\end{proposition}
+
+\begin{proof}
+Suppose that $F_\zeta$ is reducible over $K$.  Choose a monic
+irreducible factor $H$ of minimal degree $d$, and write
+$F_\zeta=HJ$ with $J$ monic.  Since $\deg F_\zeta=6$, we have $d\leq3$.
+By Lemma \ref{lem:integral-factors}, both factors lie in $\OK[T]$.
+
+At each prime $\mathfrak p\mid2$, equations
+\eqref{eq:odd-reduction} and Lemma \ref{lem:t0-valuation} allow us to
+apply Lemma \ref{lem:block} with $(a,b)=(2,4)$.  Since $d<4$, it follows
+that $d\leq2$ and
+\begin{equation}\label{eq:H-reduction-odd}
+ \bar H=T^d.
+\end{equation}
+
+First suppose that $d=2$.  Put
+\[
+ b=H(0),\qquad c=J(0).
+\]
+Then $bc=-16$.  At every $\mathfrak p\mid2$,
+\eqref{eq:H-reduction-odd} and \eqref{eq:odd-reduction} give
+\[
+ \bar J=(T-\bar t_0)^4,
+\]
+so $c$ is a $\mathfrak p$-adic unit.  At primes not above $2$, the
+integrality of $b,c$ and $bc=-16$ also show that $c$ is a unit.  Hence
+$c$ is a unit of $\OK$.
+
+For every complex embedding $\sigma:K\hookrightarrow\C$, the polynomial
+$\sigma(J)$ is a monic factor of $F_{\sigma(\zeta)}$ of degree $4$.
+By Lemma \ref{lem:annulus}, each of its roots has modulus greater than
+$1$.  Thus $|\sigma(c)|>1$ for every $\sigma$, and therefore
+\[
+ |\Norm_{K/\Q}(c)|=\prod_\sigma|\sigma(c)|>1.
+\]
+This contradicts the fact that the norm of a unit is $\pm1$.
+
+Now suppose that $d=1$, say $H(T)=T-\alpha$.  From
+\eqref{eq:H-reduction-odd}, $q=v_{\mathfrak p}(\alpha)>0$ for every
+$\mathfrak p\mid2$.  Moreover, $\zeta-5$ is a $\mathfrak p$-adic unit,
+because $\bar\zeta=\bar\eta\neq1$.  The valuations of the seven terms in
+$F_\zeta(\alpha)=0$, ordered from the constant term to the leading term,
+are
+\[
+ 4e,\quad 3e+q,\quad 2q,\quad e+3q,
+ \quad 2e+4q,\quad e+5q,\quad 6q.
+\]
+If $q<2e$, then $2q$ is the unique least value.  If $q>2e$, then $4e$
+is the unique least value.  Since a zero sum cannot have a unique term
+of least valuation, necessarily
+\begin{equation}\label{eq:q-2e}
+ v_{\mathfrak p}(\alpha)=2e=v_{\mathfrak p}(4)
+ \qquad(\mathfrak p\mid2).
+\end{equation}
+At every prime away from $2$, the equality
+$(-\alpha)J(0)=-16$ and integrality give valuation zero for $\alpha$.
+Thus $(\alpha)=(4)$, and $u=\alpha/4$ is a unit of $\OK$.
+
+For every complex embedding $\sigma$, Lemma \ref{lem:annulus} gives
+\[
+ |\sigma(u)|=\frac{|\sigma(\alpha)|}{4}<\frac58.
+\]
+It follows that $|\Norm_{K/\Q}(u)|<1$, contradicting that $u$ is a
+unit.  Both possible degrees have been excluded, so $F_\zeta$ is
+irreducible.
+\end{proof}
+
+\section{Pure powers of 2}
+
+Assume now that $\zeta$ has order $2^a$ with $a\geq1$.  There is a
+unique prime $\mathfrak p$ of $K$ above $2$, its residue degree is $1$,
+and
+\[
+ e=v_{\mathfrak p}(2)=\varphi(2^a).
+\]
+For $a=1$, $K=\Q$ and $\zeta=-1$.  For $a\geq2$, $\zeta-1$ is a
+uniformizer.  In all cases,
+\begin{equation}\label{eq:zeta-5-one}
+ v_{\mathfrak p}(\zeta-5)=1.
+\end{equation}
+Indeed, for $a=1$ one has $\zeta-5=-6$; for $a\geq2$ one has
+$\zeta-5=(\zeta-1)-4$, whose two summands have valuations $1$ and
+$2e>1$.
+
+Reduction modulo $\mathfrak p$ gives
+\begin{equation}\label{eq:pure-reduction}
+ \overline{F_\zeta(T)}=T^6.
+\end{equation}
+
+\begin{proposition}\label{prop:pure-two}
+If $\zeta$ has $2$-power order and $\zeta\neq1$, then $F_\zeta$ is
+irreducible over $K$.
+\end{proposition}
+
+\begin{proof}
+Suppose that $F_\zeta$ is reducible.  Choose a monic irreducible factor
+$H$ of minimal degree $d\leq3$, and write $F_\zeta=HJ$ with $J$ monic.
+Lemma \ref{lem:integral-factors} gives $H,J\in\OK[T]$, and
+\eqref{eq:pure-reduction} gives
+\begin{equation}\label{eq:pure-factor-reductions}
+ \bar H=T^d,
+ \qquad
+ \bar J=T^{6-d}.
+\end{equation}
+
+We first exclude $d=1$.  Write $H=T-\alpha$.  Then
+$q=v_{\mathfrak p}(\alpha)$ is a positive integer.  The valuations of
+the terms of $F_\zeta(\alpha)=0$, from constant to leading, are
+\[
+ 4e,\quad 3e+q,\quad 1+2q,\quad e+3q,
+ \quad 2e+4q,\quad e+5q,\quad 6q.
+\]
+If $q\leq2e-1$, then $1+2q$ is the unique least value.  If $q\geq2e$,
+then $4e$ is the unique least value.  Both cases contradict the
+nonarchimedean triangle inequality.  Hence $d\neq1$.
+
+Next suppose that $d=3$.  Write
+\[
+ H=T^3+h_2T^2+h_1T+h_0,
+ \qquad
+ J=T^3+j_2T^2+j_1T+j_0.
+\]
+By \eqref{eq:pure-factor-reductions}, every displayed coefficient other
+than the leading coefficients belongs to $\mathfrak p$.  The coefficient
+of $T^2$ in $HJ$ is
+\[
+ h_2j_0+h_1j_1+h_0j_2\in\mathfrak p^2.
+\]
+But the coefficient of $T^2$ in $F_\zeta$ is $\zeta-5$, which belongs
+to $\mathfrak p\setminus\mathfrak p^2$ by
+\eqref{eq:zeta-5-one}.  This contradiction excludes $d=3$.
+
+Consequently $d=2$.  Write
+\[
+ H=T^2+h_1T+h_0,
+ \qquad
+ J=T^4+j_3T^3+j_2T^2+j_1T+j_0.
+\]
+All the $h_i$ and $j_i$ lie in $\mathfrak p$.  Comparing the coefficient
+of $T^2$ gives
+\begin{equation}\label{eq:j0-mod-p2}
+ \zeta-5=j_0+h_1j_1+h_0j_2
+ \equiv j_0\pmod{\mathfrak p^2}.
+\end{equation}
+Therefore $j_0\in\mathfrak p\setminus\mathfrak p^2$.
+
+Put $b=H(0)$ and $c=J(0)=j_0$.  At every odd prime, the integrality of
+$b,c$ and $bc=-16$ implies that $c$ is a unit.  Since $\mathfrak p$ is
+the unique prime above $2$, \eqref{eq:j0-mod-p2} shows that
+\[
+ (c)=\mathfrak p.
+\]
+The residue degree of $\mathfrak p$ is $1$, so
+\begin{equation}\label{eq:norm-c-two}
+ |\Norm_{K/\Q}(c)|=\Norm(\mathfrak p)=2.
+\end{equation}
+
+For every complex embedding $\sigma$, the two roots of $\sigma(H)$ have
+modulus less than $5/2$ by Lemma \ref{lem:annulus}.  Since the absolute
+value of the product of all six roots of $F_{\sigma(\zeta)}$ is $16$,
+\[
+ |\sigma(c)|=\frac{16}{|\sigma(b)|}
+ >\frac{16}{(5/2)^2}=\frac{64}{25}.
+\]
+Taking the product over all embeddings gives
+\[
+ |\Norm_{K/\Q}(c)|
+ >\left(\frac{64}{25}\right)^{[K:\Q]}>2,
+\]
+contradicting \eqref{eq:norm-c-two}.  Thus $F_\zeta$ is irreducible.
+\end{proof}
+
+Propositions \ref{prop:odd-part} and \ref{prop:pure-two} prove that
+$F_\zeta$ is irreducible over $\Q(\zeta)$ for every root of unity
+$\zeta\neq1$.  Proposition \ref{prop:equivalence} now proves
+Theorem \ref{thm:main}.
+
+\section{Passage to the period-4 delta factors}
+
+We use the standard notation of
+\cite{Morton1996,MortonVivaldi1995,KoizumiMurakamiSanoTakehira2025}.  Let
+$\delta_m(x,c)$ denote the multiplier polynomial for cycles of formal
+period $m$, using the normalization that becomes monic in $C=4c$, and
+put
+\[
+ \widetilde\delta_m(x,C)=\delta_m(x,C/4).
+\]
+The multiplier curve $X_m$ is the affine curve
+\[
+ \widetilde\delta_m(x,C)=0.
+\]
+For $k\geq2$, define
+\[
+ \widetilde\Delta_{mk,m}(C)=\Delta_{mk,m}(C/4)
+ =\Res_x\bigl(\Phi_k(x),\widetilde\delta_m(x,C)\bigr).
+\]
+This is \cite[Equation (1.4)]{KoizumiMurakamiSanoTakehira2025} after
+the change of variable $C=4c$.
+
+We recall three facts from
+\cite{KoizumiMurakamiSanoTakehira2025}.  First,
+$\widetilde\Delta_{mk,m}$ is separable
+\cite[Proposition 2.3]{KoizumiMurakamiSanoTakehira2025}.  Second,
+writing $Z(q)$ for the set of roots of a polynomial $q$ in
+$\overline{\Q}$ without multiplicity, projection onto the parameter
+coordinate gives the
+following Galois-equivariant bijection
+\cite[Equation (2.2)]{KoizumiMurakamiSanoTakehira2025}:
+\begin{equation}\label{eq:delta-bijection}
+ \left\{(\lambda,C)\in X_m(\overline{\Q}):
+       \lambda\ \text{is a primitive $k$-th root of unity}\right\}
+ \xrightarrow{\ \sim\ }
+ Z(\widetilde\Delta_{mk,m}).
+\end{equation}
+Third, \cite[Equation (1.6)]{KoizumiMurakamiSanoTakehira2025} gives
+\begin{equation}\label{eq:delta-degree}
+ \deg_C\widetilde\Delta_{mk,m}=\nu(m)\varphi(k),
+ \qquad
+ \nu(m)=\sum_{d\mid m}2^{d-1}\mu(m/d).
+\end{equation}
+Here $\mu$ denotes the M\"obius function.
+In particular, $\nu(4)=0-2+8=6$.
+
+For $m=4$, the normalization is precisely the finite surjective map
+\eqref{eq:parametrization}; see
+\cite[Remark 2.10]{KoizumiMurakamiSanoTakehira2025}.  Fix $k\geq2$.
+Since $\Gamma_k(0)=(-16)^{\varphi(k)}$, all of its roots lie in
+$\mathbb G_m$.  Restricting the normalization
+map to the roots of $\Gamma_k$ gives a surjection
+\begin{equation}\label{eq:normalization-surjection}
+ Z(\Gamma_k)\longrightarrow
+ \left\{(\lambda,C)\in X_4(\overline{\Q}):
+       \lambda\ \text{is a primitive $k$-th root of unity}\right\}.
+\end{equation}
+Indeed, normalization is finite and surjective, and every preimage of a
+point on the right has nonzero parameter $T$ and satisfies
+$\Phi_k(g(T))=0$.  Conversely, every root of $\Gamma_k$ yields such a
+point.  By separability, \eqref{eq:delta-bijection}, and
+\eqref{eq:delta-degree}, the target has exactly $6\varphi(k)$ elements.
+The source has at most $6\varphi(k)$ elements because this is the degree
+of $\Gamma_k$.  The displayed surjection therefore forces both sets to
+have $6\varphi(k)$ elements and is a Galois-equivariant bijection.
+
+Combining it with \eqref{eq:delta-bijection} gives a Galois-equivariant
+bijection
+\[
+ Z(\Gamma_k)\xrightarrow{\ \sim\ }
+ Z(\widetilde\Delta_{4k,4}).
+\]
+The absolute Galois group acts transitively on the left by
+Theorem \ref{thm:main}, hence transitively on the right.  Since
+$\widetilde\Delta_{4k,4}$ is separable, it is irreducible over $\Q$.
+
+It remains to treat $k=1$.  After the substitution $C=4c$, the table in
+\cite[Section 3, Table 1]{MortonVivaldi1995} gives
+\[
+ \widetilde\delta_4(1,C)
+ =(C^2-2C+5)(C+5)(C^3+9C^2+27C+135).
+\]
+For completeness,
+$\widetilde\delta_1(x,C)=x^2-2x+C$ and
+$\widetilde\delta_2(x,C)=C+4-x$; the resultant definitions therefore
+give
+\[
+ \widetilde\Delta_{4,1}=C^2-2C+5,
+ \qquad
+ \widetilde\Delta_{4,2}=C+5.
+\]
+Thus, in the $C=4c$ normalization, the exact period-$4$ factor is
+\[
+ \widetilde\Delta_{4,4}(C)
+ =C^3+9C^2+27C+135
+ =(C+3)^3+108.
+\]
+A rational root would be an integer and would make an integer cube equal
+to $-108$.  This is impossible because $v_2(108)=2$ is not divisible by
+$3$.  Thus this cubic is irreducible.  Finally, the invertible linear
+change $C=4c$ preserves irreducibility over $\Q$.
+This proves Corollary \ref{cor:delta-main}.
+
+\bibliographystyle{alpha}
+\bibliography{references}
+
+\end{document}
