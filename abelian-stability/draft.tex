@@ -1,0 +1,172 @@
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=30mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{microtype}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue!55!black,
+ citecolor=blue!55!black,urlcolor=blue!55!black]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Q}{\mathbf Q}
+\newcommand{\Gal}{\operatorname{Gal}}
+
+\title{Abelian Stability of the Period-$4$ Morton--Vivaldi Fibers}
+\author{Dongsheng Wei}
+\date{Version 2, August 25, 2026}
+\hypersetup{
+  pdftitle={Abelian Stability of the Period-4 Morton--Vivaldi Fibers},
+  pdfauthor={Dongsheng Wei}
+}
+
+\begin{document}
+
+\maketitle
+
+\paragraph{Declaration on AI assistance.}
+The core irreducibility proof in this paper was obtained using OpenAI
+Sol Pro.
+
+\begin{abstract}
+For a nontrivial root of unity $\zeta$, put $K_\zeta=\Q(\zeta)$ and
+\[
+ F_\zeta(T)=T^6+2T^5+4T^4+6T^3+(\zeta-5)T^2-8T-16.
+\]
+We strengthen the period-$4$ Morton--Vivaldi irreducibility theorem by
+proving that $F_\zeta$ remains irreducible over the maximal abelian
+extension $K_\zeta^{\mathrm{ab}}$.  Equivalently, if $\alpha$ is a
+root, then
+\[
+ K_\zeta(\alpha)\cap K_\zeta^{\mathrm{ab}}=K_\zeta.
+\]
+It follows that, over every finite abelian extension of $\Q$, the
+factorization of the period-$4$ pullback is caused entirely by the
+cyclotomic polynomial: there is no additional splitting inside a
+degree-six fiber.  We also determine the maximal abelian subfield of
+each exact-period-$4$ parabolic parameter field.
+\end{abstract}
+
+\section{Introduction}
+
+The companion paper \cite{WeiPeriod4} proves the irreducibility of the
+period-$4$ cyclotomic pullbacks over $\Q$ and, through the multiplier-curve
+normalization, settles the complete period-$4$ case of the Morton--Vivaldi
+irreducibility conjecture.  The present paper asks a stronger field-theoretic
+question about each degree-six fiber: can it split after an arbitrary abelian
+extension of its cyclotomic coefficient field?  Theorem
+\ref{thm:abelian-stability} answers this question negatively.
+
+The proof has two local ingredients at primes above $2$.  First, the fiber
+$F_\zeta$ has an irreducible quartic factor over a completion of
+$\Q(\zeta)$.  Second, an explicit $3+3$ resolvent has no root in
+$\Q(\zeta)$.  An abstract criterion for irreducible sextics then excludes
+every possible nontrivial abelian subfield of a root field.  The displayed
+resolvent and the three congruences used in its local analysis are certified
+by deterministic exact-integer computation.
+
+The next sections develop the Newton-polygon input, the local quartic factor,
+the abstract sextic criterion, and the explicit resolvent calculation.  The
+abelian-stability theorem then follows by combining these ingredients.  The
+remaining sections describe factorization over abelian base fields, transfer
+the result to the period-$4$ delta factors, determine maximal abelian
+subfields of the corresponding parameter fields, and place the result in the
+context of torsion Hilbert irreducibility.
+
+\section{Set-up and established inputs}
+
+Define
+\[
+ g(T)=-T^4-2T^3-4T^2-6T+5+\frac8T+\frac{16}{T^2}.
+\]
+For every root of unity $\zeta$ one has
+\begin{equation}\label{eq:draft-g-F}
+ g(T)-\zeta=-\frac{F_\zeta(T)}{T^2}.
+\end{equation}
+The companion period-$4$ paper proves that
+\begin{equation}\label{eq:established-base-irreducibility}
+ F_\zeta\text{ is irreducible over }\Q(\zeta)
+ \qquad(\zeta\ne1).
+\end{equation}
+We shall also use the local facts proved there at primes above
+$2$: odd-order roots of unity reduce injectively, $2$-power roots of
+unity reduce to $1$, and the ramification index in the $2$-power
+cyclotomic part has the values recalled below.  In the case of a
+nontrivial odd part, the exact reduction and special-value valuation
+used in \eqref{eq:quartic-established-odd-data} were proved in the base
+irreducibility argument.  No local factor of degree four was asserted
+there; that new conclusion is proved here.  These established inputs are
+recorded in \cite{WeiPeriod4}.
+
+\input{drafts/core_lemmas.tex}
+
+\input{drafts/resolvent_local.tex}
+
+\section{Abelian stability}
+
+\begin{theorem}[Abelian-stable irreducibility]
+\label{thm:abelian-stability}
+Let $\zeta\ne1$ be any root of unity and put $K=\Q(\zeta)$.  Then
+\[
+ F_\zeta(T)\text{ is irreducible over }K^{\mathrm{ab}}.
+\]
+Equivalently, if $\alpha$ is a root of $F_\zeta$, then
+\[
+ [K(\alpha):K]=6,
+ \qquad
+ K(\alpha)\cap K^{\mathrm{ab}}=K.
+\]
+\end{theorem}
+
+\begin{proof}
+The base irreducibility statement
+\eqref{eq:established-base-irreducibility} gives
+$[K(\alpha):K]=6$.  Since $K^{\mathrm{ab}}/K$ is Galois, the standard
+degree formula gives
+\[
+ [K^{\mathrm{ab}}(\alpha):K^{\mathrm{ab}}]
+ = [K(\alpha):K(\alpha)\cap K^{\mathrm{ab}}].
+\]
+Thus the stated intersection equality is equivalent to irreducibility
+over $K^{\mathrm{ab}}$.  Proposition
+\ref{prop:local-quartic-factor} supplies an irreducible quartic local
+factor of $F_\zeta$.  Equation \eqref{eq:res-no-K-root} proves that the
+$3+3$ resolvent has no root in $K$.  Theorem
+\ref{thm:sextic-abelian-disjointness} now gives both assertions.
+\end{proof}
+
+\input{drafts/corollaries.tex}
+
+\appendix
+
+\section{Exact symbolic certificates}
+\label{sec:exact-certificates}
+
+The verification directory contains an exact certificate using integer
+polynomial arithmetic and no third-party dependencies.  It constructs the
+companion matrix of $P_X$, constructs the matrix of its third exterior power
+from all $3\times3$ minors, and verifies every coefficient of the
+exterior-power resolvent identity and the displayed resolvent formula.  It
+also verifies the three polynomial congruences coefficient by coefficient.
+The program exits with a nonzero status on any failed equality or nonexact
+integer division; no floating-point computation or numerical specialization
+occurs.
+
+From the directory containing this draft, the certificate is run with the
+command
+\begin{quote}
+\noindent python3 verification/verify\_resolvent.py
+\end{quote}
+
+\enlargethispage{2\baselineskip}
+{\small
+\bibliographystyle{alpha}
+\bibliography{references}
+}
+
+\end{document}

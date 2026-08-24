@@ -22,11 +22,20 @@ g(T)=-T^4-2T^3-4T^2-6T+5+8/T+16/T^2.
 Using the normalization of the period-4 multiplier curve, the paper deduces
 the irreducibility of every delta factor `Delta_{4k,4}`.
 
+Version 2.0 adds a standalone strengthening: for every nontrivial root of
+unity `zeta`, the sextic fiber `F_zeta` remains irreducible over the maximal
+abelian extension of `Q(zeta)`.
+
 ## Files
 
 - `paper/main.tex` - LaTeX source of the paper.
 - `paper/references.bib` - bibliography database.
 - `output/pdf/morton-vivaldi-period-4.pdf` - compiled paper.
+- `abelian-stability/draft.tex` - source of the Version 2.0 strengthening.
+- `abelian-stability/output/pdf/abelian-stability-v2.pdf` - compiled Version
+  2.0 paper.
+- `abelian-stability/verification/verify_resolvent.py` - exact certificate for
+  the resolvent identity and local congruences.
 
 ## Local compilation
 

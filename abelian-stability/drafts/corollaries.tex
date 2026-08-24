@@ -1,0 +1,315 @@
+\section{Factorization over abelian base fields}
+
+Let $\Phi_k$ be the $k$-th cyclotomic polynomial, let $\varphi$ be
+Euler's totient function, and define
+\[
+ \Gamma_k(T)=(-1)^{\varphi(k)}T^{2\varphi(k)}\Phi_k(g(T)).
+\]
+For $k\ge2$, the identity \eqref{eq:draft-g-F} gives
+\begin{equation}\label{eq:Gamma-fiber-product}
+ \Gamma_k(T)=
+ \prod_{\substack{\zeta^k=1\\ \zeta\ \mathrm{primitive}}}F_\zeta(T).
+\end{equation}
+By Theorem \ref{thm:abelian-stability}, for every nontrivial root of
+unity $\zeta$, the polynomial $F_\zeta$ is irreducible over
+$\mathbf Q(\zeta)^{\mathrm{ab}}$, and for every root $\alpha$ one has
+\[
+ \mathbf Q(\zeta,\alpha)\cap
+ \mathbf Q(\zeta)^{\mathrm{ab}}=\mathbf Q(\zeta).
+\]
+Fix a primitive $k$-th root $\zeta_k$, put
+$K_k=\mathbf Q(\zeta_k)$, and let $B/\mathbf Q$ be a finite abelian
+extension.  Set
+\[
+ D=B\cap K_k.
+\]
+Because both $B/\mathbf Q$ and $K_k/\mathbf Q$ are Galois, restriction
+gives
+\[
+ \operatorname{im}\!\left(\operatorname{Gal}(\overline{\mathbf Q}/B)
+ \longrightarrow\operatorname{Gal}(K_k/\mathbf Q)\right)
+ =\operatorname{Gal}(K_k/D).
+\]
+The orbits on the primitive $k$-th roots therefore have cardinality
+$[K_k:D]$.  Thus
+\[
+ \Phi_k(X)=\Psi_1(X)\cdots\Psi_r(X)\quad\text{in }B[X],
+ \qquad
+ r=[D:\mathbf Q],\quad \deg\Psi_i=[K_k:D].
+\]
+Here the $\Psi_i$ are the distinct monic irreducible factors over $B$.
+For each $i$, define
+\[
+ \Gamma_{\Psi_i}(T)
+ =(-1)^{\deg\Psi_i}T^{2\deg\Psi_i}\Psi_i(g(T)).
+\]
+The fixed-degree identity $T^2(g(T)-\zeta)=-F_\zeta(T)$ gives
+\[
+ \Gamma_{\Psi_i}(T)=\prod_{\Psi_i(\zeta)=0}F_\zeta(T)
+ \quad\text{and}\quad
+ \Gamma_k=\prod_{i=1}^r\Gamma_{\Psi_i}.
+\]
+
+Fix a root $\zeta$ of $\Psi_i$ and a root $\alpha$ of $F_\zeta$.
+Since $F_\zeta(0)=-16$, one has $\alpha\ne0$, so the Laurent expression
+$g(\alpha)$ is defined.
+The extension $BK_k/K_k$ is abelian, hence is contained in
+$K_k^{\mathrm{ab}}$.  Therefore $F_\zeta$ remains irreducible over
+$BK_k$, and
+\[
+ [BK_k(\alpha):BK_k]=6.
+\]
+On the other hand, the relation $\zeta=g(\alpha)$ shows that
+$BK_k\subset B(\alpha)$, and in fact $B(\alpha)=BK_k(\alpha)$.  Hence
+\[
+ [B(\alpha):B]
+ =6[BK_k:B]
+ =6[K_k:D].
+\]
+This is the degree of $\Gamma_{\Psi_i}$.  Since
+$\Gamma_{\Psi_i}\in B[T]$ is monic and vanishes at $\alpha$, it is the
+minimal polynomial of $\alpha$ over $B$ and is irreducible.  These
+irreducible polynomials are pairwise distinct: if an element $\alpha$
+were a common root of $\Gamma_{\Psi_i}$ and $\Gamma_{\Psi_j}$, then
+$g(\alpha)$ would be a common root of the coprime polynomials
+$\Psi_i$ and $\Psi_j$.  This proves the following theorem.
+
+\begin{theorem}\label{thm:abelian-factorization}
+For $k\ge2$ and every finite abelian extension $B/\mathbf Q$, the
+polynomial $\Gamma_k$ has exactly
+\[
+ [B\cap K_k:\mathbf Q]
+\]
+irreducible factors over $B$, each of degree
+\[
+ 6[K_k:B\cap K_k].
+\]
+In particular,
+\[
+ \Gamma_k\text{ is irreducible over }B
+ \quad\Longleftrightarrow\quad
+ B\cap K_k=\mathbf Q.
+\]
+All splitting after an abelian base change is therefore caused by the
+cyclotomic factor $\Phi_k$; no sextic fiber splits further.
+\end{theorem}
+
+\begin{corollary}[Factorization over the maximal abelian extension]
+\label{cor:Qab-factorization}
+For every $k\ge2$, the complete irreducible factorization of $\Gamma_k$
+over $\mathbf Q^{\mathrm{ab}}$ is
+\begin{equation}\label{eq:Qab-complete-factorization}
+ \Gamma_k(T)=
+ \prod_{\substack{\zeta^k=1\\ \zeta\ \mathrm{primitive}}}F_\zeta(T).
+\end{equation}
+It has $\varphi(k)$ factors, all of degree six.
+\end{corollary}
+
+\begin{proof}
+Since $K_k\subset\mathbf Q^{\mathrm{ab}}$ and
+$\mathbf Q^{\mathrm{ab}}/K_k$ is abelian, it is contained in
+$K_k^{\mathrm{ab}}$.  Each $F_\zeta$ is consequently irreducible over
+$\mathbf Q^{\mathrm{ab}}$.  Distinct primitive roots give distinct
+polynomials, as their $T^2$ coefficients are $\zeta-5$.  Equation
+\eqref{eq:Gamma-fiber-product} now proves the assertion.
+\end{proof}
+
+\section{Transfer to the period-4 delta factors}
+
+We use the standard delta-factor notation
+\cite{Morton1996,MortonVivaldi1995,KoizumiMurakamiSanoTakehira2025}.
+Write $C=4c$ for the scaled quadratic-family parameter and put
+\[
+ \widetilde\Delta_{4k,4}(C)=\Delta_{4k,4}(C/4).
+\]
+For a polynomial $q$, let $Z(q)$ denote its set of roots in
+$\overline{\mathbf Q}$, without multiplicity.  The period-$4$
+normalization has parameter coordinate
+\[
+ h(T)=-T^2-3-\frac4T.
+\]
+The established normalization and separability results
+\cite[Proposition 2.3, Equation (2.2), and Remark 2.10]
+{KoizumiMurakamiSanoTakehira2025}, together with the degree argument in
+\cite{WeiPeriod4}, show that the map $\beta(\alpha)=h(\alpha)$ supplies,
+for $k\ge2$, a Galois-equivariant bijection between the root sets of
+the two separable polynomials,
+\[
+ \beta:Z(\Gamma_k)\longrightarrow
+ Z(\widetilde\Delta_{4k,4})
+\]
+for $\operatorname{Gal}(\overline{\mathbf Q}/\mathbf Q)$.  Restricting the
+action to $\operatorname{Gal}(\overline{\mathbf Q}/B)$ preserves
+equivariance.  The map $\beta$ therefore identifies the Galois orbits
+over $B$, including their cardinalities.  Since the irreducible factors
+of a separable polynomial correspond exactly to these orbits,
+Theorem~\ref{thm:abelian-factorization} transfers without requiring an
+explicit polynomial substitution:
+\begin{theorem}\label{thm:delta-abelian-factorization}
+For $k\ge2$ and every finite abelian extension $B/\mathbf Q$, the
+period-$4$ delta factor $\widetilde\Delta_{4k,4}$ has exactly
+\[
+ [B\cap K_k:\mathbf Q]
+\]
+irreducible factors over $B$, each of degree
+\[
+ 6[K_k:B\cap K_k].
+\]
+Over $\mathbf Q^{\mathrm{ab}}$ its complete factorization consists of
+$\varphi(k)$ irreducible sextic factors.  Indeed, restricting $\beta$ to
+$\operatorname{Gal}(\overline{\mathbf Q}/\mathbf Q^{\mathrm{ab}})$ still
+identifies the relevant orbits.  More precisely, for every
+primitive $k$-th root $\zeta$, the image under $\beta$ of
+$Z(F_\zeta)$ is one orbit of cardinality six for
+$\operatorname{Gal}(\overline{\mathbf Q}/\mathbf Q^{\mathrm{ab}})$.
+The corresponding irreducible sextic delta factor is
+\[
+ H_\zeta(C)=\prod_{\alpha\in Z(F_\zeta)}
+ \bigl(C-\beta(\alpha)\bigr)
+ \in\mathbf Q^{\mathrm{ab}}[C].
+\]
+\end{theorem}
+
+\begin{remark}
+This is an orbit description; it does not identify the polynomial
+$H_\zeta(C)$ in the parameter variable with $F_\zeta(T)$.
+\end{remark}
+
+For example, if $\gcd(k,\ell)=1$, then
+$K_k\cap\mathbf Q(\zeta_\ell)=\mathbf Q$, and the period-$4$ delta
+factor remains irreducible over $\mathbf Q(\zeta_\ell)$.
+
+\section{The maximal abelian subfield of a parameter field}
+
+\begin{corollary}[Maximal abelian subfield of a parameter field]
+\label{cor:maximal-abelian-parameter-field}
+Let $C$ be an exact-period-$4$ parabolic parameter with primitive
+$k$-th root multiplier $\zeta$, where $k\ge2$.  Then
+\[
+ \mathbf Q(C)\cap\mathbf Q^{\mathrm{ab}}=\mathbf Q(\zeta).
+\]
+Thus $\mathbf Q(\zeta)$ is the largest subfield of $\mathbf Q(C)$ that
+is Galois abelian over $\mathbf Q$, and $C\notin\mathbf Q^{\mathrm{ab}}$.
+\end{corollary}
+
+\begin{proof}
+Let $\alpha$ be the corresponding root of $F_\zeta$, so
+$C=\beta(\alpha)=h(\alpha)$.  The root correspondence is injective and
+$\operatorname{Gal}(\overline{\mathbf Q}/\mathbf Q)$-equivariant.
+Consequently, for every
+$\sigma\in\operatorname{Gal}(\overline{\mathbf Q}/\mathbf Q)$,
+\[
+ \sigma(\alpha)=\alpha
+ \quad\Longleftrightarrow\quad
+ \sigma(C)=C.
+\]
+The two elements have the same stabilizer, and therefore
+\[
+ \mathbf Q(C)=\mathbf Q(\alpha).
+\]
+Since $\zeta=g(\alpha)$, the right-hand field already contains
+$K=\mathbf Q(\zeta)$ and equals $K(\alpha)$.  The abelian-stability
+theorem gives
+\[
+ K(\alpha)\cap K^{\mathrm{ab}}=K.
+\]
+Because $\mathbf Q^{\mathrm{ab}}/K$ is abelian,
+$\mathbf Q^{\mathrm{ab}}\subset K^{\mathrm{ab}}$.  Moreover,
+$K\subset\mathbf Q(C)$ and $K\subset\mathbf Q^{\mathrm{ab}}$.  The
+upper inclusion from the abelian-stability theorem and this lower
+inclusion give
+\begin{equation}\label{eq:parameter-abelian-intersection}
+ \mathbf Q(C)\cap\mathbf Q^{\mathrm{ab}}=\mathbf Q(\zeta).
+\end{equation}
+Thus the multiplier field is precisely the largest subfield
+$L\subset\mathbf Q(C)$ for which $L/\mathbf Q$ is Galois abelian.  In
+particular,
+$C\notin\mathbf Q^{\mathrm{ab}}$: otherwise
+$\mathbf Q(C)\subset\mathbf Q^{\mathrm{ab}}$ would force
+$\mathbf Q(C)=K$, contradicting $[\mathbf Q(C):K]=6$.
+\end{proof}
+
+When the multiplier is $1$, the exact-period-$4$ parameters instead
+satisfy
+\[
+ p(C)=C^3+9C^2+27C+135=0.
+\]
+After $U=C+3$, this becomes $U^3+108$.  A rational root of this monic
+cubic would be an integer $r$ satisfying $r^3=-108$, which is
+impossible because $-108$ is not an integer cube.  The cubic is
+therefore irreducible.  Its discriminant is
+\[
+ -27\cdot108^2=-2^4 3^9,
+\]
+which is not a square.  Its Galois closure consequently has group
+$S_3$, and the cubic field $\mathbf Q(C)$ is not Galois over $\mathbf Q$.  Every
+finite subfield of $\mathbf Q^{\mathrm{ab}}$ is Galois over
+$\mathbf Q$, so these parameters also lie outside
+$\mathbf Q^{\mathrm{ab}}$.  Since a cubic field has no nontrivial proper
+subfield, its largest subfield Galois abelian over $\mathbf Q$ is
+$\mathbf Q$.  We conclude that no exact-period-$4$
+parabolic parameter belongs to $\mathbf Q^{\mathrm{ab}}$.
+
+\section{Torsion Hilbert irreducibility context}
+
+For this interpretation one must use the finite cover of degree six
+\[
+ g:U\longrightarrow\mathbf G_m,
+ \qquad
+ U=\mathbf G_m\setminus g^{-1}(0).
+\]
+Its degree is the degree of the rational function $g$, namely six.
+After writing the target coordinate as $X=g(T)$, the element $T$
+satisfies the monic equation $P_X(T)=0$ with nonzero constant term;
+both $T$ and $T^{-1}$ are integral over
+$\overline{\mathbf Q}[X,X^{-1}]$, which also proves finiteness.  The
+pullback condition means that
+the fiber product with $x\mapsto x^n$ is geometrically irreducible for
+every $n\ge1$.  Its function-field equation is
+\[
+ Y^n=g(T).
+\]
+Over $\overline{\mathbf Q}(T)$, the function $g$ is not a $p$-th power
+for any prime $p$.  For $p\ge3$, this follows from its pole of order two
+at $T=0$.  For $p=2$, suppose $g=w^2$.  Its only poles force
+\[
+ w=aT^2+bT+c+dT^{-1}.
+\]
+Comparison of the coefficients of $T^4,T^3,T^{-1},T^{-2}$ gives
+\[
+ a^2=-1,\qquad b=a,\qquad d^2=16,\qquad cd=4.
+\]
+Thus $c^2=1$, whereas comparison at $T^2$ gives
+\[
+ -1+2ac=-4,
+ \qquad ac=-\frac32,
+\]
+so $(ac)^2=9/4$, contradicting $a^2c^2=-1$.  Hence $g$ is not a
+square.
+
+The field $\overline{\mathbf Q}(T)$ contains all roots of unity.  The
+Kummer binomial criterion \cite{Lang2002} in this setting states that
+$Y^n-q$ is irreducible if and only if $q$ is not a $p$-th power for
+every prime $p\mid n$.  In the general binomial criterion one must also
+exclude $q\in-4\overline{\mathbf Q}(T)^4$ when $4\mid n$; here every
+element $-4b^4=(2ib^2)^2$ is already a square, so the preceding square
+argument excludes this case as well.  The preceding valuation
+and coefficient arguments therefore prove that $Y^n-g(T)$ is
+irreducible for every $n\ge1$, which is precisely the pullback
+condition.
+
+Zannier's cyclotomic Hilbert irreducibility theorem
+\cite[Theorem 2.1]{Zannier2010} says that a cover defined over the cyclotomic
+closure and satisfying this condition has irreducible fibers over that
+field outside a finite union of proper torsion cosets.  For
+$\mathbf G_m$, such a union is a finite set of torsion points.  Thus the
+theorem gives finitely many exceptional torsion fibers.  By the
+Kronecker--Weber theorem \cite{Washington1997}, the cyclotomic closure of
+$\mathbf Q$ is $\mathbf Q^{\mathrm{ab}}$.  The abelian-stability
+theorem determines them exactly: for $\zeta\ne1$, the inclusion
+$\mathbf Q^{\mathrm{ab}}\subset\mathbf Q(\zeta)^{\mathrm{ab}}$ shows
+that $F_\zeta$ is irreducible over $\mathbf Q^{\mathrm{ab}}$, whereas
+\[
+ F_1(T)=(T+2)(T^2+4)(T^3-2).
+\]
+Thus $\zeta=1$ is the unique exceptional torsion fiber for this cover.
