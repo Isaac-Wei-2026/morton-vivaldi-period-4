@@ -130,8 +130,12 @@ Let
  \nu_d(m)=\sum_{r\mid m}\mu(m/r)d^r,\qquad
  t=d^dc^{d-1},\qquad \gamma=\gcd(m,d-1).
 \]
-Here $\mu$ is the M\"obius function.  Let $\Phi_k$ denote the $k$-th
-cyclotomic polynomial.
+Here $\mu$ is the M\"obius function, $\varphi$ is Euler's totient
+function, $\Phi_k$ is the $k$-th cyclotomic polynomial, and
+$\mu_\infty\subset\overline{\Q}^{\times}$ is the group of all roots of
+unity.  For $n\geq 1$, put
+$\operatorname{rad}(n)=\prod_{p\mid n}p$, with the empty product equal to
+$1$.
 Write $D_{d,m}(t,x)$ for the multiplier polynomial in the scaled
 parameter, and write $\mathcal P_{d,m,k}(t)$ for the positive-leading
 normalization of
@@ -1070,12 +1074,11 @@ article.
 
 \paragraph{Data and code availability.}
 The exact-arithmetic verification code supporting the computer-assisted
-certificates in Appendix~\ref{sec:exact-certificates} is openly available
-in the \href{https://github.com/Isaac-Wei-2026/morton-vivaldi-period-4}{public
-GitHub repository for this article}, in its
-\emph{final-paper/verification} directory.  The programs use dependency-free
-Python~3 and exact integer arithmetic.  No other research data were generated
-or analysed.
+certificates in Appendix~\ref{sec:exact-certificates} is available in
+\href{https://github.com/Isaac-Wei-2026/morton-vivaldi-period-4/tree/v3.3/final-paper/verification}{version
+v3.3 of the public GitHub repository for this article}.  The programs use
+dependency-free Python~3 and exact integer arithmetic.  No other research
+data were generated or analysed.
 
 \paragraph{Funding.}
 The author received no financial support for the research, authorship,
