@@ -1,8 +1,8 @@
 # Final manuscript
 
 This directory contains the 47-page submission-stage manuscript
-*Cyclotomic specialization of unicritical multiplier curves and
-alternating monodromy in period 4* by Dongsheng Wei.
+*Cyclotomic specialization of unicritical multiplier curves and the
+Morton-Vivaldi conjecture in period 4* by Dongsheng Wei.
 
 - [Final PDF](output/pdf/morton-vivaldi-period-4-and-abelian-stability.pdf)
 - [LaTeX source](main.tex)

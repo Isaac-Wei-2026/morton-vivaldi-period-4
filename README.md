@@ -1,10 +1,10 @@
-# Cyclotomic specialization and alternating monodromy
+# Cyclotomic specialization of unicritical multiplier curves and the Morton-Vivaldi conjecture in period 4
 
 **Submission-stage manuscript · August 25, 2026 · 47 pages**
 
 This repository contains the manuscript
-*Cyclotomic specialization of unicritical multiplier curves and
-alternating monodromy in period 4* by Dongsheng Wei.
+*Cyclotomic specialization of unicritical multiplier curves and the
+Morton-Vivaldi conjecture in period 4* by Dongsheng Wei.
 
 ## Main results
 
