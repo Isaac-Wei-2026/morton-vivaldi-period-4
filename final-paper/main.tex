@@ -22,13 +22,14 @@
 \newcommand{\ord}{\operatorname{ord}}
 \newcommand{\Norm}{\operatorname{N}}
 \newcommand{\Res}{\operatorname{Res}}
+\newcommand{\numberthis}{\refstepcounter{equation}\tag{\theequation}}
 
-\title{The Period-$4$ Morton--Vivaldi Irreducibility Conjecture
-and Abelian Stability}
+\title{Cyclotomic specialization of unicritical multiplier curves
+and alternating monodromy in period $4$}
 \author{Dongsheng Wei}
-\date{August 25, 2026}
+\date{}
 \hypersetup{
-  pdftitle={The Period-4 Morton--Vivaldi Irreducibility Conjecture and Abelian Stability},
+  pdftitle={Cyclotomic specialization of unicritical multiplier curves and alternating monodromy in period 4},
   pdfauthor={Dongsheng Wei}
 }
 
@@ -36,52 +37,176 @@ and Abelian Stability}
 
 \maketitle
 
-\paragraph{Declaration on AI assistance.}
-The core irreducibility proof in this paper was obtained using OpenAI
-Sol Pro.
+\paragraph{Declaration on artificial-intelligence assistance.}
+OpenAI GPT-5.6 Sol Pro was used to assist in developing the core
+period-$4$ irreducibility argument and its initial abelian-stability
+extension.  OpenAI GPT-5.6 Sol Ultra, accessed through Codex, was used
+to assist with further mathematical development, line-by-line proof
+checking, preparation of the exact-arithmetic verification code, and
+drafting and editing the manuscript.  Anthropic Claude Opus 5 was used
+in a limited number of desktop-chat exchanges for additional critical
+review.  All AI-assisted arguments, citations, and computations were
+subjected to repeated line-by-line verification.  The author takes full
+responsibility for the accuracy, integrity, and originality of the
+article.
 
 \begin{abstract}
-Let $\Phi_k$ denote the $k$-th cyclotomic polynomial, let $\varphi$
-denote Euler's totient function, and put
-\[
- g(T)=-T^4-2T^3-4T^2-6T+5+\frac8T+\frac{16}{T^2}.
-\]
-We prove, for every $k\geq2$, that
-\[
- \Gamma_k(T)=(-1)^{\varphi(k)}T^{2\varphi(k)}\Phi_k(g(T))
-\]
-is irreducible over $\Q$.  This settles the complete period-$4$ case of
-the Morton--Vivaldi irreducibility conjecture for the quadratic family.
-We then prove the stronger fiberwise statement that, for every root of
-unity $\zeta\ne1$, the sextic $F_\zeta$ remains irreducible over the
-maximal abelian extension of $\Q(\zeta)$.  The resulting theorem gives
-the complete factorization of the pullbacks and of the period-$4$ delta
-factors over every finite abelian extension of $\Q$, as well as the
-maximal abelian subfield of each parameter field.  A central ingredient
-is an abstract criterion: an irreducible sextic admitting a local
-irreducible quartic factor and whose $3+3$ resolvent has no ground-field root
-is disjoint from the maximal abelian extension of its ground field.
+For the unicritical family $f_c(z)=z^d+c$, we introduce a reduced
+multiplier on its multiplier curves.  For cycle period $m$, with
+$\gamma=\gcd(m,d-1)$, the usual multiplier is the $\gamma$-th power of
+the reduced one.  We prove that every power pullback of the reduced map
+is geometrically irreducible and that no larger power can be removed
+from the usual multiplier.  Torsion separation and cyclotomic Hilbert
+irreducibility then give, outside finitely many orders, complete
+factorization formulas over $\Q$, $\Q^{\mathrm{ab}}$, and fixed number
+fields.  Thus each quadratic period row of the Morton--Vivaldi
+conjecture has only finitely many exceptions.
+
+We determine all exceptions in period $4$: every period-$4$ delta
+factor is irreducible over $\Q$.  More strongly, for every root of unity
+$\zeta\ne1$, the associated sextic over $\Q(\zeta)$ has Galois group
+containing $A_6$, remains irreducible over the maximal solvable
+extension of $\Q(\zeta)$, and has splitting group $A_6$ there.  This
+yields exact factorizations after solvable base change and the maximal
+solvable subfields of the associated parameter fields.  The generic
+splitting field is a regular $S_6$-extension, and all but finitely many
+torsion specializations retain group $S_6$ over $\Q^{\mathrm{ab}}$.
 \end{abstract}
+
+\medskip
+\noindent\textit{2020 Mathematics Subject Classification.}
+Primary 37P05; Secondary 12E05, 11R18, 12F10, 14H30.
+
+\smallskip
+\noindent\textit{Keywords.}
+Arithmetic dynamics, multiplier polynomial, cyclotomic specialization,
+alternating group, solvable extension, irreducibility, Newton polygon,
+resolvent.
+
+\clearpage
+\begingroup
+\setcounter{tocdepth}{1}
+\tableofcontents
+\endgroup
+\clearpage
 
 \section{Introduction}
 
-For the quadratic family $f_c(z)=z^2+c$, Morton and Vivaldi introduced
-delta factors whose roots are the parabolic parameters of prescribed
-formal and exact periods, and conjectured their irreducibility over
-$\Q$ \cite{MortonVivaldi1995}.  Morton subsequently restated the
-irreducibility problem \cite[Introduction]{Morton1996}; it also appears
-as an open problem in \cite[Exercise 4.12(e)**]{Silverman2007}.  The
-cases of periods $1$ and $2$ reduce to cyclotomic irreducibility
-\cite[Corollary 3.7]{MortonVivaldi1995}, and the complete period-$3$
-case was proved by Koizumi, Murakami, Sano, and Takehira
-\cite[Theorem 1.2]{KoizumiMurakamiSanoTakehira2025}.  The first
-remaining complete period is therefore period $4$.
+Arithmetic questions about the fibers of a finite cover
+$X\to\mathbf G_m$ above roots of unity are governed by two
+complementary mechanisms.  A factorization of the covering function
+through a power map produces systematic splitting.  Once the maximal
+power has been removed, the pullback condition \emph{(PB)}---geometric
+irreducibility after every power pullback---allows cyclotomic Hilbert
+irreducibility to leave only finitely many exceptional torsion fibers.
+An exact factorization problem therefore has two stages: determine the
+maximal power obstruction, and then analyze the exceptional fibers that
+remain.
 
+Multiplier curves in arithmetic dynamics provide a natural setting
+for both stages.  In a polynomial family, a root-of-unity multiplier
+singles out a parabolic parameter, so delta factors record the
+arithmetic of torsion fibers on multiplier curves rather than a
+collection of unrelated specializations.
+
+For the quadratic family $f_c(z)=z^2+c$, Morton and Vivaldi introduced
+delta factors whose roots are parabolic parameters of prescribed
+formal and exact periods, and conjectured that all of them are
+irreducible over $\Q$ \cite{MortonVivaldi1995}.  Morton subsequently
+restated the problem \cite[Introduction]{Morton1996}.  For the
+correction of a finite-characteristic argument in that article, see
+\cite{Morton2011Corrigendum}.
+The problem also appears in \cite[Exercise 4.12(e)**]{Silverman2007}.
+Periods $1$ and $2$
+reduce to cyclotomic irreducibility
+\cite[Corollary 3.7]{MortonVivaldi1995}, and Koizumi, Murakami, Sano,
+and Takehira proved the complete period-$3$ case
+\cite[Theorem 1.2]{KoizumiMurakamiSanoTakehira2025}.  Period $4$ was
+the first unresolved complete row.
+
+This paper carries out both stages in three parts.  The first places the
+problem in a general geometric framework for every unicritical family
+\[
+ f_c(z)=z^d+c,\qquad d\ge2.
+\]
+The second proves irreducibility of every period-$4$ delta factor in
+the quadratic family.  The third strengthens the result to
+alternating monodromy and stability under arbitrary solvable base
+change.  Thus period $4$ is not treated as an isolated low-period
+calculation: it is the first previously unresolved complete row for
+which the finite exceptional set left by the general theorem is
+resolved exactly.  The abstract sextic disjointness criterion used in
+the third part is independent of arithmetic dynamics.
+
+Let
+\[
+ \nu_d(m)=\sum_{r\mid m}\mu(m/r)d^r,\qquad
+ t=d^dc^{d-1},\qquad \gamma=\gcd(m,d-1).
+\]
+Here $\mu$ is the M\"obius function.  Let $\Phi_k$ denote the $k$-th
+cyclotomic polynomial.
+Write $D_{d,m}(t,x)$ for the multiplier polynomial in the scaled
+parameter, and write $\mathcal P_{d,m,k}(t)$ for the positive-leading
+normalization of
+$\Res_x\bigl(\Phi_k(x),D_{d,m}(t,x)\bigr)$.
+Our first main theorem is summarized as follows.
+
+\begin{theorem}[Reduced multiplier and eventual factorization]
+\label{thm:intro-unicritical}
+On the normalization of $D_{d,m}(t,x)=0$ there is a canonical rational
+function $y$ such that
+\[
+ x=y^\gamma,\qquad
+ \deg y=\frac{\nu_d(m)}{d\gamma}.
+\]
+The cover $y$ satisfies \emph{(PB)}, and $\gamma$ is the maximal geometric
+isogeny degree of $x$.  For every sufficiently large $k$, the complete
+factorization of $\mathcal P_{d,m,k}$ over $\Q$ is indexed by
+\[
+ a\mid\gamma,\qquad (k,\gamma/a)=1,
+\]
+and the factor indexed by $a$ has degree
+\[
+ \frac{\nu_d(m)}{d\gamma}\,\varphi(ka).
+\]
+Over $\Q^{\mathrm{ab}}$ there are exactly $\gamma\varphi(k)$ distinct
+factors, each of degree $\nu_d(m)/(d\gamma)$.
+\end{theorem}
+
+The new geometric input is the identification of the maximal isogeny.
+If $P$ denotes the product of the points in a marked $m$-cycle, then
+\[
+ x=d^mP^{d-1},\qquad
+ y=d^{m/\gamma}P^{(d-1)/\gamma}.
+\]
+At a critical-center point and a point above infinity, $y$ has coprime
+orders.  This proves (PB) by the binomial criterion.  Zannier's cyclotomic
+Hilbert
+irreducibility theorem then gives full-degree irreducibility over the
+cyclotomic closure outside finitely many torsion fibers
+\cite[Theorem 2.1]{Zannier2010}.  A torsion-separation argument specific
+to unicritical dynamics recovers the reduced multiplier from the
+parameter; this turns the geometric theorem into the exact arithmetic
+factorization above.  The elementary factor count implies
+\[
+ \mathcal P_{d,m,k}\text{ is eventually irreducible over }\Q
+ \quad\Longleftrightarrow\quad
+ \operatorname{rad}((m,d-1))\mid k.
+\]
+For $d=2$ the greatest common divisor is always one, so every fixed row
+of the Morton--Vivaldi conjecture is irreducible for every sufficiently
+large $k$.
+
+The second part gives a uniform, exception-free theorem in period $4$.
 Put $C=4c$.  The period-$4$ multiplier curve has normalization
-\begin{equation}\label{eq:parametrization}
- T\longmapsto \bigl(g(T),h(T)\bigr),
+\[
+ g(T)=-T^4-2T^3-4T^2-6T+5+\frac8T+\frac{16}{T^2},
  \qquad
  h(T)=-T^2-3-\frac4T,
+\]
+and is parametrized by
+\begin{equation}\label{eq:parametrization}
+ T\longmapsto \bigl(g(T),h(T)\bigr)
 \end{equation}
 on $\mathbf G_m$.  This parametrization is recorded in
 \cite[Remark 2.10]{KoizumiMurakamiSanoTakehira2025} and attributed there
@@ -95,20 +220,44 @@ back along the degree-six function $g$ leads, for $k\ge2$, to
 This Laurent expression is in fact a monic polynomial in $\Z[T]$ of
 degree $6\varphi(k)$.
 
-Our main result is the following.
+The exact period-$4$ result is the following.
 
 \begin{theorem}\label{thm:main}
 For every integer $k\geq2$, the polynomial $\Gamma_k(T)$ is irreducible
 over $\Q$.
 \end{theorem}
 
-The second main theorem strengthens the corresponding fixed-degree
-statement.  For a number field $K$, write $K^{\mathrm{ab}}$ for its
-maximal abelian extension in a fixed algebraic closure.  For a root of
-unity $\zeta$, set
+We also strengthen the corresponding fixed-degree statement.  For a
+number field $K$, write $K^{\mathrm{ab}}$ and $K^{\mathrm{sol}}$ for
+its maximal abelian and maximal solvable extensions in a fixed
+algebraic closure.  For a root of unity $\zeta$, set
 \[
- F_\zeta(T)=T^6+2T^5+4T^4+6T^3+(\zeta-5)T^2-8T-16.
+F_\zeta(T)=T^6+2T^5+4T^4+6T^3+(\zeta-5)T^2-8T-16.
 \]
+
+\begin{theorem}[Exception-free alternating monodromy]
+\label{thm:alternating-monodromy}
+Let $\zeta\ne1$ be any root of unity, put $K=\Q(\zeta)$, and let
+$L_\zeta$ be the splitting field of $F_\zeta$ over $K$.  Then
+\[
+ A_6\leq\Gal(L_\zeta/K)\leq S_6.
+\]
+Consequently
+\[
+ \Gal(L_\zeta K^{\mathrm{sol}}/K^{\mathrm{sol}})\cong A_6,
+ \qquad
+ F_\zeta\text{ is irreducible over }K^{\mathrm{sol}}.
+\]
+\end{theorem}
+
+The discriminant decides between the two possible groups.  In
+Corollary~\ref{cor:solvable-stability} we prove, more precisely, that
+the splitting field meets $K^{\mathrm{sol}}$ in its sign subfield,
+whereas every degree-six root field meets $K^{\mathrm{sol}}$ only in
+$K$.  This yields exact factorizations over arbitrary finite fields
+whose Galois closures over $\Q$ are solvable; see
+Theorems~\ref{thm:solvable-factorization} and
+\ref{thm:delta-solvable-factorization}.
 
 \begin{theorem}[Abelian-stable irreducibility]
 \label{thm:abelian-stability}
@@ -122,7 +271,19 @@ Equivalently, if $\alpha$ is a root of $F_\zeta$, then
 \]
 \end{theorem}
 
-The normalization of the multiplier curve transfers the first theorem
+The abelian theorem also admits an independent proof through an abstract
+sextic disjointness criterion.  We retain that proof because the
+criterion does not depend on the special form of this family.
+
+The same sextic family also exhibits full generic monodromy.  We prove
+that its splitting field over $\Q(X)$ is a regular $S_6$-extension and
+that, outside finitely many roots of unity $\zeta$, the specialized
+splitting field still has group $S_6$ over $\Q^{\mathrm{ab}}$.  Over
+$\Q(\zeta)^{\mathrm{ab}}$ the corresponding group is then $A_6$; see
+Theorems~\ref{thm:generic-S6} and~\ref{thm:cofinite-torsion-S6}.
+
+The normalization of the multiplier curve transfers
+Theorem~\ref{thm:main}
 to the period-$4$ delta factors.
 
 \begin{corollary}\label{cor:delta-main}
@@ -130,16 +291,31 @@ For every integer $k\geq1$, the period-$4$ delta factor
 $\Delta_{4k,4}$ is irreducible over $\Q$.
 \end{corollary}
 
+Theorem~\ref{thm:intro-unicritical} is proved in
+Sections~\ref{sec:abstract-specialization}--\ref{sec:unicritical-factorization}.
 The proof of Theorem~\ref{thm:main} combines reduction at primes above
 $2$ with a uniform archimedean root bound.  For
-Theorem~\ref{thm:abelian-stability}, we prove an abstract
-abelian-disjointness criterion for irreducible sextics.  Its two inputs
-are an irreducible quartic factor over one completion and the absence of
-a ground-field root of a $3+3$ resolvent.  Newton polygons supply the
-local quartic factors for both the sextic and its explicit resolvent.
-The resolvent identity and the three polynomial congruences used in its
-local analysis are accompanied by a deterministic exact-integer
-certificate in Appendix~\ref{sec:exact-certificates}.
+Theorem~\ref{thm:abelian-stability}, an abstract criterion combines an
+irreducible local quartic factor with the absence of a ground-field root
+of a $3+3$ resolvent.  To prove
+Theorem~\ref{thm:alternating-monodromy}, we construct a second sextic
+resolvent attached to the exceptional transitive subgroup
+$S_5<S_6$.  Its Newton polygon forces all of its factor degrees to be
+divisible by three.  The two resolvents, together with the classification
+of primitive subgroups of $S_6$, leave only $A_6$ and $S_6$.
+All substantial explicit identities, congruences, discriminants, and
+finite permutation computations are accompanied by deterministic
+exact-integer certificates in Appendix~\ref{sec:exact-certificates}.
+
+\part{Cyclotomic specialization on unicritical multiplier curves}
+
+\input{sections/cyclotomic_specialization.tex}
+
+\input{sections/unicritical_reduction.tex}
+
+\input{sections/original_parameter.tex}
+
+\part{The complete quadratic period-4 row}
 
 \section{The fixed-degree reformulation}
 
@@ -782,7 +958,19 @@ For $k=1$, the table in
 \]
 Since
 $\widetilde\delta_1(x,C)=x^2-2x+C$ and
-$\widetilde\delta_2(x,C)=C+4-x$, the exact-period-$4$ factor is
+$\widetilde\delta_2(x,C)=C+4-x$, the two lower-period factors are
+\[
+ \widetilde\Delta_{4,1}(C)
+ =\operatorname{Res}_x\bigl(x^2+1,\widetilde\delta_1(x,C)\bigr)
+ =C^2-2C+5,
+ \qquad
+ \widetilde\Delta_{4,2}(C)
+ =\widetilde\delta_2(-1,C)=C+5.
+\]
+Consequently the defining product decomposition
+$\widetilde\delta_4(1,C)
+ =\widetilde\Delta_{4,1}(C)\widetilde\Delta_{4,2}(C)
+  \widetilde\Delta_{4,4}(C)$ gives
 \[
  \widetilde\Delta_{4,4}(C)
  =C^3+9C^2+27C+135=(C+3)^3+108.
@@ -802,16 +990,17 @@ the displayed elementary equations; period $3$ is parametrized in
 Proposition~\ref{prop:normalization}.  For $m\ge5$, Morton's genus
 formula and its quadratic-family corollary give genus at least two
 \cite[Theorem 13(b),(c) and the corollary following Theorem 14]
-{Morton1996}.\footnote{Morton's calculation is made under his
-hypothesis (H).  Its clause asserting simple roots at multiplier $1$
-is justified there using the Douady--Hubbard description of hyperbolic
-components; see the discussion preceding hypothesis (H) in
-\cite{Morton1996}.}
+{Morton1996}.  Morton's calculation is made under his hypothesis (H).
+Its clause asserting simple roots at multiplier $1$ is justified there
+using the Douady--Hubbard description of hyperbolic components; see the
+discussion preceding hypothesis (H) in \cite{Morton1996}.
 The local simplification used above also exploits fourth powers in
 residue characteristic two.  Thus period $4$ is the endpoint reached by
 the present implementation of the rational-parametrization method; this
 is not an obstruction to different methods at higher periods.
 \end{remark}
+
+\part{Sextic monodromy and arithmetic base change}
 
 \input{sections/core_lemmas.tex}
 
@@ -836,6 +1025,10 @@ $3+3$ resolvent has no root in $K$.  Theorem
 \ref{thm:sextic-abelian-disjointness} now proves both assertions.
 \end{proof}
 
+\input{sections/generic_monodromy.tex}
+
+\input{sections/alternating_monodromy.tex}
+
 \input{sections/corollaries.tex}
 
 \appendix
@@ -843,23 +1036,53 @@ $3+3$ resolvent has no root in $K$.  Theorem
 \section{Exact symbolic certificates}
 \label{sec:exact-certificates}
 
-The verification directory contains a dependency-free exact certificate
-using integer polynomial arithmetic.  It constructs the companion matrix
+The verification directory contains dependency-free exact certificates
+using integer polynomial arithmetic.  The principal program constructs the companion matrix
 of $P_X$, constructs the matrix of its third exterior power from all
 $3\times3$ minors, and verifies every coefficient of the exterior-power
 resolvent identity and of the displayed resolvent formula.  It also
 checks the three polynomial congruences and the parametrization identity
-\eqref{eq:parametrization-identity} coefficient by coefficient.  The
-program exits with a nonzero status on any failed equality or nonexact
-integer division; no floating-point computation or numerical
-specialization occurs.
+\eqref{eq:parametrization-identity} coefficient by coefficient.  Finally,
+it certifies \eqref{eq:generic-discriminant} from twelve exact Sylvester
+determinants under the elementary degree bound and verifies the displayed
+Euclidean algorithm modulo $5$.
+
+The outer-resolvent certificate enumerates all $720$ permutations of
+six letters, verifies the order-$120$ stabilizer of the exceptional
+invariant and the required coset-orbit table, and reconstructs every
+coefficient of $\mathcal C_X$ directly in the rank-$720$ ordered
+splitting algebra of $P_X$.  It verifies
+\eqref{eq:outer-discriminant} from $46$ exact Sylvester determinants
+under the proved degree-$45$ bound, and checks the unit-circle estimate,
+the six congruences \eqref{eq:outer-mod-two}, and every entry of the
+Taylor table \eqref{eq:outer-taylor-table}.  The programs exit with a
+nonzero status on any failed equality or nonexact integer division.  No
+floating-point or inexact numerical computation occurs.
 
 From the directory containing this manuscript, run
 \begin{quote}
 \noindent python3 verification/verify\_all.py
 \end{quote}
 
-\enlargethispage{2\baselineskip}
+\section*{Declarations}
+
+\paragraph{Data and code availability.}
+The exact-arithmetic verification code supporting the computer-assisted
+certificates in Appendix~\ref{sec:exact-certificates} is included in the
+supplementary material accompanying this article as
+\emph{verification/verify\_all.py} and
+\emph{verification/verify\_outer\_s5.py}.  They use dependency-free
+Python~3 and exact integer arithmetic.  No other research data were
+generated or analysed.
+
+\paragraph{Funding.}
+The author received no financial support for the research, authorship,
+or publication of this article.
+
+\paragraph{Conflicts of interest.}
+The author declares that there are no conflicts of interest.
+
+\clearpage
 {\small
 \bibliographystyle{alpha}
 \bibliography{references}

@@ -1,115 +1,95 @@
-\section{Factorization over abelian base fields}
+\section{Factorization over fields with solvable Galois closure}
+\label{sec:solvable-factorization}
 
-For $k\ge2$, the fixed-degree identity \eqref{eq:g-F} gives
-\begin{equation}\label{eq:Gamma-fiber-product}
+For $k\ge2$, recall the fixed-degree product
+\begin{equation}
  \Gamma_k(T)=
  \prod_{\substack{\zeta^k=1\\ \zeta\ \mathrm{primitive}}}F_\zeta(T).
+ \label{eq:Gamma-fiber-product}
 \end{equation}
-By Theorem \ref{thm:abelian-stability}, for every nontrivial root of
-unity $\zeta$, the polynomial $F_\zeta$ is irreducible over
-$\mathbf Q(\zeta)^{\mathrm{ab}}$, and for every root $\alpha$ one has
-\[
- \mathbf Q(\zeta,\alpha)\cap
- \mathbf Q(\zeta)^{\mathrm{ab}}=\mathbf Q(\zeta).
-\]
-Fix a primitive $k$-th root $\zeta_k$, put
-$K_k=\mathbf Q(\zeta_k)$, and let $B/\mathbf Q$ be a finite abelian
-extension.  Set
+
+\begin{theorem}[Exact solvable-base factorization]
+\label{thm:solvable-factorization}
+Let $k\ge2$, put $K_k=\Q(\zeta_k)$, and let $B/\Q$ be any finite
+extension whose Galois closure over $\Q$ is solvable.  Set
 \[
  D=B\cap K_k.
 \]
-Because both $B/\mathbf Q$ and $K_k/\mathbf Q$ are Galois, restriction
-gives
+Then $\Gamma_k$ has exactly $[D:\Q]$ irreducible factors over $B$,
+each of degree $6[K_k:D]$.  Equivalently, the factors are indexed by
+the $\Gal(\overline\Q/B)$-orbits on the primitive $k$-th roots, and
+the factor attached to an orbit $\mathcal O$ is
 \[
- \operatorname{im}\!\left(\operatorname{Gal}(\overline{\mathbf Q}/B)
- \longrightarrow\operatorname{Gal}(K_k/\mathbf Q)\right)
- =\operatorname{Gal}(K_k/D).
-\]
-The orbits on the primitive $k$-th roots therefore have cardinality
-$[K_k:D]$.  Thus
-\[
- \Phi_k(X)=\Psi_1(X)\cdots\Psi_r(X)\quad\text{in }B[X],
- \qquad
- r=[D:\mathbf Q],\quad \deg\Psi_i=[K_k:D].
-\]
-Here the $\Psi_i$ are the distinct monic irreducible factors over $B$.
-For each $i$, define
-\[
- \Gamma_{\Psi_i}(T)
- =(-1)^{\deg\Psi_i}T^{2\deg\Psi_i}\Psi_i(g(T)).
-\]
-The fixed-degree identity $T^2(g(T)-\zeta)=-F_\zeta(T)$ gives
-\[
- \Gamma_{\Psi_i}(T)=\prod_{\Psi_i(\zeta)=0}F_\zeta(T)
- \quad\text{and}\quad
- \Gamma_k=\prod_{i=1}^r\Gamma_{\Psi_i}.
-\]
-
-Fix a root $\zeta$ of $\Psi_i$ and a root $\alpha$ of $F_\zeta$.
-Since $F_\zeta(0)=-16$, one has $\alpha\ne0$, so the Laurent expression
-$g(\alpha)$ is defined.
-The extension $BK_k/K_k$ is abelian, hence is contained in
-$K_k^{\mathrm{ab}}$.  Therefore $F_\zeta$ remains irreducible over
-$BK_k$, and
-\[
- [BK_k(\alpha):BK_k]=6.
-\]
-On the other hand, the relation $\zeta=g(\alpha)$ shows that
-$BK_k\subset B(\alpha)$, and in fact $B(\alpha)=BK_k(\alpha)$.  Hence
-\[
- [B(\alpha):B]
- =6[BK_k:B]
- =6[K_k:D].
-\]
-This is the degree of $\Gamma_{\Psi_i}$.  Since
-$\Gamma_{\Psi_i}\in B[T]$ is monic and vanishes at $\alpha$, it is the
-minimal polynomial of $\alpha$ over $B$ and is irreducible.  These
-irreducible polynomials are pairwise distinct: if an element $\alpha$
-were a common root of $\Gamma_{\Psi_i}$ and $\Gamma_{\Psi_j}$, then
-$g(\alpha)$ would be a common root of the coprime polynomials
-$\Psi_i$ and $\Psi_j$.  This proves the following theorem.
-
-\begin{theorem}\label{thm:abelian-factorization}
-For $k\ge2$ and every finite abelian extension $B/\mathbf Q$, the
-polynomial $\Gamma_k$ has exactly
-\[
- [B\cap K_k:\mathbf Q]
-\]
-irreducible factors over $B$, each of degree
-\[
- 6[K_k:B\cap K_k].
+ \Gamma_{\mathcal O}(T)=\prod_{\zeta\in\mathcal O}F_\zeta(T).
 \]
 In particular,
 \[
  \Gamma_k\text{ is irreducible over }B
- \quad\Longleftrightarrow\quad
- B\cap K_k=\mathbf Q.
+ \quad\Longleftrightarrow\quad B\cap K_k=\Q.
 \]
-All splitting after an abelian base change is therefore caused by the
-cyclotomic factor $\Phi_k$; no sextic fiber splits further.
 \end{theorem}
 
-\begin{corollary}[Factorization over the maximal abelian extension]
-\label{cor:Qab-factorization}
-For every $k\ge2$, the complete irreducible factorization of $\Gamma_k$
-over $\mathbf Q^{\mathrm{ab}}$ is
-\begin{equation}\label{eq:Qab-complete-factorization}
- \Gamma_k(T)=
- \prod_{\substack{\zeta^k=1\\ \zeta\ \mathrm{primitive}}}F_\zeta(T).
-\end{equation}
-It has $\varphi(k)$ factors, all of degree six.
+\begin{proof}
+Because $K_k/\Q$ is Galois, restriction identifies the image of
+$\Gal(\overline\Q/B)$ in $\Gal(K_k/\Q)$ with
+$\Gal(K_k/D)$.  Equivalently,
+\[
+ \Gal(BK_k/B)\cong\Gal(K_k/D).
+\]
+The action of $\Gal(K_k/\Q)$ on the primitive $k$-th roots is simply
+transitive.  Hence there are $[D:\Q]$ relevant orbits, each of
+cardinality $[K_k:D]$.
+
+Let $\widetilde B/\Q$ be the Galois closure of $B/\Q$.  The extension
+$\widetilde B K_k/K_k$ is finite Galois with solvable Galois group, so
+\[
+ BK_k\subseteq\widetilde B K_k\subseteq K_k^{\mathrm{sol}}.
+\]
+Corollary~\ref{cor:solvable-stability} therefore shows that every
+$F_\zeta$ remains irreducible over $BK_k$.
+
+Fix an orbit $\mathcal O$, choose $\zeta\in\mathcal O$, and let
+$\alpha$ be a root of $F_\zeta$.  Since $F_\zeta(0)=-16$, one has
+$\alpha\ne0$, and $\zeta=g(\alpha)$ gives
+\[
+ B(\alpha)=BK_k(\alpha).
+\]
+Consequently
+\[
+ [B(\alpha):B]
+ =[BK_k(\alpha):BK_k]\,[BK_k:B]
+ =6[K_k:D].
+\]
+The polynomial $\Gamma_{\mathcal O}$ belongs to $B[T]$, is monic,
+has degree $6|\mathcal O|=6[K_k:D]$, and vanishes at $\alpha$.  It is
+therefore the minimal polynomial of $\alpha$ over $B$.
+Different orbit products are coprime: a common root $\alpha$ would
+make $g(\alpha)$ belong to two disjoint orbits.  This proves that the
+displayed products give the complete factorization.
+\end{proof}
+
+\begin{corollary}[Complete factorization over the maximal solvable extension]
+\label{cor:Qsol-factorization}
+For every $k\ge2$, equation \eqref{eq:Gamma-fiber-product} is the
+complete irreducible factorization of $\Gamma_k$ over
+$\Q^{\mathrm{sol}}$.  It consists of $\varphi(k)$ distinct sextics,
+and the splitting field of each sextic over $\Q^{\mathrm{sol}}$ has
+Galois group $A_6$.  The same product is also the complete
+factorization over $\Q^{\mathrm{ab}}$.
 \end{corollary}
 
 \begin{proof}
-Since $K_k\subset\mathbf Q^{\mathrm{ab}}$ and
-$\mathbf Q^{\mathrm{ab}}/K_k$ is abelian, it is contained in
-$K_k^{\mathrm{ab}}$.  Each $F_\zeta$ is consequently irreducible over
-$\mathbf Q^{\mathrm{ab}}$.  Distinct primitive roots give distinct
-polynomials, as their $T^2$ coefficients are $\zeta-5$.  Equation
-\eqref{eq:Gamma-fiber-product} now proves the assertion.
+Every primitive $k$-th root belongs to $\Q^{\mathrm{sol}}$, and
+Corollary~\ref{cor:Qsol-monodromy} makes each $F_\zeta$ irreducible
+over that field with splitting group $A_6$.  Distinct primitive roots
+give distinct sextics because their $T^2$ coefficients are
+$\zeta-5$.  Equation \eqref{eq:Gamma-fiber-product} proves
+completeness.  Irreducibility over the larger field
+$\Q^{\mathrm{sol}}$ also implies irreducibility over
+$\Q^{\mathrm{ab}}\subseteq\Q^{\mathrm{sol}}$.
 \end{proof}
 
-\section{Abelian factorization of the period-4 delta factors}
+\section{Solvable-base factorization of the delta factors}
 
 Lemma~\ref{lem:root-correspondence} gives a
 $\Gal(\overline\Q/\Q)$-equivariant bijection
@@ -118,165 +98,154 @@ $\Gal(\overline\Q/\Q)$-equivariant bijection
  Z(\widetilde\Delta_{4k,4}),
  \qquad \beta(\alpha)=h(\alpha).
 \]
-Restricting the action to $\Gal(\overline\Q/B)$ preserves equivariance,
-so $\beta$ identifies Galois orbits over $B$, including their
-cardinalities.  Since the irreducible factors of a separable polynomial
-correspond exactly to these orbits, Theorem
-\ref{thm:abelian-factorization} transfers without requiring an explicit
-polynomial substitution.
-\begin{theorem}\label{thm:delta-abelian-factorization}
-For $k\ge2$ and every finite abelian extension $B/\mathbf Q$, the
-period-$4$ delta factor $\widetilde\Delta_{4k,4}$ has exactly
-\[
- [B\cap K_k:\mathbf Q]
-\]
-irreducible factors over $B$, each of degree
-\[
- 6[K_k:B\cap K_k].
-\]
-Over $\mathbf Q^{\mathrm{ab}}$ its complete factorization consists of
-$\varphi(k)$ irreducible sextic factors.  Indeed, restricting $\beta$ to
-$\operatorname{Gal}(\overline{\mathbf Q}/\mathbf Q^{\mathrm{ab}})$ still
-identifies the relevant orbits.  More precisely, for every
-primitive $k$-th root $\zeta$, the image under $\beta$ of
-$Z(F_\zeta)$ is one orbit of cardinality six for
-$\operatorname{Gal}(\overline{\mathbf Q}/\mathbf Q^{\mathrm{ab}})$.
-The corresponding irreducible sextic delta factor is
-\[
- H_\zeta(C)=\prod_{\alpha\in Z(F_\zeta)}
- \bigl(C-\beta(\alpha)\bigr)
- \in\mathbf Q^{\mathrm{ab}}[C].
-\]
+
+\begin{theorem}[Exact solvable-base delta factorization]
+\label{thm:delta-solvable-factorization}
+Let $k\ge2$ and let $B/\Q$ be a finite extension whose Galois closure
+is solvable.  With $K_k=\Q(\zeta_k)$ and $D=B\cap K_k$, the polynomial
+$\widetilde\Delta_{4k,4}$ has exactly $[D:\Q]$ irreducible factors
+over $B$, each of degree $6[K_k:D]$.  Over $\Q^{\mathrm{sol}}$ its
+complete factorization consists of $\varphi(k)$ irreducible sextic
+factors, one for each primitive $k$-th root.  The splitting group of
+each such sextic over $\Q^{\mathrm{sol}}$ is $A_6$.
 \end{theorem}
+
+\begin{proof}
+Restricting the equivariance of $\beta$ to
+$\Gal(\overline\Q/B)$ identifies its orbits, including their
+cardinalities.  Theorem~\ref{thm:solvable-factorization} gives the
+assertion over $B$, and Corollary~\ref{cor:Qsol-factorization} gives
+the assertion over $\Q^{\mathrm{sol}}$.  On each sextic orbit the
+two permutation representations are isomorphic, so their kernels and
+hence their splitting fields agree; the group is therefore $A_6$.
+\end{proof}
 
 The same assertions hold for the unscaled factor
 $\Delta_{4k,4}(c)$, because $C=4c$ is an invertible linear change over
 $\Q$.
 
 \begin{remark}
-This is an orbit description; it does not identify the polynomial
-$H_\zeta(C)$ in the parameter variable with $F_\zeta(T)$.
+The preceding theorem is an orbit description; it does not identify
+the sextic in the parameter variable with $F_\zeta(T)$.
 \end{remark}
 
 \begin{corollary}[Coprime cyclotomic base change]
 \label{cor:coprime-cyclotomic-base}
-Let $k\ge2$ and $\ell\ge1$ be integers, and let $\zeta_\ell$ be a
-primitive $\ell$-th root of unity.  If $\gcd(k,\ell)=1$, then both $\Gamma_k$ and
+Let $k\ge2$ and $\ell\ge1$, and let $\zeta_\ell$ be a primitive
+$\ell$-th root of unity.  If $(k,\ell)=1$, then both $\Gamma_k$ and
 $\widetilde\Delta_{4k,4}$ remain irreducible over
 $\Q(\zeta_\ell)$.
 \end{corollary}
 
 \begin{proof}
-For coprime $k$ and $\ell$, one has
+For coprime $k$ and $\ell$,
 $K_k\cap\Q(\zeta_\ell)=\Q$.  Apply Theorems
-\ref{thm:abelian-factorization} and
-\ref{thm:delta-abelian-factorization} with
-$B=\Q(\zeta_\ell)$.
+\ref{thm:solvable-factorization} and
+\ref{thm:delta-solvable-factorization}.
 \end{proof}
 
 \begin{remark}
 Corollary~\ref{cor:coprime-cyclotomic-base} is the period-$4$ analogue
-of the coprime cyclotomic-base result for period $3$ in
-\cite[Theorem 1.2]{KoizumiMurakamiSanoTakehira2025}.  The full
-factorization theorems above go further in the period-$4$ setting by
-allowing every finite abelian base field and describing all resulting
-factors.
+of the period-$3$ result in
+\cite[Theorem~1.2]{KoizumiMurakamiSanoTakehira2025}.  The theorems
+above are stronger: they allow every finite base field with solvable
+Galois closure and describe every resulting factor.
 \end{remark}
 
-\section{The maximal abelian subfield of a parameter field}
+\section{The solvable part of a parameter field}
 
-\begin{corollary}[Maximal abelian subfield of a parameter field]
-\label{cor:maximal-abelian-parameter-field}
-Let $C=4c$ be an exact-period-$4$ parabolic parameter in the scaled
-coordinate, with primitive $k$-th root multiplier $\zeta$, where
-$k\ge2$.  Then
+\begin{corollary}[Maximal solvable subfield of a parameter field]
+\label{cor:maximal-solvable-parameter-field}
+Let $C=4c$ be an exact-period-$4$ parabolic parameter with primitive
+$k$-th root multiplier $\zeta$, where $k\ge2$.  Then
 \[
- \mathbf Q(C)\cap\mathbf Q^{\mathrm{ab}}=\mathbf Q(\zeta).
+ \Q(C)\cap\Q^{\mathrm{sol}}=\Q(\zeta).
 \]
-Thus $\mathbf Q(\zeta)$ is the largest subfield of $\mathbf Q(C)$ that
-is Galois abelian over $\mathbf Q$, and $C\notin\mathbf Q^{\mathrm{ab}}$.
+Equivalently, $\Q(\zeta)$ is the largest subfield of $\Q(C)$ whose
+Galois closure over $\Q$ is solvable.  In particular,
+$C\notin\Q^{\mathrm{sol}}$.  The same assertions hold with $c$ in
+place of $C$.
 \end{corollary}
 
 \begin{proof}
-Let $\alpha$ be the corresponding root of $F_\zeta$, so
-$C=\beta(\alpha)=h(\alpha)$.  The root correspondence is injective and
-$\operatorname{Gal}(\overline{\mathbf Q}/\mathbf Q)$-equivariant.
-Consequently, for every
-$\sigma\in\operatorname{Gal}(\overline{\mathbf Q}/\mathbf Q)$,
+Let $\alpha$ be the corresponding root of $F_\zeta$.  The injective
+Galois-equivariant root correspondence gives
 \[
- \sigma(\alpha)=\alpha
- \quad\Longleftrightarrow\quad
- \sigma(C)=C.
+ \Q(C)=\Q(\alpha)=\Q(\zeta,\alpha).
 \]
-The two elements have the same stabilizer, and therefore
+Put $K=\Q(\zeta)$ and $E=K(\alpha)$.  Corollary
+\ref{cor:solvable-stability} gives
 \[
- \mathbf Q(C)=\mathbf Q(\alpha).
+ E\cap K^{\mathrm{sol}}=K.
 \]
-Since $\zeta=g(\alpha)$, the right-hand field already contains
-$K=\mathbf Q(\zeta)$ and equals $K(\alpha)$.  The abelian-stability
-theorem gives
+By Lemma~\ref{lem:solvable-closure-comparison},
+$\Q^{\mathrm{sol}}\subseteq K^{\mathrm{sol}}$, while
+$K\subseteq E\cap\Q^{\mathrm{sol}}$.  Therefore
 \[
- K(\alpha)\cap K^{\mathrm{ab}}=K.
+ K\subseteq E\cap\Q^{\mathrm{sol}}
+ \subseteq E\cap K^{\mathrm{sol}}=K.
 \]
-Because $\mathbf Q^{\mathrm{ab}}/K$ is abelian,
-$\mathbf Q^{\mathrm{ab}}\subset K^{\mathrm{ab}}$.  Moreover,
-$K\subset\mathbf Q(C)$ and $K\subset\mathbf Q^{\mathrm{ab}}$.  The
-upper inclusion from the abelian-stability theorem and this lower
-inclusion give
-\begin{equation}\label{eq:parameter-abelian-intersection}
- \mathbf Q(C)\cap\mathbf Q^{\mathrm{ab}}=\mathbf Q(\zeta).
-\end{equation}
-Thus the multiplier field is precisely the largest subfield
-$L\subset\mathbf Q(C)$ for which $L/\mathbf Q$ is Galois abelian.  In
-particular,
-$C\notin\mathbf Q^{\mathrm{ab}}$: otherwise
-$\mathbf Q(C)\subset\mathbf Q^{\mathrm{ab}}$ would force
-$\mathbf Q(C)=K$, contradicting $[\mathbf Q(C):K]=6$.
+
+If $M\subseteq E$ has solvable Galois closure over $\Q$, then
+$M\subseteq\Q^{\mathrm{sol}}$ and hence $M\subseteq K$.  Conversely,
+$K/\Q$ is abelian.  Thus $K$ is the largest such subfield.  If
+$C\in\Q^{\mathrm{sol}}$, then $E=\Q(C)\subseteq\Q^{\mathrm{sol}}$,
+contradicting $[E:K]=6$.  Finally $C=4c$, so the two coordinates
+generate the same field.
 \end{proof}
 
-When the multiplier is $1$, the exact-period-$4$ parameters instead
-satisfy
+\begin{corollary}[Maximal Galois subfield]
+\label{cor:maximal-galois-parameter-field}
+Under the hypotheses of
+Corollary~\ref{cor:maximal-solvable-parameter-field}, the cyclotomic
+field $\Q(\zeta)$ is the largest subfield of $\Q(C)$ that is Galois
+over $\Q$.
+\end{corollary}
+
+\begin{proof}
+Write $K=\Q(\zeta)$ and $E=\Q(C)=K(\alpha)$.  The proof of
+Theorem~\ref{thm:sextic-abelian-disjointness} gives the stronger fact
+that $E$ contains no nontrivial intermediate field Galois over $K$.
+If $D\subseteq E$ is Galois over $\Q$, then $DK$ is contained in $E$
+and is Galois over $K$.  Hence $DK=K$, so $D\subseteq K$.  Conversely,
+$K/\Q$ is Galois.
+\end{proof}
+
+At multiplier $1$, the exact-period-$4$ parameters instead satisfy
 \[
  p(C)=C^3+9C^2+27C+135=0.
 \]
-After $U=C+3$, this becomes $U^3+108$.  A rational root of this monic
-cubic would be an integer $r$ satisfying $r^3=-108$, which is
-impossible because $-108$ is not an integer cube.  The cubic is
-therefore irreducible.  Its discriminant is
+After $U=C+3$, this is $U^3+108$.  The cubic is irreducible over
+$\Q$, and its discriminant is
 \[
  -27\cdot108^2=-2^4 3^9,
 \]
-which is not a square.  Its Galois closure consequently has group
-$S_3$, and the cubic field $\mathbf Q(C)$ is not Galois over
-$\mathbf Q$.  Every finite subfield of $\mathbf Q^{\mathrm{ab}}$ is Galois over
-$\mathbf Q$, so these parameters also lie outside
-$\mathbf Q^{\mathrm{ab}}$.  Since a cubic field has no nontrivial proper
-subfield, its largest subfield Galois abelian over $\mathbf Q$ is
-$\mathbf Q$.  We conclude that no exact-period-$4$
-parabolic parameter belongs to $\mathbf Q^{\mathrm{ab}}$.
+which is not a square.  Its Galois closure has group $S_3$.
+Consequently these parameters do not lie in $\Q^{\mathrm{ab}}$, but
+they do lie in $\Q^{\mathrm{sol}}$.  This explains why the solvable
+parameter-field statement above necessarily assumes $k\ge2$.
 
 \section{Torsion Hilbert irreducibility context}
 
 For this interpretation one must use the finite cover of degree six
 \[
  g:U\longrightarrow\mathbf G_m,
- \qquad
- U=\mathbf G_m\setminus g^{-1}(0).
+ \qquad U=\mathbf G_m\setminus g^{-1}(0).
 \]
 Its degree is the degree of the rational function $g$, namely six.
 After writing the target coordinate as $X=g(T)$, the element $T$
 satisfies the monic equation $P_X(T)=0$ with nonzero constant term;
 both $T$ and $T^{-1}$ are integral over
 $\overline{\mathbf Q}[X,X^{-1}]$, which also proves finiteness.  The
-pullback condition means that
-the fiber product with $x\mapsto x^n$ is geometrically irreducible for
-every $n\ge1$.  Its function-field equation is
+pullback condition means that the fiber product with $x\mapsto x^n$
+is geometrically irreducible for every $n\ge1$.  Its function-field
+equation is
 \[
  Y^n=g(T).
 \]
-Over $\overline{\mathbf Q}(T)$, the function $g$ is not a $p$-th power
-for any prime $p$.  For $p\ge3$, this follows from its pole of order two
-at $T=0$.  For $p=2$, suppose $g=w^2$.  Its only poles force
+Over $\overline{\mathbf Q}(T)$, the function $g$ is not a $p$-th
+power for any prime $p$.  For $p\ge3$, this follows from its pole of
+order two at $T=0$.  For $p=2$, suppose $g=w^2$.  Its only poles force
 \[
  w=aT^2+bT+c+dT^{-1}.
 \]
@@ -294,27 +263,20 @@ square.
 
 The field $\overline{\mathbf Q}(T)$ contains all roots of unity.  The
 Kummer binomial criterion
-\cite[Chapter VI, \S9, Theorem 9.1]{Lang2002} in this setting states that
+\cite[Chapter~VI, \S9, Theorem~9.1]{Lang2002} says in this setting that
 $Y^n-q$ is irreducible if and only if $q$ is not a $p$-th power for
-every prime $p\mid n$.  In the general binomial criterion one must also
-exclude $q\in-4\overline{\mathbf Q}(T)^4$ when $4\mid n$; here every
-element $-4b^4=(2ib^2)^2$ is already a square, so the preceding square
-argument excludes this case as well.  The preceding valuation
-and coefficient arguments therefore prove that $Y^n-g(T)$ is
-irreducible for every $n\ge1$, which is precisely the pullback
-condition.
+every prime $p\mid n$.  In the general criterion one must also exclude
+$q\in-4\overline{\mathbf Q}(T)^4$ when $4\mid n$; here every element
+$-4b^4=(2ib^2)^2$ is already a square.  The preceding arguments
+therefore prove that $Y^n-g(T)$ is irreducible for every $n\ge1$.
 
 Zannier's cyclotomic Hilbert irreducibility theorem
-\cite[Theorem 2.1]{Zannier2010} says that a cover defined over the cyclotomic
-closure and satisfying this condition has irreducible fibers over that
-field outside a finite union of proper torsion cosets.  For
-$\mathbf G_m$, such a union is a finite set of torsion points.  Thus the
-theorem gives finitely many exceptional torsion fibers.  By the
-Kronecker--Weber theorem \cite{Washington1997}, the cyclotomic closure of
-$\mathbf Q$ is $\mathbf Q^{\mathrm{ab}}$.  The abelian-stability
-theorem determines them exactly: for $\zeta\ne1$, the inclusion
-$\mathbf Q^{\mathrm{ab}}\subset\mathbf Q(\zeta)^{\mathrm{ab}}$ shows
-that $F_\zeta$ is irreducible over $\mathbf Q^{\mathrm{ab}}$, whereas
+\cite[Theorem~2.1]{Zannier2010} then gives finitely many exceptional
+torsion fibers over the cyclotomic closure.  By Kronecker--Weber this
+closure is $\Q^{\mathrm{ab}}$.  Corollary
+\ref{cor:solvable-stability} determines the exceptions exactly: for
+$\zeta\ne1$, the polynomial $F_\zeta$ is irreducible even over
+$\Q(\zeta)^{\mathrm{sol}}$, while
 \[
  F_1(T)=(T+2)(T^2+4)(T^3-2).
 \]

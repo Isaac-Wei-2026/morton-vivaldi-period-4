@@ -1,0 +1,255 @@
+\section{A Kummer--torsion specialization theorem}
+\label{sec:abstract-specialization}
+
+For a number field $B$, write
+\[
+ B^c=B(\mu_\infty).
+\]
+Thus $\Q^c=\Q^{\mathrm{ab}}$ by Kronecker--Weber.  We first record a
+one-dimensional form of cyclotomic Hilbert irreducibility that will be
+used twice below.
+
+Let $X/\Q$ be a geometrically integral normal curve and let
+$t,y\in\Q(X)$ satisfy
+\[
+ \Q(X)=\Q(t,y),\qquad
+ N=[\Q(X):\Q(y)].
+\]
+Regard $y$ as a finite cover of $\mathbf G_m$ after deleting its zeros,
+poles, and finitely many other points.  Let
+\[
+ A(T,Y)\in\Q(Y)[T]
+\]
+be the monic minimal polynomial of $t$ over $\Q(Y)$.  There is a finite
+Galois-stable set $\Sigma_{\rm alg}\subset\mu_\infty$ such that, for
+$\theta\notin\Sigma_{\rm alg}$, specialization at $Y=\theta$ is
+defined, $A(T,\theta)$ is separable of degree $N$, and its roots are
+the $t$-coordinates of the points of $y^{-1}(\theta)$.  Indeed, this
+follows by shrinking the target so that the cover is finite \'etale and
+the primitive-element plane model is isomorphic to it.
+
+We say that $t$ separates the torsion fibers of $y$ away from a finite
+set if there is a finite Galois-stable
+$\Sigma_{\rm sep}\subset\mu_\infty$ such that
+\[
+ P\longmapsto t(P)
+ \numberthis\label{eq:torsion-separation}
+\]
+is injective on
+\[
+ \bigcup_{\theta\in\mu_\infty\setminus\Sigma_{\rm sep}}
+ y^{-1}(\theta)(\overline{\Q}).
+\]
+This single condition has two logically distinct consequences: fibers
+over different torsion points have disjoint sets of $t$-coordinates,
+and the torsion label can be recovered from any one such coordinate.
+
+Recall that a cover $y:X\to\mathbf G_m$ satisfies the pullback
+condition \emph{(PB)} if its pullback by $u\mapsto u^n$ is geometrically
+irreducible for every $n\ge1$ \cite[Definition and Proposition
+2.1]{Zannier2010}.  Equivalently,
+\[
+ U^n-y\quad\hbox{is irreducible in }\overline{\Q}(X)[U]
+ \quad(n\ge1).
+ \numberthis\label{eq:pb-binomial}
+\]
+
+\begin{theorem}[Kummer--torsion specialization]
+\label{thm:kummer-torsion}
+Assume that $y$ satisfies \emph{(PB)} and that $t$ separates its torsion
+fibers away from a finite set.  Fix $r\ge1$ and put $x=y^r$.  For
+$k\ge2$, set
+\[
+ S_r(k)=\{\theta\in\mu_\infty:\ord(\theta^r)=k\}
+\]
+and, whenever all the specializations are good, put
+\[
+ \Psi_{r,k}(T)=\prod_{\theta\in S_r(k)}A(T,\theta).
+ \numberthis\label{eq:abstract-Psi}
+\]
+Then the following assertions hold for every sufficiently large $k$.
+
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item Over $\Q^{\mathrm{ab}}$, the polynomial $\Psi_{r,k}$ has exactly
+      $r\varphi(k)$ distinct irreducible factors, namely the
+      $A(T,\theta)$, and every factor has degree $N$.
+\item The possible orders of elements of $S_r(k)$ are precisely
+      \[
+       n=ka,\qquad a\mid r,\qquad (k,r/a)=1.
+       \numberthis\label{eq:admissible-orders}
+      \]
+      For every such $a$, the polynomial
+      \[
+       F_{k,a}(T)=
+       \prod_{\ord(\theta)=ka}A(T,\theta)
+       \numberthis\label{eq:order-block}
+      \]
+      belongs to $\Q[T]$, is irreducible there, and has degree
+      $N\varphi(ka)$.  The product of these $F_{k,a}$ is the complete
+      factorization of $\Psi_{r,k}$ over $\Q$.
+\item If $t_0$ is a root of $A(T,\theta)$, then
+      \[
+       \theta\in\Q(t_0),\qquad
+       \Q(t_0)\cap\Q^{\mathrm{ab}}=\Q(\theta).
+       \numberthis\label{eq:abstract-intersection}
+      \]
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+By Zannier's cyclotomic Hilbert irreducibility theorem
+\cite[Theorem 2.1]{Zannier2010}, condition (PB) gives a finite set
+$\Sigma_{\rm Zan}\subset\mu_\infty$ outside which the fiber of $y$ is
+irreducible over $\Q^c=\Q^{\mathrm{ab}}$ and has degree $N$.  Enlarge
+this set by $\Sigma_{\rm alg}$ and $\Sigma_{\rm sep}$.  Since
+$|S_r(k)|=r\varphi(k)$ and every $\theta\in S_r(k)$ has order at least
+$k$, no element of this fixed finite set occurs once $k$ is large.
+This proves the irreducibility and degree assertion in (i); separation
+shows that the factors have disjoint root sets.
+
+Let $P\in y^{-1}(\theta)$ and write $t_0=t(P)$.  If
+$\sigma\in\Gal(\overline\Q/\Q(t_0))$, then
+\[
+ t(\sigma P)=t_0,\qquad y(\sigma P)=\sigma\theta.
+\]
+Torsion separation forces $\sigma P=P$, and hence
+$\sigma\theta=\theta$.  Thus $\theta\in\Q(t_0)$.  Irreducibility over
+$\Q^{\mathrm{ab}}$ gives
+\[
+ [\Q^{\mathrm{ab}}(t_0):\Q^{\mathrm{ab}}]=N.
+\]
+It also implies that $A(T,\theta)$ is irreducible over $\Q(\theta)$,
+so $[\Q(t_0):\Q(\theta)]=N$.  If
+$D=\Q(t_0)\cap\Q^{\mathrm{ab}}$, the compositum degree formula gives
+$[\Q(t_0):D]=N$.  Since $\Q(\theta)\subseteq D$, the two degree
+equalities force $D=\Q(\theta)$, proving (iii).
+
+If $n=\ord(\theta)$, then
+\[
+ \ord(\theta^r)=\frac{n}{(n,r)}.
+\]
+Writing $a=(n,r)$ proves \eqref{eq:admissible-orders}, and the converse
+is immediate.  The product in \eqref{eq:order-block} is Galois
+invariant.  A root $t_0$ of one of its factors has, by (iii), degree
+\[
+ [\Q(t_0):\Q]=N\varphi(ka),
+\]
+which is the degree of $F_{k,a}$.  Hence $F_{k,a}$ is the minimal
+polynomial of $t_0$.  Distinct $a$ give disjoint root sets, completing
+the proof.
+\end{proof}
+
+The arithmetic count in the preceding theorem is classical; compare
+the standard irreducibility criteria for cyclotomic compositions in
+\cite{Damianou2011}.  It is included to make the later dynamical
+factorization exact.
+
+\begin{corollary}
+\label{cor:abstract-factor-count}
+For all sufficiently large $k$, the number of irreducible factors of
+$\Psi_{r,k}$ over $\Q$ is
+\[
+ \mathfrak f_r(k)=
+ \prod_{\substack{p^\alpha\parallel r\\p\nmid k}}(\alpha+1).
+ \numberthis\label{eq:factor-count}
+\]
+In particular,
+\[
+ \Psi_{r,k}\text{ is irreducible over }\Q
+ \quad\Longleftrightarrow\quad
+ \operatorname{rad}(r)\mid k.
+ \numberthis\label{eq:radical-criterion}
+\]
+Consequently the set of such $k$ has natural density
+$1/\operatorname{rad}(r)$.
+\end{corollary}
+
+\begin{proof}
+For a prime power $p^\alpha\parallel r$, condition
+$(k,r/a)=1$ forces the exponent of $p$ in $a$ to equal $\alpha$ when
+$p\mid k$, while all $\alpha+1$ exponents are allowed when $p\nmid k$.
+This proves \eqref{eq:factor-count} and \eqref{eq:radical-criterion}.
+The density statement is unchanged by the finite exceptional set.
+\end{proof}
+
+We shall also need the same result for a cover that is itself defined
+only over a number field.  The finite exceptional set may depend on
+that field.
+
+\begin{theorem}[Number-field Kummer--torsion specialization]
+\label{thm:kummer-torsion-number-field}
+Let $B$ be a number field, let $Z/B$ be a geometrically integral normal
+curve, and let $u,v\in B(Z)$ satisfy
+\[
+ B(Z)=B(u,v),\qquad N=[B(Z):B(v)].
+\]
+Let $A_B(T,Y)\in B(Y)[T]$ be the monic minimal polynomial of $u$ over
+$B(Y)$.  Assume that $v:Z\dashrightarrow\mathbf G_m$ satisfies
+\emph{(PB)} and that $u$ separates the torsion fibers of $v$ away from
+a finite Galois-stable set.  Fix $r\ge1$, put
+\[
+ S_r(k)=\{\theta\in\mu_\infty:\ord(\theta^r)=k\},\qquad
+ \Psi^B_{r,k}(T)=\prod_{\theta\in S_r(k)}A_B(T,\theta),
+\]
+whenever all specializations are defined.  Then the following hold for
+every sufficiently large $k$.
+
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item Over $B^c=B(\mu_\infty)$, the distinct irreducible factors of
+      $\Psi^B_{r,k}$ are precisely the $A_B(T,\theta)$, each of degree
+      $N$.
+\item Over $B$, the irreducible factors are indexed by the
+      $\Gal(B^c/B)$-orbits $\mathcal O$ on $S_r(k)$.  The orbit
+      $\mathcal O$ gives a factor of degree $N|\mathcal O|$.
+\item If $u_0$ is a root of $A_B(T,\theta)$, then
+      \[
+       \theta\in B(u_0),\qquad
+       B(u_0)\cap B^c=B(\theta).
+       \numberthis\label{eq:B-intersection}
+      \]
+\end{enumerate}
+For an admissible order $n=ka$, where $a\mid r$ and $(k,r/a)=1$, put
+$K_n=\Q(\zeta_n)$ and $D_n=B\cap K_n$.  The order-$n$ block has
+$[D_n:\Q]$ irreducible factors over $B$, each of degree
+$N[K_n:D_n]$.
+\end{theorem}
+
+\begin{proof}
+Apply Zannier's theorem \cite[Theorem 2.1]{Zannier2010} over $B$.  In
+dimension one its exceptional union of proper torsion cosets is a
+finite set of torsion points.  Enlarge it by the finite sets on which
+specialization or separation fails.  Thus, for every remaining torsion
+point $\theta$, the fiber $v^{-1}(\theta)$ is irreducible over $B^c$
+and has degree $N$.  Every $\theta\in S_r(k)$ has order at least $k$,
+so all labels are good once $k$ is sufficiently large; separation
+makes the resulting factors pairwise distinct.  This proves (i).
+
+Let $P\in v^{-1}(\theta)$ and put $u_0=u(P)$.  If
+$\sigma\in\Gal(\overline\Q/B(u_0))$, then
+\[
+ u(\sigma P)=u_0,\qquad v(\sigma P)=\sigma\theta.
+\]
+Separation gives $\sigma P=P$, hence $\sigma\theta=\theta$ and
+$\theta\in B(u_0)$.  Irreducibility over $B^c$ and over the subfield
+$B(\theta)$ gives
+\[
+ [B^c(u_0):B^c]=N=[B(u_0):B(\theta)].
+\]
+For $D=B(u_0)\cap B^c$, the compositum degree formula gives
+$[B(u_0):D]=N$.  Since $B(\theta)\subseteq D$, the two degree
+equalities force $D=B(\theta)$, proving (iii).
+
+For a $\Gal(B^c/B)$-orbit $\mathcal O$, the product of the factors
+labelled by $\mathcal O$ belongs to $B[T]$.  If $u_0$ lies above
+$\theta\in\mathcal O$, then (iii) gives
+\[
+ [B(u_0):B]
+ =N[B(\theta):B]
+ =N|\mathcal O|,
+\]
+which is the degree of that product.  It is therefore the minimal
+polynomial of $u_0$ over $B$.  This proves (ii).  Finally, restriction
+identifies the action on primitive $n$-th roots with
+$\Gal(K_n/D_n)$.  This action is free, so it has $[D_n:\Q]$ orbits,
+each of size $[K_n:D_n]$, proving the last assertion.
+\end{proof}

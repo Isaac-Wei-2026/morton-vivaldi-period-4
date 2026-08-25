@@ -1,0 +1,429 @@
+\section{The exceptional \texorpdfstring{$S_5$}{S5} resolvent}
+\label{sec:outer-s5-resolvent}
+
+We now determine the non-solvable core of every nontrivial torsion
+fiber.  Let
+\[
+ H=\langle(15364),(16)(24),(3465)\rangle\leq S_6,
+\]
+where the cycles act on the six roots of $P_X$.  This is the exceptional
+transitive copy of
+\[
+ \operatorname{PGL}_2(\mathbf F_5)\cong S_5
+\]
+in $S_6$; it has order $120$ and index $6$.  We use the classical
+relative invariant recorded in
+\cite[Table~4]{AwtreyFrenchJakesRussell2015}.  In variables
+$x_1,\ldots,x_6$, put
+\begin{equation}
+ \Omega=\sum_{u\in H\cdot(x_1^2x_2^2x_3x_6)}u,
+ \label{eq:outer-invariant}
+\end{equation}
+where repeated monomials are included only once.  The orbit in
+\eqref{eq:outer-invariant} has $30$ elements, and
+\[
+ \operatorname{Stab}_{S_6}(\Omega)=H.
+\]
+Both statements are finite: Appendix~\ref{sec:exact-certificates}
+describes an exact enumeration of all $720$ permutations.
+
+Let $r_1,\ldots,r_6$ be the roots of $P_X$ and take the six coset
+representatives
+\[
+ 1,(56),(45),(35),(34),(46).
+\]
+Define
+\begin{equation}
+ \mathcal C_X(Z)=
+ \prod_{\sigma\in S_6/H}
+ \bigl(Z-\sigma\Omega(r_1,\ldots,r_6)\bigr).
+ \label{eq:outer-resolvent-definition}
+\end{equation}
+Its coefficients are symmetric polynomials in the $r_i$, so
+$\mathcal C_X\in\mathbf Z[X,Z]$.  Exact symmetrization gives
+\begin{align}
+ \mathcal C_X(Z)={}&Z^6-8A_1(X)Z^5-8A_2(X)Z^4+8A_3(X)Z^3\notag\\
+ &\quad+16A_4(X)Z^2-32A_5(X)Z+16A_6(X),
+ \label{eq:outer-resolvent}
+\end{align}
+where
+\begin{align*}
+ A_1={}&X-25,\\
+ A_2={}&X^3-20X^2+705X+178,\\
+ A_3={}&7X^4-681X^3+16261X^2-227443X+479760,\\
+ A_4={}&X^6-42X^5+2702X^4-68456X^3+1261977X^2\\
+       &\quad-8149990X+33167184,\\
+ A_5={}&3X^7-51X^6+3210X^5+66050X^4-1442225X^3\\
+       &\quad-8878943X^2-273043148X+2811612544,\\
+ A_6={}&9X^8+1042X^7-20673X^6+266588X^5-56301705X^4\\
+       &\quad+359206706X^3+7712523489X^2\\
+       &\quad-47208268864X-339160660992.
+\end{align*}
+The certificate reconstructs all seven coefficients of
+\eqref{eq:outer-resolvent-definition} directly in the rank-$720$
+ordered splitting algebra of $P_X$; in particular, the displayed
+formula is not obtained by numerical approximation.
+
+The discriminant of the new resolvent is
+\begin{equation}
+ \operatorname{disc}_Z(\mathcal C_X)
+ =2^{44}Q(X)^3J(X)^2,
+ \label{eq:outer-discriminant}
+\end{equation}
+where $Q$ is the polynomial in \eqref{eq:generic-discriminant} and
+\begin{align*}
+ J(X)={}&32X^{11}-1878X^{10}+35932X^9-3924653X^8\\
+ &+205941578X^7+2540918305X^6+55056832824X^5\\
+ &-3439771613747X^4+25424297868354X^3\\
+ &+117127525549173X^2-1681442076883104X\\
+ &+3812315003286784.
+\end{align*}
+For completeness, the coefficient of $Z^{6-i}$ in
+\eqref{eq:outer-resolvent} has $X$-degree at most
+\[
+ 1,3,4,6,7,8\qquad(1\leq i\leq6).
+\]
+The discriminant of a monic sextic is weighted homogeneous of weight
+$30$ when that coefficient is assigned weight $i$.  Since the largest
+ratio of the displayed $X$-degree to $i$ is $3/2$, the left side of
+\eqref{eq:outer-discriminant} has $X$-degree at most $45$.
+The exact certificate verifies \eqref{eq:outer-discriminant} by $46$
+integer Sylvester determinants, which proves the polynomial identity.
+
+The constant term of $J$ dominates all the others:
+\begin{equation}
+ |J(0)|-\sum_{i=1}^{11}|[X^i]J|
+ =1\,984\,823\,523\,717\,204>0.
+ \label{eq:J-dominance}
+\end{equation}
+Thus $J(z)\ne0$ whenever $|z|=1$.
+
+\begin{proposition}[Squarefree specialization]
+\label{prop:outer-squarefree}
+For every root of unity $\zeta\ne1$, the polynomial
+$\mathcal C_\zeta(Z)$ is squarefree over $\Q(\zeta)$.
+Consequently its irreducible factor degrees are exactly the orbit sizes
+of the Galois group of $F_\zeta$ on $S_6/H$.
+\end{proposition}
+
+\begin{proof}
+Put $K=\Q(\zeta)$.  Theorem~\ref{thm:base-fiber-irreducibility}
+makes $F_\zeta$ irreducible over $K$.  In characteristic zero it is
+therefore separable, so its discriminant identity
+\eqref{eq:generic-discriminant} gives $Q(\zeta)\ne0$.
+Equation~\eqref{eq:J-dominance} gives $J(\zeta)\ne0$, and
+\eqref{eq:outer-discriminant} now proves that
+$\mathcal C_\zeta$ is squarefree.
+
+The six roots in \eqref{eq:outer-resolvent-definition} are consequently
+distinct.  The absolute Galois group of $K$ permutes them through its
+action on the six cosets $S_6/H$.  The irreducible factors of a
+squarefree polynomial correspond to the orbits on its roots, proving
+the final assertion.
+\end{proof}
+
+\section{Local factor degrees of the exceptional resolvent}
+\label{sec:outer-local}
+
+Let $\zeta\ne1$ be a root of unity, put $K=\Q(\zeta)$, and fix a
+prime $\mathfrak p\mid2$.  Normalize the valuation on the completion by
+$v=v_{\mathfrak p}$ and $v(K_{\mathfrak p}^\times)=\mathbf Z$, and put
+$e=v(2)$.
+Write
+\[
+ \operatorname{ord}(\zeta)=2^a m,\qquad m\text{ odd}.
+\]
+Reduction of the six coefficient polynomials in
+\eqref{eq:outer-resolvent} gives
+\begin{align}
+ A_1&\equiv X+1,&
+ A_2&\equiv X(X+1)^2,&
+ A_3&\equiv X(X+1)^3,\notag\\
+ A_4&\equiv X^2(X+1)^4,&
+ A_5&\equiv X^2(X+1)^5,&
+ A_6&\equiv X^2(X+1)^6
+ \pmod2.
+ \label{eq:outer-mod-two}
+\end{align}
+
+Suppose first that $m>1$.  The reduction of $\zeta$ is a nontrivial
+odd-order root of unity, so both $\bar\zeta$ and
+$\bar\zeta+1$ are nonzero.  Equation~\eqref{eq:outer-mod-two}
+therefore makes every $A_i(\zeta)$ a $\mathfrak p$-adic unit.
+The valuations of the coefficients of $\mathcal C_\zeta$, from the
+constant coefficient to the leading coefficient, are exactly
+\begin{equation}
+ e(4,5,4,3,3,3,0).
+ \label{eq:outer-odd-valuations}
+\end{equation}
+The lower Newton polygon is the single edge
+\[
+ (0,4e)\longrightarrow(6,0).
+\]
+Indeed, the five intermediate vertical distances above the endpoint
+chord are
+\[
+ \frac{5e}{3},\quad\frac{4e}{3},\quad e,
+ \quad\frac{5e}{3},\quad\frac{7e}{3}.
+\]
+The slope is $-2e/3$.  Since $e$ is a power of two, its reduced
+denominator is $3$.
+
+It remains to treat $m=1$.  Put $\pi=\zeta-1$.  The local cyclotomic
+facts give
+\[
+ v(\pi)=1,\qquad e=v(2)=2^{a-1},\qquad a\ge1.
+\]
+This includes $\zeta=-1$, for which $\pi=-2$ and $e=1$.
+Write
+\[
+ A_i(1+U)=\sum_j a_{ij}U^j.
+\]
+Exact expansion gives the following table; each entry is
+$v_2(a_{ij})$ and blank entries correspond to absent coefficients.
+\begin{equation}
+\label{eq:outer-taylor-table}
+\begin{array}{c|rrrrrrrrr}
+i\backslash j&0&1&2&3&4&5&6&7&8\\ \hline
+1&3&0\\
+2&5&2&0&0\\
+3&7&3&2&0&0\\
+4&10&7&5&6&0&2&0\\
+5&12&8&6&3&5&0&1&0\\
+6&15&13&11&10&5&3&0&1&0
+\end{array}
+\end{equation}
+In row $i$, the coefficient $a_{ii}$ is odd, while
+\[
+ v_2(a_{ij})+j>i\qquad(j<i).
+\]
+For $j>i$ the inequality $j>i$ is already strict.  Hence
+\[
+ v(a_{ij}\pi^j)=e\,v_2(a_{ij})+j
+\]
+has its unique minimum at $j=i$.  It follows that
+\begin{equation}
+ v(A_i(\zeta))=i\qquad(1\le i\le6).
+ \label{eq:outer-pure-A-valuations}
+\end{equation}
+Thus the coefficient valuations of $\mathcal C_\zeta$ are
+\begin{equation}
+ (4e+6,5e+5,4e+4,3e+3,3e+2,3e+1,0).
+ \label{eq:outer-pure-valuations}
+\end{equation}
+Again the Newton polygon consists of one edge,
+\[
+ (0,4e+6)\longrightarrow(6,0).
+\]
+The five vertical distances above its chord are the same positive
+numbers
+\[
+ \frac{5e}{3},\quad\frac{4e}{3},\quad e,
+ \quad\frac{5e}{3},\quad\frac{7e}{3}.
+\]
+Its slope is $-(2e+3)/3$.  Since $e$ is a power of two,
+$3\nmid 2e+3$, so this slope also has reduced denominator $3$.
+
+\begin{proposition}[Outer-resolvent orbit divisibility]
+\label{prop:outer-orbit-divisibility}
+For every root of unity $\zeta\ne1$, every irreducible factor of
+$\mathcal C_\zeta$ over $K=\Q(\zeta)$ has degree divisible by $3$.
+Equivalently, its factor-degree pattern is either $[6]$ or $[3,3]$.
+Hence every orbit of $\Gal(F_\zeta/K)$ on $S_6/H$ has cardinality
+divisible by $3$.
+\end{proposition}
+
+\begin{proof}
+In both local cases the entire Newton polygon is one edge and the
+corresponding root valuation has reduced denominator $3$.  Lemma
+\ref{lem:newton-denominator} shows that every irreducible factor over
+$K_{\mathfrak p}$ has degree divisible by $3$.  A factor over $K$
+splits over $K_{\mathfrak p}$ into such local factors, so its degree is
+also divisible by $3$.  Since $\mathcal C_\zeta$ has degree six, only
+the two displayed patterns can occur.  Proposition
+\ref{prop:outer-squarefree} identifies these factor degrees with the
+orbit sizes on $S_6/H$.
+\end{proof}
+
+\section{Exception-free alternating monodromy}
+\label{sec:alternating-monodromy}
+
+We isolate the finite-group step.
+
+\begin{lemma}[Alternating criterion for a transitive sextic group]
+\label{lem:alternating-criterion}
+Let $G\le S_6$ be transitive.  Suppose that
+\begin{enumerate}[label=\textup{(\roman*)}]
+ \item every orbit of $G$ on $S_6/H$ has cardinality divisible by $3$;
+ \item $G$ fixes no unordered partition of the six letters into two
+       triples.
+\end{enumerate}
+Then $A_6\le G$.
+\end{lemma}
+
+\begin{proof}
+If $G$ has a block of size three, the block and its complement form a
+fixed unordered $3+3$ partition, contrary to \textup{(ii)}.  If $G$
+has a block of size two, then $G$ is contained in a conjugate of
+\[
+ W=S_2\mathbin{\wr}S_3.
+\]
+The group $W$ has orbits of sizes $2$ and $4$ on $S_6/H$.  Every
+$G$-orbit refines a $W$-orbit, so the orbit of size two contains a
+$G$-orbit of size one or two, contrary to \textup{(i)}.  Thus $G$ is
+primitive.
+
+Up to conjugacy, the primitive subgroups of $S_6$ are
+\[
+ \operatorname{PSL}_2(5)\cong A_5,\quad
+ \operatorname{PGL}_2(5)\cong S_5,\quad A_6,\quad S_6;
+\]
+see \cite{ButlerMcKay1983}.  The first two are contained in a conjugate
+of the exceptional $S_5=H$, so each fixes a point of $S_6/H$.  This
+again contradicts \textup{(i)}.  Only $A_6$ and $S_6$ remain.
+The orbit sizes $[2,4]$, $[1,5]$, and $[6]$ used here are also checked
+by the finite permutation certificate in Appendix
+\ref{sec:exact-certificates}.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:alternating-monodromy}]
+Theorem~\ref{thm:base-fiber-irreducibility} makes the group
+$G=\Gal(L_\zeta/K)$ transitive.  Proposition
+\ref{prop:outer-orbit-divisibility} gives hypothesis \textup{(i)} of
+Lemma~\ref{lem:alternating-criterion}.  A fixed unordered $3+3$
+partition would give a $K$-rational root of the resolvent
+$\mathcal R_\zeta$ defined in \eqref{eq:abstract-three-three-resolvent}.
+Equation~\eqref{eq:res-no-K-root} excludes such a root, so hypothesis
+\textup{(ii)} holds.  The lemma proves the assertion.
+\end{proof}
+
+\section{Solvable stability}
+\label{sec:solvable-stability}
+
+Fix an algebraic closure $\overline\Q$.  For a number field
+$k\subset\overline\Q$, write $k^{\mathrm{sol}}$ for the compositum in
+$\overline\Q$ of all finite Galois extensions of $k$ with solvable
+Galois group.
+
+\begin{corollary}[Exact group and solvable stability]
+\label{cor:solvable-stability}
+Under the hypotheses of Theorem~\ref{thm:alternating-monodromy}, put
+\[
+ G_\zeta=\Gal(L_\zeta/K),
+ \qquad K_\zeta^{\mathrm{sgn}}=K\bigl(\sqrt{Q(\zeta)}\bigr),
+\]
+where the latter field is understood to equal $K$ when $Q(\zeta)$ is
+a square in $K$.  Then
+\begin{enumerate}[label=\textup{(\roman*)}]
+ \item
+ \[
+ G_\zeta=
+ \begin{cases}
+  A_6,&Q(\zeta)\in K^{\times2},\\
+  S_6,&Q(\zeta)\notin K^{\times2};
+ \end{cases}
+ \]
+ \item
+ \[
+ L_\zeta\cap K^{\mathrm{sol}}
+ =L_\zeta\cap K^{\mathrm{ab}}
+ =K_\zeta^{\mathrm{sgn}};
+ \]
+ \item
+ \[
+ \Gal(L_\zeta K^{\mathrm{sol}}/K^{\mathrm{sol}})
+ \cong
+ \Gal(L_\zeta K^{\mathrm{ab}}/K^{\mathrm{ab}})
+ \cong A_6;
+ \]
+ \item $F_\zeta$ is irreducible over $K^{\mathrm{sol}}$, and for
+ every root $\alpha$,
+ \[
+ K(\alpha)\cap K^{\mathrm{sol}}=K.
+ \]
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+Theorem~\ref{thm:alternating-monodromy} leaves only $A_6$ and $S_6$.
+The discriminant square criterion, together with
+$\operatorname{disc}(F_\zeta)=2^{10}Q(\zeta)$, proves \textup{(i)}.
+
+Put $D=L_\zeta\cap K^{\mathrm{sol}}$.  Both fields are Galois over
+$K$, so $D/K$ is Galois.  Its Galois group is a solvable quotient of
+$G_\zeta$.  Since the nonabelian simple group $A_6$ has no nontrivial
+solvable quotient, the corresponding kernel contains $A_6$.  Hence
+\[
+ D\subseteq L_\zeta^{A_6}=K_\zeta^{\mathrm{sgn}}.
+\]
+The field on the right has degree at most two over $K$ and lies in both
+$L_\zeta$ and $K^{\mathrm{sol}}$, so equality holds.  Because
+\[
+ K_\zeta^{\mathrm{sgn}}\subseteq K^{\mathrm{ab}}
+ \subseteq K^{\mathrm{sol}},
+\]
+the same inclusions give the asserted intersection with
+$K^{\mathrm{ab}}$.  Restriction then proves \textup{(iii)}.
+
+The natural action of $A_6$ on six letters is transitive, so
+$F_\zeta$ remains irreducible over $K^{\mathrm{sol}}$.  If
+$E=K(\alpha)$, the standard degree formula over the Galois extension
+$K^{\mathrm{sol}}/K$ gives
+\[
+ [K^{\mathrm{sol}}(\alpha):K^{\mathrm{sol}}]
+ =[E:E\cap K^{\mathrm{sol}}].
+\]
+The left side and $[E:K]$ are both six, so
+$E\cap K^{\mathrm{sol}}=K$.
+\end{proof}
+
+\begin{lemma}[Comparison of solvable closures]
+\label{lem:solvable-closure-comparison}
+Let $K/\Q$ be a finite abelian extension.  Then
+\[
+ \Q^{\mathrm{sol}}\subseteq K^{\mathrm{sol}}.
+\]
+Moreover, for every $a\in K^\times$,
+\[
+ K(\sqrt a)\subseteq\Q^{\mathrm{sol}}.
+\]
+\end{lemma}
+
+\begin{proof}
+If $M/\Q$ is finite Galois and solvable, then $MK/K$ is finite
+Galois with Galois group isomorphic to a subgroup of
+$\Gal(M/\Q)$.  Thus $M\subseteq K^{\mathrm{sol}}$, and taking the
+compositum proves the first assertion.
+
+For the second, let $N$ be the compositum of
+\[
+ K\bigl(\sqrt{\sigma(a)}\bigr),
+ \qquad \sigma\in\Gal(K/\Q).
+\]
+This is the Galois closure of $K(\sqrt a)/\Q$.  The extension $N/K$
+is multiquadratic and $K/\Q$ is abelian, so $\Gal(N/\Q)$ is solvable.
+Hence $N\subseteq\Q^{\mathrm{sol}}$.
+\end{proof}
+
+\begin{corollary}[Monodromy over the maximal solvable extension]
+\label{cor:Qsol-monodromy}
+With the notation above,
+\[
+ L_\zeta\cap\Q^{\mathrm{sol}}=K_\zeta^{\mathrm{sgn}},
+ \qquad
+ \Gal(L_\zeta\Q^{\mathrm{sol}}/\Q^{\mathrm{sol}})\cong A_6.
+\]
+In particular, $F_\zeta$ is irreducible over $\Q^{\mathrm{sol}}$.
+\end{corollary}
+
+\begin{proof}
+The cyclotomic field $K$ is contained in $\Q^{\mathrm{sol}}$.  The
+preceding lemma and Corollary~\ref{cor:solvable-stability} give
+\[
+ K_\zeta^{\mathrm{sgn}}
+ \subseteq L_\zeta\cap\Q^{\mathrm{sol}}
+ \subseteq L_\zeta\cap K^{\mathrm{sol}}
+ =K_\zeta^{\mathrm{sgn}}.
+\]
+Restriction gives the group $A_6$, whose natural action is transitive.
+\end{proof}

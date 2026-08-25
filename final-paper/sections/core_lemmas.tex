@@ -6,7 +6,7 @@ will be used below.  If $L$ is a complete discretely valued field, its
 valuation is normalized by $v(L^\times)=\mathbf Z$, and the same letter
 $v$ denotes a fixed extension to $\overline{L}$.  We use the standard
 Newton polygon theorem over complete discretely valued fields
-\cite[Chapter II]{Serre1979}.
+\cite[Chapter II, \S6, Propositions (6.3) and (6.4)]{Neukirch1999}.
 
 \begin{lemma}[Newton-polygon denominator lemma]
 \label{lem:newton-denominator}
@@ -202,20 +202,19 @@ Let $\alpha$ be a root of $f$ and put $E=k(\alpha)$.  Suppose that
 \end{enumerate}
 Then
 \[
+ k\subseteq D\subseteq E,\quad D/k\text{ Galois}
+ \quad\Longrightarrow\quad D=k.
+\]
+In particular,
+\[
  E\cap k^{\mathrm{ab}}=k.
 \]
 Consequently $f$ remains irreducible over $k^{\mathrm{ab}}$.
 \end{theorem}
 
 \begin{proof}
-Set
-\[
- D=E\cap k^{\mathrm{ab}}.
-\]
-Because $D\subseteq E$, the extension $D/k$ is finite.  Moreover,
-$k^{\mathrm{ab}}/k$ is Galois with abelian Galois group.  Every finite
-intermediate extension is therefore Galois and abelian over $k$; in
-particular, so is $D/k$.  Since $f$ is irreducible of degree six,
+Let $D$ be an intermediate field with $D/k$ Galois.  Since $f$ is
+irreducible of degree six,
 $[E:k]=6$, and the tower $k\subseteq D\subseteq E$ gives
 \[
  [D:k]\mid6.
@@ -277,8 +276,8 @@ $[k_v(\beta):k_v]\leq2$, again contradicting $[L:k_v]=4$.  Thus
 $[D:k]\ne3$.
 
 Finally, suppose that $[D:k]=6$.  The inclusions $D\subseteq E$ and
-the equality of degrees give $D=E$.  In particular, $E/k$ is abelian
-Galois.  With $q$, $\beta$, and $\sigma$ as in the preceding paragraph,
+the equality of degrees give $D=E$.  In particular, $E/k$ is Galois.
+With $q$, $\beta$, and $\sigma$ as in the preceding paragraph,
 we have
 \[
  k_v(\beta)=k_v\sigma(E),
@@ -289,8 +288,10 @@ decomposition group and therefore divides $[E:k]=6$.  Its degree is
 also $4$, by the irreducibility of $q$.  This contradiction excludes
 $[D:k]=6$.
 
-We have proved $D=k$.  It remains to justify the assertion over the
-infinite extension $k^{\mathrm{ab}}$.  If $f$ were reducible over
+We have proved that $E$ contains no nontrivial subextension Galois over
+$k$.  Now $E\cap k^{\mathrm{ab}}$ is finite and Galois over $k$, so it
+equals $k$.  It remains to justify the assertion over the infinite
+extension $k^{\mathrm{ab}}$.  If $f$ were reducible over
 $k^{\mathrm{ab}}$, a nontrivial factorization would involve only
 finitely many coefficients.  They would all lie in some finite
 intermediate extension

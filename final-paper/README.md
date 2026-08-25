@@ -1,29 +1,38 @@
-# Version 2.1 manuscript snapshot
+# Final manuscript
 
-This directory contains the merged manuscript proving the complete
-period-4 case of the Morton--Vivaldi irreducibility conjecture and its
-abelian-stability strengthening.
+This directory contains the 46-page submission-stage manuscript
+*Cyclotomic specialization of unicritical multiplier curves and
+alternating monodromy in period 4* by Dongsheng Wei.
 
-- [Versioned PDF](output/pdf/morton-vivaldi-period-4-and-abelian-stability.pdf)
+- [Final PDF](output/pdf/morton-vivaldi-period-4-and-abelian-stability.pdf)
 - [LaTeX source](main.tex)
 - [Exact verification certificate](verification/verify_all.py)
+- [Outer-S5 certificate](verification/verify_outer_s5.py)
 
 ## Verify
-
-From this directory, run:
 
 ```sh
 python3 verification/verify_all.py
 ```
 
-The exact certificate uses only Python integer arithmetic.  It verifies
-the exterior-power resolvent identity, the three local polynomial
-congruences, and the period-4 multiplier-curve parametrization identity.
+The dependency-free certificate uses exact Python integer arithmetic. It
+checks the companion and exterior-power resolvent identities, all three
+local congruences, the period-4 parametrization, and the generic
+discriminant identity. It also verifies the exceptional `S_5` invariant,
+the finite-group orbit table, the complete outer resolvent in a rank-720
+ordered splitting algebra, its 46-point discriminant certificate, and all
+local Taylor data. No floating-point or inexact numerical computation is
+used.
 
 ## Build
 
 ```sh
-tectonic -X compile main.tex --outdir build
+tectonic -o build main.tex
 ```
 
-The compiled file is written to `build/main.pdf`.
+## Declarations
+
+The first page gives the full AI-use declaration, naming OpenAI GPT-5.6 Sol
+Pro, OpenAI GPT-5.6 Sol Ultra through Codex, and the limited use of Anthropic
+Claude Opus 5 desktop chats. The author received no financial support and
+declares no conflicts of interest.

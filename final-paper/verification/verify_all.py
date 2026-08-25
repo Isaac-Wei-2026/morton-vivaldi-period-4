@@ -2,9 +2,13 @@
 """Exact certificates for the period-4 multiplier-curve proof.
 
 This program uses only Python integers.  A polynomial is a tuple of its
-integer coefficients in ascending order.  In particular, no floating-point
-arithmetic, numerical specialization, or computer-algebra package is used.
-The final check uses finite dictionaries for Laurent polynomials in T.
+integer coefficients in ascending order.  No floating-point arithmetic,
+inexact numerical approximation, numerical factorization, or computer-algebra
+package is used.  The original discriminant identity is certified from twelve
+exact integer specializations together with a proved degree bound.  The outer
+S5 certificate reconstructs its resolvent in the rank-720 ordered splitting
+algebra and checks its discriminant, local data, and finite-group orbit table.
+The parametrization check uses finite dictionaries for Laurent polynomials.
 """
 
 from itertools import combinations
@@ -116,6 +120,89 @@ def divide_by_integer_exact(value, divisor):
 
 def degree(value):
     return len(value) - 1
+
+
+def integer_determinant_bareiss(matrix):
+    """Exact determinant of an integer matrix by fraction-free elimination."""
+    size = len(matrix)
+    require(all(len(row) == size for row in matrix), "integer matrix is not square")
+    work = [list(map(int, row)) for row in matrix]
+    sign = 1
+    previous = 1
+    for pivot_index in range(size - 1):
+        if work[pivot_index][pivot_index] == 0:
+            swap = next(
+                (row for row in range(pivot_index + 1, size)
+                 if work[row][pivot_index] != 0),
+                None,
+            )
+            if swap is None:
+                return 0
+            work[pivot_index], work[swap] = work[swap], work[pivot_index]
+            sign = -sign
+        pivot = work[pivot_index][pivot_index]
+        for row in range(pivot_index + 1, size):
+            for column in range(pivot_index + 1, size):
+                numerator = (
+                    work[row][column] * pivot
+                    - work[row][pivot_index] * work[pivot_index][column]
+                )
+                quotient, remainder = divmod(numerator, previous)
+                require(remainder == 0, "Bareiss division was not exact")
+                work[row][column] = quotient
+        for row in range(pivot_index + 1, size):
+            work[row][pivot_index] = 0
+        previous = pivot
+    return sign * work[-1][-1]
+
+
+def sylvester_resultant_at_x(x_value):
+    """Return Res_T(P_X,dP_X/dT) after the exact specialization X=x_value."""
+    f = [1, 2, 4, 6, x_value - 5, -8, -16]  # descending in T
+    f_prime = [6, 10, 16, 18, 2 * (x_value - 5), -8]
+    matrix = [[0] * 11 for _ in range(11)]
+    for row in range(5):
+        matrix[row][row:row + 7] = f
+    for row in range(6):
+        matrix[5 + row][row:row + 6] = f_prime
+    return integer_determinant_bareiss(matrix)
+
+
+def evaluate_integer_polynomial(coefficients, value):
+    result = 0
+    for coefficient in reversed(coefficients):
+        result = result * value + coefficient
+    return result
+
+
+def mod_poly(values, modulus):
+    values = [int(value) % modulus for value in values]
+    while values and values[-1] == 0:
+        values.pop()
+    return tuple(values)
+
+
+def mod_poly_remainder(left, right, modulus):
+    left = list(mod_poly(left, modulus))
+    right = mod_poly(right, modulus)
+    require(right, "modular polynomial division by zero")
+    while len(left) >= len(right):
+        scalar = left[-1] * pow(right[-1], -1, modulus) % modulus
+        shift = len(left) - len(right)
+        for index, coefficient in enumerate(right):
+            left[index + shift] = (
+                left[index + shift] - scalar * coefficient
+            ) % modulus
+        while left and left[-1] == 0:
+            left.pop()
+    return tuple(left)
+
+
+def mod_poly_monic(value, modulus):
+    value = mod_poly(value, modulus)
+    require(value, "zero polynomial has no monic normalization")
+    scalar = pow(value[-1], -1, modulus)
+    return tuple(coefficient * scalar % modulus for coefficient in value)
 
 
 def identity_matrix(size):
@@ -456,11 +543,69 @@ def verify_period_four_parametrization():
     )
 
 
+def verify_generic_discriminant():
+    """Certify disc_T(P_X)=2^10 Q(X) and squarefreeness of Q modulo 5."""
+    q = (
+        60081152,
+        -12598144,
+        2799652,
+        -366579,
+        23722,
+        -619,
+        16,
+    )
+    # The Sylvester determinant has degree at most 11 in X: there are five
+    # shifted rows of P_X and six shifted rows of dP_X/dT, and every entry is
+    # affine in X.  Agreement at 12 distinct integers therefore proves the
+    # polynomial identity.  Since deg(P_X)=6, disc(P_X)=-Res(P_X,P_X').
+    for x_value in range(12):
+        resultant = sylvester_resultant_at_x(x_value)
+        claimed_discriminant = (2 ** 10) * evaluate_integer_polynomial(q, x_value)
+        require(
+            -resultant == claimed_discriminant,
+            f"generic discriminant identity fails at X={x_value}",
+        )
+    print(
+        "PASS generic discriminant: 12 exact Sylvester determinants certify "
+        "disc_T(P_X)=2^10 Q(X) under the degree-11 bound"
+    )
+
+    modulus = 5
+    q_mod = mod_poly(q, modulus)
+    dq_mod = mod_poly(derivative(q), modulus)
+    expected_remainders = [
+        (4, 4, 0, 0, 1),       # X^4+4X+4
+        (2, 0, 3, 1),          # X^3+3X^2+2
+        (0, 3, 1),             # X^2+3X
+        (1,),
+    ]
+    left, right = q_mod, dq_mod
+    actual_remainders = []
+    while right:
+        remainder = mod_poly_remainder(left, right, modulus)
+        if not remainder:
+            break
+        remainder = mod_poly_monic(remainder, modulus)
+        actual_remainders.append(remainder)
+        left, right = right, remainder
+    require(
+        actual_remainders == expected_remainders,
+        "the claimed Euclidean remainder certificate modulo 5 is incorrect",
+    )
+    require(actual_remainders[-1] == (1,), "Q and Q' are not coprime modulo 5")
+    print("PASS squarefree discriminant factor: Euclidean gcd(Q,Q')=1 in F_5[X]")
+
+
 def main():
     print("Exact arithmetic domain: Z[X] and Z[u] (Python arbitrary-precision integers)")
     verify_companion_and_resolvent()
     verify_three_congruences()
     verify_period_four_parametrization()
+    verify_generic_discriminant()
+    # Imported here to keep the ordered-splitting-algebra certificate in a
+    # readable companion file while retaining one public verification command.
+    from verify_outer_s5 import verify_outer_s5_resolvent
+    verify_outer_s5_resolvent()
     print("ALL EXACT CERTIFICATE CHECKS PASSED")
 
 

@@ -1,0 +1,470 @@
+\section{Unicritical multiplier curves and the reduced multiplier}
+\label{sec:unicritical-reduction}
+
+Fix integers $d\ge2$ and $m\ge1$, and put
+\[
+ f_c(z)=z^d+c,\qquad e=d-1,\qquad
+ \nu_d(m)=\sum_{r\mid m}\mu(m/r)d^r.
+\]
+The $m$-th multiplier polynomial $M_{d,m}(c,x)$ is the monic polynomial
+whose roots, for generic $c$, are the multipliers of the cycles of
+exact period $m$.  It has degree $\nu_d(m)/m$ in $x$.  We use the
+following standard facts about this polynomial and the corresponding
+dynatomic curve:
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item the marked dynatomic curve is geometrically irreducible;
+\item $M_{d,m}$ is geometrically irreducible;
+\item there is a polynomial $D_{d,m}(t,x)\in\Z[t,x]$ such that
+      \[
+       M_{d,m}(c,x)=D_{d,m}(d^dc^e,x),
+       \numberthis\label{eq:scaled-multiplier}
+      \]
+      and $D_{d,m}$ has degree $\nu_d(m)/d$ in $t$, with leading
+      coefficient $\pm1$.
+\end{enumerate}
+The geometric irreducibility statements go back to Morton
+\cite[Corollary 1]{Morton1996}; the integrality, degree, and leading
+coefficient in the scaled parameter are proved in
+\cite[Theorem 1.2 and Propositions 3.3, 3.5]
+{MurakamiSanoTakehira2024}.  See also
+\cite[Propositions 37, 44, and 48]{Huguin2020Extended}.
+
+Let $\mathcal Y_{d,m}$ be the normalization of the marked dynatomic
+curve, and write
+\[
+ L=\overline\Q(\mathcal Y_{d,m}).
+\]
+Iteration induces an automorphism $\sigma$ of order $m$.  If $z$ is
+the marked point, put
+\[
+ z_j=f_c^j(z),\qquad
+ P=\prod_{j=0}^{m-1}z_j.
+ \numberthis\label{eq:cycle-product}
+\]
+Then $P\in L^{\langle\sigma\rangle}$ and the cycle multiplier is
+\[
+ x=(f_c^m)'(z)=d^mP^e.
+ \numberthis\label{eq:multiplier-product}
+\]
+
+\begin{lemma}[The cycle and scaling quotients]
+\label{lem:cycle-scaling-quotients}
+One has
+\[
+ L^{\langle\sigma\rangle}=\overline\Q(c,x).
+ \numberthis\label{eq:cycle-fixed-field}
+\]
+The action
+\[
+ \xi\cdot(c,z_0,\ldots,z_{m-1})
+   =(\xi c,\xi z_0,\ldots,\xi z_{m-1}),
+ \qquad \xi\in\mu_e,
+ \numberthis\label{eq:scaling-action}
+\]
+commutes with $\sigma$, fixes $x$, and has fixed field
+\[
+ \overline\Q(c,x)^{\mu_e}
+ =\overline\Q(c^e,x)=\overline\Q(t,x),
+ \qquad t=d^dc^e.
+ \numberthis\label{eq:scaling-fixed-field}
+\]
+\end{lemma}
+
+\begin{proof}
+The inclusion $\overline\Q(c,x)\subseteq L^{\langle\sigma\rangle}$
+follows from \eqref{eq:multiplier-product}.  The two extensions over
+$\overline\Q(c)$ have the same degree:
+\[
+ [L^{\langle\sigma\rangle}:\overline\Q(c)]
+ =\frac{\nu_d(m)}m
+ =\deg_x M_{d,m}.
+\]
+Here geometric irreducibility of $M_{d,m}$ is essential: it identifies
+$\overline\Q(c,x)$ with the function field of the multiplier curve and
+prevents a hidden proper subfield.  This proves
+\eqref{eq:cycle-fixed-field}.
+
+Since $\xi^d=\xi$, one has
+$f_{\xi c}(\xi z)=\xi f_c(z)$, proving that
+\eqref{eq:scaling-action} is an action.  It sends
+$P$ to $\xi^mP$ and hence fixes $x$.  Its action on the transcendental
+element $c$ is faithful, so the fixed field is
+$\overline\Q(c^e,x)$, which is also $\overline\Q(t,x)$.
+\end{proof}
+
+Let $\mathcal X_{d,m}$ denote the normalization of the projective
+closure of $D_{d,m}(t,x)=0$.  Thus
+\[
+ \Q(\mathcal X_{d,m})=\Q(t,x).
+\]
+Set
+\[
+ \gamma=(m,e),\qquad q=e/\gamma.
+ \numberthis\label{eq:gq-definition}
+\]
+
+\begin{proposition}[The reduced multiplier]
+\label{prop:reduced-multiplier}
+The function
+\[
+ y=d^{m/\gamma}P^q
+ \numberthis\label{eq:reduced-multiplier}
+\]
+belongs to $\Q(t,x)$ and satisfies
+\[
+ x=y^\gamma.
+ \numberthis\label{eq:x-yg}
+\]
+Moreover,
+\[
+ \deg(y:\mathcal X_{d,m}\longrightarrow\mathbf P^1)
+ =N_{d,m}:=\frac{\nu_d(m)}{d\gamma}.
+ \numberthis\label{eq:reduced-degree}
+\]
+\end{proposition}
+
+\begin{proof}
+Because $mq$ is divisible by $e$, the expression in
+\eqref{eq:reduced-multiplier} is fixed by $\mu_e$.  It is defined over
+$\Q$, so Galois descent and Lemma~\ref{lem:cycle-scaling-quotients}
+give $y\in\Q(t,x)$.  Equation \eqref{eq:x-yg} follows at once from
+\eqref{eq:multiplier-product}.  Finally, the degree of the map $x$ on
+$\mathcal X_{d,m}$ is $\deg_tD_{d,m}=\nu_d(m)/d$.  Since $x=y^\gamma$,
+degrees of finite maps give \eqref{eq:reduced-degree}.
+\end{proof}
+
+The next theorem is the geometric core of the generalization.  The
+stabilizer $h$ appearing in its proof cannot in general be omitted.
+
+\begin{theorem}[Maximal isogeny and pullback irreducibility]
+\label{thm:unicritical-pb}
+The reduced multiplier
+\[
+ y:\mathcal X_{d,m}\dashrightarrow\mathbf G_m
+\]
+satisfies \emph{(PB)}.  Furthermore, $\gamma=(m,d-1)$ is the largest
+geometric isogeny degree of the multiplier map $x$: if
+\[
+ x=w^r\qquad\text{in }\overline\Q(\mathcal X_{d,m})
+\]
+for some $r\ge1$, then $r\mid\gamma$.
+\end{theorem}
+
+\begin{proof}
+We first suppose $m>1$.  Write $\Phi^*_{d,m}(z,c)$ for the $m$-th
+dynatomic polynomial of $f_c$.  Its critical specialization
+$\Phi^*_{d,m}(0,c)$ has degree $\nu_d(m)/d>0$ and is squarefree
+\cite[Proposition 47]{Huguin2020Extended}.  Choose a root $c_0$.  Because the
+multiplier of the critical orbit is zero, the formal-period criterion
+shows that $0$ has exact period $m$ for $f_{c_0}$; in particular,
+$c_0\ne0$.  Squarefreeness gives
+\[
+ \partial_c\Phi^*_{d,m}(0,c_0)\ne0.
+\]
+Thus the marked dynatomic curve is smooth at $(0,c_0)$ and $z=z_0$ is
+a local parameter there.  The remaining points $z_1,\ldots,z_{m-1}$
+of the critical cycle are nonzero, so $P=z_0\cdots z_{m-1}$ has a
+simple zero.  Exact periodicity makes the cycle-rotation stabilizer
+trivial, and the scaling action is free because $c_0\ne0$.
+Consequently both quotient maps are unramified at this point.  At its
+image $P_0$ on $\mathcal X_{d,m}$ one therefore has
+\[
+ \ord_{P_0}(y)=q,\qquad \ord_{P_0}(x)=e.
+ \numberthis\label{eq:center-orders}
+\]
+
+We next compute an order at infinity.  Let
+$\overline{\mathcal Y}_{d,m}$ be the smooth projective model of the
+marked dynatomic curve, choose a point $R_\infty$ above $c=\infty$, and
+normalize the base change given by $c=s^{-d}$.  Choose a point
+$\widetilde R_\infty$ above $(R_\infty,s=0)$, write
+$v=\ord_{\widetilde R_\infty}$, and put
+\[
+ b_j=\frac{v(z_j)}{v(s)}.
+\]
+The recurrence $z_{j+1}=z_j^d+c$ forces $b_j=-1$ for every $j$.
+Indeed, if the minimum of the $b_j$ were less than $-1$, then at an
+index where it is attained the term $z_j^d$ would have strictly smaller
+valuation than $c$, giving $b_{j+1}=db_j<b_j$, a contradiction.  Thus
+all $b_j\ge-1$.  If some $b_j>-1$, then $c$ would be the unique term of
+least valuation and would give $b_{j+1}=-d<-1$, another contradiction.
+
+It follows that $z_j=s^{-1}u_j$ with every $u_j$ a unit.  The orbit
+equations become
+\[
+ u_j^d+1=s^e u_{j+1}\qquad(j\bmod m).
+ \numberthis\label{eq:infinity-equations}
+\]
+Write $a_j=u_j(0)$, so $a_j^d=-1$.  At $s=0$ the Jacobian with respect
+to $u_0,\ldots,u_{m-1}$ is the invertible diagonal matrix
+\[
+ \operatorname{diag}(da_0^{d-1},\ldots,da_{m-1}^{d-1}).
+\]
+The formal implicit-function theorem therefore identifies the completed
+local ring at $\widetilde R_\infty$ with $\overline\Q[[s]]$.  Uniqueness
+of the solution, and the fact that the equations depend on $s$ only
+through $s^e$, also give
+\[
+ u_j(s)\in\overline\Q[[s^e]]^\times.
+\]
+
+The deck group $\mu_d$ of the base change acts by
+\[
+ (s,u_0,\ldots,u_{m-1})
+ \longmapsto(\omega s,\omega u_0,\ldots,\omega u_{m-1}),
+ \qquad \omega\in\mu_d.
+\]
+It leaves the original functions $c$ and $z_j=s^{-1}u_j$ unchanged.
+At $s=0$ it sends $(a_j)_j$ to $(\omega a_j)_j$, so no nonidentity
+element fixes $\widetilde R_\infty$.  The quotient of the normalized
+base change by this deck action is $\overline{\mathcal Y}_{d,m}$;
+hence the map back to the marked curve is unramified at
+$\widetilde R_\infty$.  From
+\[
+ c=s^{-d},\qquad
+ P=s^{-m}\prod_{j=0}^{m-1}u_j(s)
+\]
+we obtain on the marked curve
+\[
+ \ord_{R_\infty}(c)=-d,\qquad
+ \ord_{R_\infty}(P)=-m.
+ \numberthis\label{eq:marked-infinity-orders}
+\]
+
+Let $h$ be the order of the stabilizer of $R_\infty$ under cycle
+rotation.  In characteristic zero the marked-to-cycle quotient has
+ramification index $h$ at this point.  Since both $c$ and $P$ descend,
+at the image $Q_\infty$ one has
+\[
+ \ord_{Q_\infty}(c)=-\frac dh,\qquad
+ \ord_{Q_\infty}(P)=-\frac mh.
+ \numberthis\label{eq:cycle-infinity-order}
+\]
+In particular, $h\mid d$ and $h\mid m$.
+
+Every element of $\mu_e$ fixes $Q_\infty$.  On the normalized base
+change the scaling action by $\xi\in\mu_e$ lifts locally as
+\[
+ (s,u_0,\ldots,u_{m-1})
+ \longmapsto(\xi^{-1}s,u_0,\ldots,u_{m-1}).
+\]
+This covers $(c,z_j)\mapsto(\xi c,\xi z_j)$ and preserves the chosen
+branch because $u_j(s)\in\overline\Q[[s^e]]$.  Thus the
+induced action on the cycle quotient is faithful, since $\xi$ sends
+the nonconstant function $c$ to $\xi c$.  Hence the stabilizer of
+$Q_\infty$ is all of $\mu_e$, and in characteristic zero the
+cycle-to-scaling quotient has ramification index exactly $e$ at
+$Q_\infty$.
+Since $y=d^{m/\gamma}P^q$ and $x=d^mP^e$, their orders at the image
+$P_\infty$ on $\mathcal X_{d,m}$ are
+\[
+ \ord_{P_\infty}(y)=-\frac{m}{\gamma h},
+ \qquad
+ \ord_{P_\infty}(x)=-\frac mh.
+ \numberthis\label{eq:infinity-orders}
+\]
+
+Write $m=\gamma r$.  Since $e=\gamma q$ and $(q,r)=1$, while $h\mid d$
+and $\gamma\mid d-1$, one has $(h,\gamma)=1$.  The divisibility
+$h\mid m=\gamma r$ therefore gives $h\mid r$, and hence
+\[
+ \gcd\left(q,\frac{m}{\gamma h}\right)
+ =\gcd\left(q,\frac rh\right)=1.
+ \numberthis\label{eq:coprime-orders}
+\]
+The two orders in \eqref{eq:center-orders} and
+\eqref{eq:infinity-orders} show that $y$ is not a $p$-th power in
+$\overline\Q(\mathcal X_{d,m})$ for any prime $p$.  The binomial
+criterion \cite[Chapter VI, \S9, Theorem 9.1]{Lang2002} now makes
+$U^n-y$ irreducible for every $n\ge1$.  When $4\mid n$, the exceptional
+condition $y\in-4\overline\Q(\mathcal X_{d,m})^4$ is already excluded
+because $-4=(1+i)^4$ in the constant field.  This proves (PB).
+
+The two displayed orders of $x$ have greatest common divisor
+\[
+ \gcd\left(e,\frac mh\right)
+ =\gamma\gcd\left(q,\frac rh\right)=\gamma.
+\]
+If $x=w^\ell$, every divisor order of $x$ is divisible by $\ell$, so
+$\ell\mid\gamma$.  Since $x=y^\gamma$, the bound is attained.
+
+It remains to treat $m=1$.  If $z$ is a fixed point, then
+$c=z-z^d$ and $x=dz^{d-1}$.  Direct elimination gives
+\[
+ t=x(d-x)^{d-1}.
+ \numberthis\label{eq:period-one-curve}
+\]
+Here $\gamma=1$ and $y=x$; in particular $y$ has order one at the center.
+It satisfies (PB), and the maximal isogeny degree is $1$.  Notice that
+the center is fully ramified in the scaling quotient in this case,
+which is why it was separated from the preceding argument.
+\end{proof}
+
+\section{Torsion separation on the unicritical quotient}
+\label{sec:unicritical-separation}
+
+To apply Theorem~\ref{thm:kummer-torsion}, it remains to recover the
+reduced multiplier from the scaled parameter at torsion fibers.
+
+\begin{proposition}[Torsion separation]
+\label{prop:unicritical-separation}
+On the union of the finite fibers
+\[
+ y^{-1}(\theta),\qquad
+ \theta\in\mu_\infty,\quad \theta^\gamma\ne1,
+\]
+the function $t=d^dc^{d-1}$ is injective.  In particular, if
+$Q\in y^{-1}(\theta)$ and $t_0=t(Q)$, then
+\[
+ \theta\in\Q(t_0).
+\]
+\end{proposition}
+
+\begin{proof}
+First, a formal-period-$m$ point with $x\ne1$ has exact period $m$.
+Indeed, if its exact period were $r<m$, the formal-period criterion
+\cite[Theorem 4.5(b)]{Silverman2007} would write $m=rs$, with the
+$r$-cycle multiplier a primitive $s$-th root of unity; its multiplier
+for the $m$-th iterate would then be $1$.
+
+A unicritical polynomial has at most one finite cycle whose multiplier
+is a root of unity.  Such a cycle is parabolic for an iterate, and each
+finite parabolic cycle attracts a critical orbit
+\cite[Theorem 2.8]{MurakamiSanoTakehira2024}.  The only finite critical
+point of $z^d+c$ is $0$, and the attracting basins of two distinct
+periodic cycles are disjoint, so two such cycles cannot coexist.  Also
+$c=0$ cannot occur here: for $z^d$, a nonzero periodic orbit has
+multiplier a positive power of $d$, while the zero fixed point has
+multiplier zero.
+
+Suppose two points $Q_1,Q_2$ in the indicated torsion fibers have the
+same $t$-coordinate, represented by parameters $c_1,c_2$.  Since these
+parameters are nonzero, there is a unique $\xi\in\mu_e$ with
+$c_2=\xi c_1$.  The conjugacy $z\mapsto\xi z$ transports the first
+cycle to a cycle for $f_{c_2}$.  The transported cycle and the second
+cycle coincide by the preceding paragraph.  Moreover $P\mapsto\xi^mP$,
+whereas
+\[
+ \xi^{mq}=1,
+\]
+so the value of $y=d^{m/\gamma}P^q$ is unchanged.  Thus $Q_1=Q_2$.
+
+There is no hidden splitting on normalization: at these points
+$\partial_z(f_c^m(z)-z)=x-1\ne0$, cycle rotation is free, and the
+$\mu_e$-action is free because $c\ne0$.  Both quotient maps are \'etale
+there.  The final assertion now follows either directly or from the
+Galois argument used in Theorem~\ref{thm:kummer-torsion}.
+\end{proof}
+
+\section{Eventual exact factorization in the scaled parameter}
+\label{sec:unicritical-factorization}
+
+Let $A_{d,m}(T,Y)$ be the monic minimal polynomial of $t$ over
+$\Q(y)$.  It has degree $N_{d,m}$ in $T$.  Since
+$D_{d,m}(T,Y^\gamma)$ is monic up to a fixed sign in $T$, Gauss's lemma and
+normality of $\Q[Y]$ allow $A_{d,m}$ to be normalized in
+$\Q[Y,T]$.  Over $\overline\Q$ one has
+\[
+ D_{d,m}(T,Y^\gamma)
+ \doteq
+ \prod_{\xi\in\mu_\gamma}A_{d,m}(T,\xi Y),
+ \numberthis\label{eq:generic-kummer-factorization}
+\]
+where $\doteq$ denotes equality up to the fixed leading sign.  Each
+$A_{d,m}(T,\xi Y)$ is irreducible and divides the left-hand side.  The
+factors are distinct: otherwise
+$A_{d,m}(T,Y)=A_{d,m}(T,\delta Y)$ for some nontrivial
+$\delta\in\mu_\gamma$.  Then $t\mapsto t$ and $y\mapsto\delta y$ would
+induce a nontrivial automorphism of
+$\overline\Q(t,y)=\overline\Q(\mathcal X_{d,m})$ fixing both $t$ and
+$x=y^\gamma$.  This contradicts
+$\overline\Q(\mathcal X_{d,m})=\overline\Q(t,x)$.  The factors are
+therefore pairwise coprime, and comparison of degrees in $T$ gives
+\eqref{eq:generic-kummer-factorization}.
+
+For $k\ge2$, define the scaled unicritical delta polynomial by taking
+the positive-leading normalization of
+\[
+ \mathcal P_{d,m,k}(T)
+ \doteq\Res_X\bigl(\Phi_k(X),D_{d,m}(T,X)\bigr).
+ \numberthis\label{eq:scaled-delta}
+\]
+In the standard unicritical notation of
+\cite[Theorem 1.1]{MurakamiSanoTakehira2024},
+\[
+ \mathcal P_{d,m,k}(d^dc^{d-1})\doteq\Delta_{mk,m}(c),
+\]
+where $\doteq$ accounts only for the chosen leading-sign
+normalization.  By
+\eqref{eq:generic-kummer-factorization},
+\[
+ \mathcal P_{d,m,k}(T)
+ =\prod_{\ord(\theta^\gamma)=k}A_{d,m}(T,\theta).
+ \numberthis\label{eq:scaled-delta-reduced-product}
+\]
+
+\begin{theorem}[Eventual exact factorization]
+\label{thm:unicritical-eventual-factorization}
+Fix $d\ge2$ and $m\ge1$, and retain
+\[
+ \gamma=(m,d-1),\qquad
+ N_{d,m}=\frac{\nu_d(m)}{d\gamma}.
+\]
+For all sufficiently large $k\ge2$:
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item over $\Q^{\mathrm{ab}}$, $\mathcal P_{d,m,k}$ has exactly
+      $\gamma\varphi(k)$ distinct irreducible factors, each of degree
+      $N_{d,m}$;
+\item over $\Q$, its complete irreducible factorization is indexed by
+      \[
+       a\mid\gamma,\qquad (k,\gamma/a)=1,
+      \]
+      and the factor indexed by $a$ has degree
+      $N_{d,m}\varphi(ka)$;
+\item if $t_0$ belongs to the factor indexed by a reduced multiplier
+      $\theta$ of order $ka$, then
+      \[
+       \Q(t_0)\cap\Q^{\mathrm{ab}}=\Q(\theta).
+       \numberthis\label{eq:unicritical-field-intersection}
+      \]
+\end{enumerate}
+The corresponding factorization over any fixed number field $B$ is
+given by Theorem~\ref{thm:kummer-torsion-number-field}.
+\end{theorem}
+
+\begin{proof}
+Theorem~\ref{thm:unicritical-pb} supplies (PB), and
+Proposition~\ref{prop:unicritical-separation} supplies torsion
+separation for every $x\ne1$.  Since $k\ge2$, all fibers in
+\eqref{eq:scaled-delta-reduced-product} have $x\ne1$.  Apply
+Theorem~\ref{thm:kummer-torsion}.
+\end{proof}
+
+\begin{corollary}
+\label{cor:unicritical-eventual-criterion}
+For all sufficiently large $k$,
+\[
+ \mathcal P_{d,m,k}\text{ is irreducible over }\Q
+ \quad\Longleftrightarrow\quad
+ \operatorname{rad}((m,d-1))\mid k.
+ \numberthis\label{eq:unicritical-radical-criterion}
+\]
+If $(m,d-1)=1$, the whole row is therefore eventually irreducible.
+For the quadratic family $d=2$, this holds for every fixed $m$.
+Thus every fixed row of the Morton--Vivaldi conjecture has only
+finitely many possible exceptions.
+\end{corollary}
+
+\begin{proof}
+This is Corollary~\ref{cor:abstract-factor-count}.  When $d=2$, the
+scaled parameter $t=4c$ is an invertible linear change of the original
+parameter, so no extra composition issue occurs.
+\end{proof}
+
+\begin{remark}[Effectivity]
+Zannier notes that the arguments used for the toric theorem are
+effective \cite[p.~400]{Zannier2010}.  Hence, for each fixed pair
+$(d,m)$ and fixed base number field, the finite exceptional set is
+effectively computable in principle.  No practical numerical bound is
+claimed here.
+\end{remark}
