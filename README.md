@@ -1,6 +1,6 @@
 # Cyclotomic specialization and alternating monodromy
 
-**Submission-stage manuscript · August 25, 2026 · 46 pages**
+**Submission-stage manuscript · August 25, 2026 · 47 pages**
 
 This repository contains the manuscript
 *Cyclotomic specialization of unicritical multiplier curves and

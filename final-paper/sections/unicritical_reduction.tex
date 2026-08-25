@@ -27,7 +27,7 @@ The geometric irreducibility statements go back to Morton
 coefficient in the scaled parameter are proved in
 \cite[Theorem 1.2 and Propositions 3.3, 3.5]
 {MurakamiSanoTakehira2024}.  See also
-\cite[Propositions 37, 44, and 48]{Huguin2020Extended}.
+\cite[Theorem 1.38 and Propositions 1.51, 1.59]{Huguin2021Thesis}.
 
 Let $\mathcal Y_{d,m}$ be the normalization of the marked dynatomic
 curve, and write
@@ -152,9 +152,37 @@ for some $r\ge1$, then $r\mid\gamma$.
 
 \begin{proof}
 We first suppose $m>1$.  Write $\Phi^*_{d,m}(z,c)$ for the $m$-th
-dynatomic polynomial of $f_c$.  Its critical specialization
-$\Phi^*_{d,m}(0,c)$ has degree $\nu_d(m)/d>0$ and is squarefree
-\cite[Proposition 47]{Huguin2020Extended}.  Choose a root $c_0$.  Because the
+dynatomic polynomial of $f_c$.  We first verify directly that its
+critical specialization is squarefree.  Put
+\[
+ a_n(c)=f_c^{\circ n}(0)\qquad(n\geq1).
+\]
+Then $a_1=c$ and, for $n\geq2$, one has $a_n=a_{n-1}^d+c$, so
+$a_n\in\Z[c]$ is monic and
+\[
+ a_n'=d a_{n-1}^{d-1}a_{n-1}'+1.
+\]
+If $\beta$ were a common root of $a_n$ and $a_n'$, then $\beta$ would be
+an algebraic integer, as would
+$a_{n-1}(\beta)^{d-1}a_{n-1}'(\beta)$.  The displayed identity would give
+\[
+ a_{n-1}(\beta)^{d-1}a_{n-1}'(\beta)=-\frac1d,
+\]
+which is impossible because $d\geq2$ and the rational algebraic
+integers are the integers.  Thus every $a_n$ is squarefree.  The
+dynatomic product identity, specialized at $z=0$, is
+\[
+ a_n(c)=\prod_{r\mid n}\Phi^*_{d,r}(0,c).
+\]
+Consequently every factor $\Phi^*_{d,r}(0,c)$ is squarefree.  Moreover,
+M\"obius inversion applied to degrees gives
+\[
+ \deg_c\Phi^*_{d,m}(0,c)
+ =\sum_{r\mid m}\mu(m/r)d^{r-1}
+ =\frac{\nu_d(m)}d>0.
+\]
+Compare \cite[Proposition 1.58]{Huguin2021Thesis}.  Choose a root $c_0$
+of $\Phi^*_{d,m}(0,c)$.  Because the
 multiplier of the critical orbit is zero, the formal-period criterion
 shows that $0$ has exact period $m$ for $f_{c_0}$; in particular,
 $c_0\ne0$.  Squarefreeness gives
@@ -328,11 +356,17 @@ $r$-cycle multiplier a primitive $s$-th root of unity; its multiplier
 for the $m$-th iterate would then be $1$.
 
 A unicritical polynomial has at most one finite cycle whose multiplier
-is a root of unity.  Such a cycle is parabolic for an iterate, and each
-finite parabolic cycle attracts a critical orbit
-\cite[Theorem 2.8]{MurakamiSanoTakehira2024}.  The only finite critical
-point of $z^d+c$ is $0$, and the attracting basins of two distinct
-periodic cycles are disjoint, so two such cycles cannot coexist.  Also
+is a root of unity.  Indeed, after passing to a suitable iterate, such
+a cycle is parabolic with multiplier $1$.  The Fatou critical-point
+theorem for parabolic basins \cite[Theorem 10.15]{Milnor2006} supplies
+a critical point of that iterate whose orbit tends to the cycle.  By
+the chain rule, one of its forward images is a critical point of the
+original polynomial, so the cycle attracts a critical orbit of
+$f_c$.  The resulting critical point of $f_c$ is finite, since infinity
+lies in the basin of the superattracting fixed point at infinity.  The
+only finite critical point of $z^d+c$ is $0$, and the attracting basins
+of two distinct periodic cycles are disjoint, so two such cycles cannot
+coexist.  Also
 $c=0$ cannot occur here: for $z^d$, a nonzero periodic orbit has
 multiplier a positive power of $d$, while the zero fixed point has
 multiplier zero.

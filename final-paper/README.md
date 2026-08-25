@@ -1,6 +1,6 @@
 # Final manuscript
 
-This directory contains the 46-page submission-stage manuscript
+This directory contains the 47-page submission-stage manuscript
 *Cyclotomic specialization of unicritical multiplier curves and
 alternating monodromy in period 4* by Dongsheng Wei.
 
