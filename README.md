@@ -59,8 +59,9 @@ tectonic -o build main.tex
 
 ## Declarations
 
-AI assistance is disclosed on the first page of the manuscript. The tools
-used were OpenAI GPT-5.6 Sol Pro, OpenAI GPT-5.6 Sol Ultra through Codex,
-and Anthropic Claude Opus 5 in a limited number of desktop-chat exchanges.
-The author takes full responsibility for the article. The work received no
-financial support, and the author declares no conflicts of interest.
+AI assistance is disclosed in the declarations section at the end of the
+manuscript. The tools used were OpenAI GPT-5.6 Sol Pro, OpenAI GPT-5.6 Sol
+Ultra through Codex, and Anthropic Claude Opus 5 in a limited number of
+desktop-chat exchanges. The author takes full responsibility for the article.
+The work received no financial support, and the author declares no conflicts
+of interest.

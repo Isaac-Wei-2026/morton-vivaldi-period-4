@@ -37,19 +37,6 @@ and alternating monodromy in period $4$}
 
 \maketitle
 
-\paragraph{Declaration on artificial-intelligence assistance.}
-OpenAI GPT-5.6 Sol Pro was used to assist in developing the core
-period-$4$ irreducibility argument and its initial abelian-stability
-extension.  OpenAI GPT-5.6 Sol Ultra, accessed through Codex, was used
-to assist with further mathematical development, line-by-line proof
-checking, preparation of the exact-arithmetic verification code, and
-drafting and editing the manuscript.  Anthropic Claude Opus 5 was used
-in a limited number of desktop-chat exchanges for additional critical
-review.  All AI-assisted arguments, citations, and computations were
-subjected to repeated line-by-line verification.  The author takes full
-responsibility for the accuracy, integrity, and originality of the
-article.
-
 \begin{abstract}
 For the unicritical family $f_c(z)=z^d+c$, we introduce a reduced
 multiplier on its multiplier curves.  For cycle period $m$, with
@@ -242,7 +229,7 @@ $L_\zeta$ be the splitting field of $F_\zeta$ over $K$.  Then
 \[
  A_6\leq\Gal(L_\zeta/K)\leq S_6.
 \]
-Consequently
+Consequently, as proved in Corollary~\ref{cor:solvable-stability},
 \[
  \Gal(L_\zeta K^{\mathrm{sol}}/K^{\mathrm{sol}})\cong A_6,
  \qquad
@@ -1064,16 +1051,31 @@ From the directory containing this manuscript, run
 \noindent python3 verification/verify\_all.py
 \end{quote}
 
+\clearpage
 \section*{Declarations}
+\addcontentsline{toc}{section}{Declarations}
+
+\paragraph{Declaration on artificial-intelligence assistance.}
+OpenAI GPT-5.6 Sol Pro was used to assist in developing the core
+period-$4$ irreducibility argument and its initial abelian-stability
+extension.  OpenAI GPT-5.6 Sol Ultra, accessed through Codex, was used
+to assist with further mathematical development, line-by-line proof
+checking, preparation of the exact-arithmetic verification code, and
+drafting and editing the manuscript.  Anthropic Claude Opus 5 was used
+in a limited number of desktop-chat exchanges for additional critical
+review.  All AI-assisted arguments, citations, and computations were
+subjected to repeated line-by-line verification.  The author takes full
+responsibility for the accuracy, integrity, and originality of the
+article.
 
 \paragraph{Data and code availability.}
 The exact-arithmetic verification code supporting the computer-assisted
-certificates in Appendix~\ref{sec:exact-certificates} is included in the
-supplementary material accompanying this article as
-\emph{verification/verify\_all.py} and
-\emph{verification/verify\_outer\_s5.py}.  They use dependency-free
-Python~3 and exact integer arithmetic.  No other research data were
-generated or analysed.
+certificates in Appendix~\ref{sec:exact-certificates} is openly available
+in the \href{https://github.com/Isaac-Wei-2026/morton-vivaldi-period-4}{public
+GitHub repository for this article}, in its
+\emph{final-paper/verification} directory.  The programs use dependency-free
+Python~3 and exact integer arithmetic.  No other research data were generated
+or analysed.
 
 \paragraph{Funding.}
 The author received no financial support for the research, authorship,
@@ -1083,6 +1085,8 @@ or publication of this article.
 The author declares that there are no conflicts of interest.
 
 \clearpage
+\phantomsection
+\addcontentsline{toc}{section}{References}
 {\small
 \bibliographystyle{alpha}
 \bibliography{references}

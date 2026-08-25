@@ -32,7 +32,7 @@ tectonic -o build main.tex
 
 ## Declarations
 
-The first page gives the full AI-use declaration, naming OpenAI GPT-5.6 Sol
-Pro, OpenAI GPT-5.6 Sol Ultra through Codex, and the limited use of Anthropic
-Claude Opus 5 desktop chats. The author received no financial support and
-declares no conflicts of interest.
+The declarations section at the end of the manuscript gives the full AI-use
+declaration, naming OpenAI GPT-5.6 Sol Pro, OpenAI GPT-5.6 Sol Ultra through
+Codex, and the limited use of Anthropic Claude Opus 5 desktop chats. The
+author received no financial support and declares no conflicts of interest.
